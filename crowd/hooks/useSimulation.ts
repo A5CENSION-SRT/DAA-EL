@@ -7,16 +7,16 @@ import { type Graph } from '@/lib/graph';
 export function useSimulation(graph: Graph | null, algorithm: AlgorithmType) {
   const engineRef = useRef<SimulationEngine | null>(null);
   const [snapshot, setSnapshot] = useState<SimulationSnapshot | null>(null);
-  const [running, setRunning] = useState(false);
+  const [running,  setRunning]  = useState(false);
 
-  // Rebuild engine when the graph changes
+  // Rebuild engine when graph changes (new venue loaded)
   useEffect(() => {
     if (!graph) return;
     engineRef.current?.stop();
     const engine = new SimulationEngine(graph, algorithm);
 
     const entries = [...graph.nodes.values()].filter(n => n.type === 'entry').map(n => n.id);
-    const exits   = [...graph.nodes.values()].filter(n => n.type === 'exit').map(n => n.id);
+    const exits   = [...graph.nodes.values()].filter(n => n.type === 'exit' ).map(n => n.id);
     engine.setEntryNodes(entries);
     engine.setExitNodes(exits);
 
@@ -28,24 +28,26 @@ export function useSimulation(graph: Graph | null, algorithm: AlgorithmType) {
 
   useEffect(() => { engineRef.current?.setAlgorithm(algorithm); }, [algorithm]);
 
-  const start = useCallback(() => {
-    engineRef.current?.start();
-    setRunning(true);
-  }, []);
-
-  const stop = useCallback(() => {
-    engineRef.current?.stop();
-    setRunning(false);
-  }, []);
+  const start = useCallback(() => { engineRef.current?.start(); setRunning(true);  }, []);
+  const stop  = useCallback(() => { engineRef.current?.stop();  setRunning(false); }, []);
 
   const reset = useCallback(() => {
     engineRef.current?.reset();
     setRunning(false);
   }, []);
 
-  const setSpeed = useCallback((speedSlider: number) => {
-    const spawnRate = 1 + (speedSlider - 1) * (7 / 9);
-    const timeScale = 0.5 + (speedSlider - 1) * (2 / 9);
+  /**
+   * Map the UI speed slider (1–10) to engine parameters.
+   *
+   * Wider range than before for a more noticeable effect:
+   *   Speed 1  → 0.5 agents/s,  0.5× realtime  (slow-motion, watch individual paths)
+   *   Speed 5  → 8   agents/s,  2×  realtime  (normal viewing)
+   *   Speed 10 → 20  agents/s,  5×  realtime  (crowd flood)
+   */
+  const setSpeed = useCallback((s: number) => {
+    const t = (s - 1) / 9;                       // 0 → 1
+    const spawnRate = 0.5 + t * 19.5;             // 0.5 → 20 agents/s
+    const timeScale = 0.5 + t * 4.5;             // 0.5× → 5× realtime
     engineRef.current?.setSpawnRate(spawnRate);
     engineRef.current?.setTimeScale(timeScale);
   }, []);
@@ -55,11 +57,16 @@ export function useSimulation(graph: Graph | null, algorithm: AlgorithmType) {
     setSnapshot(s => s ? { ...s, spawnRadius: r } : s);
   }, []);
 
-  const addEntryNode = useCallback((nodeId: string) => {
+  const setH3Resolution = useCallback((res: number) => {
+    engineRef.current?.setH3Resolution(res);
+    setSnapshot(s => s ? { ...s, h3Resolution: res } : s);
+  }, []);
+
+  /** Replace entry — one zone centre at a time */
+  const setEntryNode = useCallback((nodeId: string) => {
     const engine = engineRef.current;
     if (!engine) return;
     const snap = engine.getSnapshot();
-    // Mark previous entries back to intersection (keep only the new one as single zone)
     for (const id of snap.entryNodeIds) {
       const n = snap.graph.nodes.get(id);
       if (n) n.type = 'intersection';
@@ -68,11 +75,11 @@ export function useSimulation(graph: Graph | null, algorithm: AlgorithmType) {
     setSnapshot({ ...engine.getSnapshot() });
   }, []);
 
+  /** Accumulate exit nodes */
   const addExitNode = useCallback((nodeId: string) => {
     const engine = engineRef.current;
     if (!engine) return;
     const snap = engine.getSnapshot();
-    // Allow multiple exit points
     if (!snap.exitNodeIds.includes(nodeId)) {
       engine.setExitNodes([...snap.exitNodeIds, nodeId]);
     }
@@ -96,16 +103,10 @@ export function useSimulation(graph: Graph | null, algorithm: AlgorithmType) {
   }, []);
 
   return {
-    snapshot,
-    running,
-    start,
-    stop,
-    reset,
-    setSpeed,
-    setSpawnRadius,
-    addEntryNode,
-    addExitNode,
-    blockEdge,
-    clearAll,
+    snapshot, running,
+    start, stop, reset,
+    setSpeed, setSpawnRadius, setH3Resolution,
+    setEntryNode, addExitNode,
+    blockEdge, clearAll,
   };
 }

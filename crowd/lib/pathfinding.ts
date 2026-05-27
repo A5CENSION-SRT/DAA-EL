@@ -72,6 +72,11 @@ function reconstructPath(
 }
 
 // ─── Dijkstra ─────────────────────────────────────────────────────────────────
+//
+// Efficiency notes:
+//  • Lazy initialisation — no O(V) init loop; Maps start empty and
+//    unvisited nodes are treated as Infinity via `?? Infinity`.
+//  • Early exit when target is popped from the heap.
 
 export function dijkstra(
   graph: Graph,
@@ -80,13 +85,12 @@ export function dijkstra(
 ): PathResult {
   const t0 = performance.now();
 
-  const dist = new Map<string, number>();
-  const prev = new Map<string, string | null>();
+  const dist    = new Map<string, number>();
+  const prev    = new Map<string, string | null>();
   const visited = new Set<string>();
   const visitedOrder: string[] = [];
   let edgesRelaxed = 0;
 
-  for (const id of graph.nodes.keys()) { dist.set(id, Infinity); prev.set(id, null); }
   dist.set(startId, 0);
 
   const pq = new MinHeap<string>();
@@ -99,10 +103,12 @@ export function dijkstra(
     visitedOrder.push(u);
     if (u === endId) break;
 
+    const uDist = dist.get(u) ?? Infinity;
+
     for (const { node: v, edge } of getNeighbors(graph, u)) {
       updateEdgeWeight(graph, edge.id);
       edgesRelaxed++;
-      const alt = (dist.get(u) ?? Infinity) + edge.weight;
+      const alt = uDist + edge.weight;
       if (alt < (dist.get(v.id) ?? Infinity)) {
         dist.set(v.id, alt);
         prev.set(v.id, u);
@@ -121,13 +127,17 @@ export function dijkstra(
 }
 
 // ─── A* ───────────────────────────────────────────────────────────────────────
+//
+// Efficiency notes:
+//  • Same lazy-init approach as Dijkstra.
+//  • Heuristic: straight-line haversine distance to goal (admissible).
 
 export function aStar(
   graph: Graph,
   startId: string,
   endId: string,
 ): PathResult {
-  const t0 = performance.now();
+  const t0      = performance.now();
   const endNode = graph.nodes.get(endId);
   if (!endNode) return emptyResult(t0);
 
@@ -142,7 +152,6 @@ export function aStar(
   const visitedOrder: string[] = [];
   let edgesRelaxed = 0;
 
-  for (const id of graph.nodes.keys()) { gScore.set(id, Infinity); prev.set(id, null); }
   gScore.set(startId, 0);
 
   const open = new MinHeap<string>();
@@ -155,11 +164,13 @@ export function aStar(
     visitedOrder.push(cur);
     if (cur === endId) break;
 
+    const curG = gScore.get(cur) ?? Infinity;
+
     for (const { node: nb, edge } of getNeighbors(graph, cur)) {
       if (closed.has(nb.id)) continue;
       updateEdgeWeight(graph, edge.id);
       edgesRelaxed++;
-      const tentG = (gScore.get(cur) ?? Infinity) + edge.weight;
+      const tentG = curG + edge.weight;
       if (tentG < (gScore.get(nb.id) ?? Infinity)) {
         prev.set(nb.id, cur);
         gScore.set(nb.id, tentG);
@@ -178,6 +189,10 @@ export function aStar(
 }
 
 // ─── BFS (unweighted) ─────────────────────────────────────────────────────────
+//
+// Efficiency notes:
+//  • Uses a head-pointer dequeue pattern — O(1) per dequeue vs O(n) array.shift().
+//  • Lazy-init: no O(V) prev initialisation loop.
 
 export function bfs(
   graph: Graph,
@@ -191,13 +206,13 @@ export function bfs(
   const visitedOrder: string[] = [];
   let edgesRelaxed = 0;
 
-  for (const id of graph.nodes.keys()) prev.set(id, null);
-
-  const queue = [startId];
+  // O(1)-dequeue queue via head pointer
+  const queue: string[] = [startId];
+  let head = 0;
   visited.add(startId);
 
-  while (queue.length > 0) {
-    const u = queue.shift()!;
+  while (head < queue.length) {
+    const u = queue[head++];           // O(1) — no array shift
     visitedOrder.push(u);
     if (u === endId) break;
 
