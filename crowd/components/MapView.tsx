@@ -19,18 +19,18 @@ import { densityColor, getVenueGridCells, type HexCell } from '@/lib/h3-spatial'
 export type InteractionMode = 'view' | 'add-entry' | 'add-exit' | 'block-road';
 
 interface MapViewProps {
-  snapshot:        SimulationSnapshot | null;
-  center:          [number, number];
-  zoom:            number;
-  venueKey:        string;
+  snapshot: SimulationSnapshot | null;
+  center: [number, number];
+  zoom: number;
+  venueKey: string;
   /** Venue bounding box [south, west, north, east] — used to render the H3 grid */
-  bbox?:           [number, number, number, number];
-  mode:            InteractionMode;
-  is3D:            boolean;
-  showH3Layer:     boolean;
-  showH3Counts:    boolean;
-  onNodeClick?:    (nodeId: string) => void;
-  onEdgeClick?:    (edgeId: string) => void;
+  bbox?: [number, number, number, number];
+  mode: InteractionMode;
+  is3D: boolean;
+  showH3Layer: boolean;
+  showH3Counts: boolean;
+  onNodeClick?: (nodeId: string) => void;
+  onEdgeClick?: (edgeId: string) => void;
 }
 
 // ─── Free dark map style (no API key) ─────────────────────────────────────────
@@ -55,7 +55,7 @@ function roadRGBA(level: number): [number, number, number, number] {
 function hwWidth(hw: string): number {
   if (hw === 'primary' || hw === 'trunk') return 7;
   if (hw === 'secondary') return 5;
-  if (hw === 'tertiary')  return 3.5;
+  if (hw === 'tertiary') return 3.5;
   return 2;
 }
 
@@ -94,14 +94,14 @@ export function MapView({
     if (!snapshot) return [];
     const { graph, agents, recentPaths, entryNodeIds, exitNodeIds, spawnRadius, h3Cells } = snapshot;
 
-    const allEdges  = [...graph.edges.values()];
+    const allEdges = [...graph.edges.values()];
     const openEdges = allEdges.filter(e => !e.blocked);
-    const blkEdges  = allEdges.filter(e => e.blocked);
-    const allNodes  = [...graph.nodes.values()];
-    const moving    = agents.filter(a => a.status === 'moving');
+    const blkEdges = allEdges.filter(e => e.blocked);
+    const allNodes = [...graph.nodes.values()];
+    const moving = agents.filter(a => a.status === 'moving');
 
     const entryNodes = allNodes.filter(n => entryNodeIds.includes(n.id));
-    const exitNodes  = allNodes.filter(n => exitNodeIds.includes(n.id));
+    const exitNodes = allNodes.filter(n => exitNodeIds.includes(n.id));
     const interNodes = allNodes.filter(n => n.type === 'intersection' || n.type === 'waypoint');
 
     // ── 0. H3 Ghost Grid — static hexagonal mesh over the whole venue ─────
@@ -109,14 +109,14 @@ export function MapView({
     const h3GridLayer = showH3Layer && gridCells.length > 0 ? new H3HexagonLayer<string>({
       id: 'h3-grid',
       data: gridCells,
-      getHexagon:   (d: string) => d,
+      getHexagon: (d: string) => d,
       getFillColor: (): [number, number, number, number] => [70, 100, 220, 14],
       getElevation: () => 0,
       elevationScale: 0,
-      extruded:     false,
-      opacity:      1,
-      coverage:     0.96,   // slight gap between hexes → visible grid seams
-      pickable:     false,
+      extruded: false,
+      opacity: 1,
+      coverage: 0.96,   // slight gap between hexes → visible grid seams
+      pickable: false,
       updateTriggers: {},
     }) : null;
 
@@ -124,7 +124,7 @@ export function MapView({
     const roadsLayer = new PathLayer<GeoEdge>({
       id: 'roads',
       data: openEdges,
-      getPath:  (e: GeoEdge) => e.coordinates as [number, number][],
+      getPath: (e: GeoEdge) => e.coordinates as [number, number][],
       getColor: (e: GeoEdge) => roadRGBA(getCongestionLevel(e)),
       getWidth: (e: GeoEdge) => hwWidth(e.highway),
       widthMinPixels: 1.5,
@@ -142,7 +142,7 @@ export function MapView({
     const blockedLayer = new PathLayer<GeoEdge>({
       id: 'blocked',
       data: blkEdges,
-      getPath:  (e: GeoEdge) => e.coordinates as [number, number][],
+      getPath: (e: GeoEdge) => e.coordinates as [number, number][],
       getColor: (): [number, number, number, number] => [255, 40, 40, 240],
       getWidth: () => 7,
       widthMinPixels: 3,
@@ -154,14 +154,14 @@ export function MapView({
     const h3DensityLayer = showH3Layer && h3Cells.length > 0 ? new H3HexagonLayer<HexCell>({
       id: 'h3-density',
       data: h3Cells,
-      getHexagon:   (d: HexCell) => d.hex,
+      getHexagon: (d: HexCell) => d.hex,
       getFillColor: (d: HexCell) => densityColor(d.normalized),
       getElevation: (d: HexCell) => d.count * 12,
       elevationScale: is3D ? 3 : 0,
-      extruded:     is3D,
-      opacity:      0.82,
-      coverage:     0.92,
-      material:     { ambient: 0.55, diffuse: 0.7, shininess: 30 },
+      extruded: is3D,
+      opacity: 0.82,
+      coverage: 0.92,
+      material: { ambient: 0.55, diffuse: 0.7, shininess: 30 },
       updateTriggers: {
         getFillColor: [snapshot.tick],
         getElevation: [snapshot.tick, is3D],
@@ -193,7 +193,7 @@ export function MapView({
     const pathsLayer = new PathLayer<TrackedPath>({
       id: 'evac-paths',
       data: recentPaths,
-      getPath:  (p: TrackedPath) => p.coords as [number, number][],
+      getPath: (p: TrackedPath) => p.coords as [number, number][],
       getColor: (p: TrackedPath): [number, number, number, number] => {
         const alpha = Math.max(0, 210 - p.age * 20);
         return [255, 228, 60, alpha];
@@ -209,9 +209,9 @@ export function MapView({
       id: 'spawn-zone',
       data: entryNodes,
       getPosition: (n: GeoNode): [number, number, number] => [n.lng, n.lat, 0],
-      getRadius:       () => spawnRadius,
-      getFillColor:    (): [number, number, number, number] => [0, 230, 120, 16],
-      getLineColor:    (): [number, number, number, number] => [0, 230, 120, 150],
+      getRadius: () => spawnRadius,
+      getFillColor: (): [number, number, number, number] => [0, 230, 120, 16],
+      getLineColor: (): [number, number, number, number] => [0, 230, 120, 150],
       stroked: true, filled: true,
       lineWidthMinPixels: 2,
       radiusUnits: 'meters',
@@ -222,9 +222,9 @@ export function MapView({
       id: 'exit-zone',
       data: exitNodes,
       getPosition: (n: GeoNode): [number, number, number] => [n.lng, n.lat, 0],
-      getRadius:       () => 50,
-      getFillColor:    (): [number, number, number, number] => [255, 200, 30, 16],
-      getLineColor:    (): [number, number, number, number] => [255, 200, 30, 170],
+      getRadius: () => 50,
+      getFillColor: (): [number, number, number, number] => [255, 200, 30, 16],
+      getLineColor: (): [number, number, number, number] => [255, 200, 30, 170],
       stroked: true, filled: true,
       lineWidthMinPixels: 2,
       radiusUnits: 'meters',
@@ -235,7 +235,7 @@ export function MapView({
       id: 'intersections',
       data: interNodes,
       getPosition: (n: GeoNode): [number, number, number] => [n.lng, n.lat, 0],
-      getRadius:    () => 2.5,
+      getRadius: () => 2.5,
       getFillColor: (): [number, number, number, number] => [200, 200, 200, 40],
       radiusMinPixels: 1.5,
       radiusMaxPixels: 5,
@@ -252,9 +252,9 @@ export function MapView({
       id: 'entry-markers',
       data: entryNodes,
       getPosition: (n: GeoNode): [number, number, number] => [n.lng, n.lat, 0],
-      getRadius:    () => 12,
-      getFillColor: (): [number, number, number, number] => [0,   255, 120, 255],
-      getLineColor: (): [number, number, number, number] => [0,   160,  80, 255],
+      getRadius: () => 12,
+      getFillColor: (): [number, number, number, number] => [0, 255, 120, 255],
+      getLineColor: (): [number, number, number, number] => [0, 160, 80, 255],
       stroked: true, filled: true,
       lineWidthMinPixels: 3,
       radiusMinPixels: 6,
@@ -266,9 +266,9 @@ export function MapView({
       id: 'exit-markers',
       data: exitNodes,
       getPosition: (n: GeoNode): [number, number, number] => [n.lng, n.lat, 0],
-      getRadius:    () => 12,
-      getFillColor: (): [number, number, number, number] => [255, 200,  30, 255],
-      getLineColor: (): [number, number, number, number] => [200, 140,   0, 255],
+      getRadius: () => 12,
+      getFillColor: (): [number, number, number, number] => [255, 200, 30, 255],
+      getLineColor: (): [number, number, number, number] => [200, 140, 0, 255],
       stroked: true, filled: true,
       lineWidthMinPixels: 3,
       radiusMinPixels: 6,
@@ -281,7 +281,7 @@ export function MapView({
       id: 'agents',
       data: moving,
       getPosition: (a: MA): [number, number, number] => [a.position[0], a.position[1], 0],
-      getRadius:    () => 5,
+      getRadius: () => 5,
       getFillColor: (a: MA): [number, number, number, number] => [...a.color, 235] as [number, number, number, number],
       getLineColor: (): [number, number, number, number] => [255, 255, 255, 50],
       stroked: true,
@@ -292,10 +292,10 @@ export function MapView({
     });
 
     return [
-      ...(h3GridLayer    ? [h3GridLayer]    : []),   // 0 - ghost hex grid (bottom)
+      ...(h3GridLayer ? [h3GridLayer] : []),   // 0 - ghost hex grid (bottom)
       roadsLayer, blockedLayer,                       // 1,2 - road network
       ...(h3DensityLayer ? [h3DensityLayer] : []),   // 3 - density heatmap
-      ...(h3CountsLayer  ? [h3CountsLayer]  : []),   // 3.5 - cell counts
+      ...(h3CountsLayer ? [h3CountsLayer] : []),   // 3.5 - cell counts
       pathsLayer,                                     // 4 - evac trails
       spawnZoneLayer, exitZoneLayer,                  // 5,6 - zone circles
       interLayer,                                     // 7 - pickable intersections
