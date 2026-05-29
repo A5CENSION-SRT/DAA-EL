@@ -81,9 +81,10 @@ function reconstructPath(
 export function dijkstra(
   graph: Graph,
   startId: string,
-  endId: string,
+  endIdInput: string | string[],
 ): PathResult {
   const t0 = performance.now();
+  const endIds = new Set(Array.isArray(endIdInput) ? endIdInput : [endIdInput]);
 
   const dist    = new Map<string, number>();
   const prev    = new Map<string, string | null>();
@@ -96,12 +97,17 @@ export function dijkstra(
   const pq = new MinHeap<string>();
   pq.push(0, startId);
 
+  let reachedEndId: string | null = null;
+
   while (pq.size > 0) {
     const u = pq.pop()!;
     if (visited.has(u)) continue;
     visited.add(u);
     visitedOrder.push(u);
-    if (u === endId) break;
+    if (endIds.has(u)) {
+      reachedEndId = u;
+      break;
+    }
 
     const uDist = dist.get(u) ?? Infinity;
 
@@ -117,9 +123,11 @@ export function dijkstra(
     }
   }
 
+  const finalEndId = reachedEndId ?? (Array.isArray(endIdInput) ? endIdInput[0] : endIdInput);
+
   return {
-    path: reconstructPath(prev, startId, endId),
-    totalWeight: dist.get(endId) ?? Infinity,
+    path: reconstructPath(prev, startId, finalEndId),
+    totalWeight: dist.get(finalEndId) ?? Infinity,
     visitedOrder,
     edgesRelaxed,
     runtimeMs: performance.now() - t0,
@@ -135,15 +143,23 @@ export function dijkstra(
 export function aStar(
   graph: Graph,
   startId: string,
-  endId: string,
+  endIdInput: string | string[],
 ): PathResult {
-  const t0      = performance.now();
-  const endNode = graph.nodes.get(endId);
-  if (!endNode) return emptyResult(t0);
+  const t0 = performance.now();
+  const endIds = new Set(Array.isArray(endIdInput) ? endIdInput : [endIdInput]);
+  const endNodes = Array.from(endIds).map(id => graph.nodes.get(id)).filter((n): n is Exclude<typeof n, undefined> => n !== undefined);
+  if (endNodes.length === 0) return emptyResult(t0);
 
   const h = (id: string) => {
     const n = graph.nodes.get(id);
-    return n ? haversine(n.lat, n.lng, endNode.lat, endNode.lng) : 0;
+    if (!n) return 0;
+    // For multiple targets, A* heuristic should be the minimum distance to *any* of the goals
+    let minDist = Infinity;
+    for (const en of endNodes) {
+      const d = haversine(n.lat, n.lng, en.lat, en.lng);
+      if (d < minDist) minDist = d;
+    }
+    return minDist;
   };
 
   const gScore = new Map<string, number>();
@@ -157,12 +173,17 @@ export function aStar(
   const open = new MinHeap<string>();
   open.push(h(startId), startId);
 
+  let reachedEndId: string | null = null;
+
   while (open.size > 0) {
     const cur = open.pop()!;
     if (closed.has(cur)) continue;
     closed.add(cur);
     visitedOrder.push(cur);
-    if (cur === endId) break;
+    if (endIds.has(cur)) {
+      reachedEndId = cur;
+      break;
+    }
 
     const curG = gScore.get(cur) ?? Infinity;
 
@@ -179,9 +200,11 @@ export function aStar(
     }
   }
 
+  const finalEndId = reachedEndId ?? (Array.isArray(endIdInput) ? endIdInput[0] : endIdInput);
+
   return {
-    path: reconstructPath(prev, startId, endId),
-    totalWeight: gScore.get(endId) ?? Infinity,
+    path: reconstructPath(prev, startId, finalEndId),
+    totalWeight: gScore.get(finalEndId) ?? Infinity,
     visitedOrder,
     edgesRelaxed,
     runtimeMs: performance.now() - t0,
@@ -197,9 +220,10 @@ export function aStar(
 export function bfs(
   graph: Graph,
   startId: string,
-  endId: string,
+  endIdInput: string | string[],
 ): PathResult {
   const t0 = performance.now();
+  const endIds = new Set(Array.isArray(endIdInput) ? endIdInput : [endIdInput]);
 
   const prev    = new Map<string, string | null>();
   const visited = new Set<string>();
@@ -210,11 +234,16 @@ export function bfs(
   const queue: string[] = [startId];
   let head = 0;
   visited.add(startId);
+  
+  let reachedEndId: string | null = null;
 
   while (head < queue.length) {
     const u = queue[head++];           // O(1) — no array shift
     visitedOrder.push(u);
-    if (u === endId) break;
+    if (endIds.has(u)) {
+      reachedEndId = u;
+      break;
+    }
 
     for (const { node: v } of getNeighbors(graph, u)) {
       edgesRelaxed++;
@@ -226,7 +255,8 @@ export function bfs(
     }
   }
 
-  const path = reconstructPath(prev, startId, endId);
+  const finalEndId = reachedEndId ?? (Array.isArray(endIdInput) ? endIdInput[0] : endIdInput);
+  const path = reconstructPath(prev, startId, finalEndId);
   let totalWeight = 0;
   for (let i = 0; i < path.length - 1; i++) {
     const a = graph.nodes.get(path[i])!;

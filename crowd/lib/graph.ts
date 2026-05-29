@@ -38,20 +38,20 @@ export interface Graph {
 // ─── Capacity by road type ────────────────────────────────────────────────────
 
 export const HIGHWAY_CAPACITY: Partial<Record<HighwayType, number>> = {
-  motorway:     8_000,
-  trunk:        6_000,
-  primary:      4_000,
-  secondary:    3_000,
-  tertiary:     2_000,
-  residential:  1_000,
-  unclassified:   800,
-  pedestrian:     600,
-  footway:        400,
-  path:           300,
-  service:        400,
-  cycleway:       300,
-  living_street:  500,
-  steps:          200,
+  motorway: 50,
+  trunk: 40,
+  primary: 30,
+  secondary: 20,
+  tertiary: 15,
+  residential: 10,
+  unclassified: 8,
+  pedestrian: 5,
+  footway: 5,
+  path: 3,
+  service: 5,
+  cycleway: 3,
+  living_street: 5,
+  steps: 2,
 };
 
 // ─── Graph helpers ────────────────────────────────────────────────────────────
@@ -97,8 +97,9 @@ export function updateEdgeWeight(graph: Graph, edgeId: string): void {
   const edge = graph.edges.get(edgeId);
   if (!edge) return;
   const ratio = edge.flow / Math.max(1, edge.capacity);
-  const congestionFactor = 1 + ratio * 6; // up to 7× slower when full
-  edge.weight = edge.baseWeight * congestionFactor;
+  // Extremely heavy penalty to force agents to take ANY other road once this is getting full
+  const congestionFactor = 1 + (ratio * 50) + Math.pow(ratio, 2) * 500;
+  edge.weight = edge.baseWeight * Math.max(1, congestionFactor);
 }
 
 export function getCongestionLevel(edge: GeoEdge): number {

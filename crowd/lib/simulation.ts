@@ -26,19 +26,19 @@ export interface Agent {
 }
 
 export interface SimulationMetrics {
-  activeAgents:  number;
+  activeAgents: number;
   arrivedAgents: number;
-  totalAgents:   number;
-  congestion:    number;   // 0–1 average across road edges
+  totalAgents: number;
+  congestion: number;   // 0–1 average across road edges
   nodesExplored: number;
-  edgesRelaxed:  number;
-  runtimeMs:     number;
-  algorithm:     AlgorithmType;
+  edgesRelaxed: number;
+  runtimeMs: number;
+  algorithm: AlgorithmType;
   currentOperation: string;
-  totalPathMetres:  number;
+  totalPathMetres: number;
   // H3 metrics
-  maxH3Density:  number;   // peak agents in any single H3 cell
-  hotspotCount:  number;   // cells ≥ CRITICAL_THRESHOLD
+  maxH3Density: number;   // peak agents in any single H3 cell
+  hotspotCount: number;   // cells ≥ CRITICAL_THRESHOLD
   h3CoveredCells: number;  // distinct occupied H3 cells
 }
 
@@ -51,42 +51,42 @@ export interface TrackedPath {
 }
 
 export interface SimulationSnapshot {
-  graph:         Graph;
-  agents:        Agent[];
-  metrics:       SimulationMetrics;
-  entryNodeIds:  string[];
-  exitNodeIds:   string[];
-  spawnRadius:   number;         // metres — zone radius around each entry node
-  recentPaths:   TrackedPath[];  // last N computed paths
-  h3Cells:       HexCell[];      // current hexagonal density grid
-  h3Resolution:  number;
-  tick:          number;
-  timeline:      TimelineEvent[];
+  graph: Graph;
+  agents: Agent[];
+  metrics: SimulationMetrics;
+  entryNodeIds: string[];
+  exitNodeIds: string[];
+  spawnRadius: number;         // metres — zone radius around each entry node
+  recentPaths: TrackedPath[];  // last N computed paths
+  h3Cells: HexCell[];      // current hexagonal density grid
+  h3Resolution: number;
+  tick: number;
+  timeline: TimelineEvent[];
 }
 
 // ─── Algorithm colour palettes ────────────────────────────────────────────────
 
 const ALGO_PALETTE: Record<AlgorithmType, [number, number, number][]> = {
   dijkstra: [[0, 210, 255], [0, 180, 240], [60, 220, 255], [100, 230, 255]],
-  astar:    [[255, 130, 0],  [255, 160, 30], [255, 100, 10], [240, 150, 40]],
-  bfs:      [[60, 255, 130], [40, 235, 110], [90, 255, 150], [50, 210, 100]],
+  astar: [[255, 130, 0], [255, 160, 30], [255, 100, 10], [240, 150, 40]],
+  bfs: [[60, 255, 130], [40, 235, 110], [90, 255, 150], [50, 210, 100]],
 };
 
 // ─── Engine ───────────────────────────────────────────────────────────────────
 
 export class SimulationEngine {
-  private snap:        SimulationSnapshot;
-  private algorithm:   AlgorithmType;
-  private onUpdate?:   (s: SimulationSnapshot) => void;
-  private rafId?:      number;
-  private lastTs    =  0;
-  private agentIdx  =  0;
+  private snap: SimulationSnapshot;
+  private algorithm: AlgorithmType;
+  private onUpdate?: (s: SimulationSnapshot) => void;
+  private rafId?: number;
+  private lastTs = 0;
+  private agentIdx = 0;
   private spawnAccum = 0;
-  private spawnRate  = 3;
-  private timeScale  = 1;
+  private spawnRate = 3;
+  private timeScale = 1;
   private spawnRadius = 200;
-  private spawnPool:   string[] = [];
-  private sessionPeak  = 1;   // running peak H3 density (for normalisation)
+  private spawnPool: string[] = [];
+  private sessionPeak = 1;   // running peak H3 density (for normalisation)
 
   /**
    * O(1) edge lookup: `${sourceId}→${targetId}` → edgeId
@@ -106,14 +106,14 @@ export class SimulationEngine {
         totalPathMetres: 0,
         maxH3Density: 0, hotspotCount: 0, h3CoveredCells: 0,
       },
-      entryNodeIds:  [],
-      exitNodeIds:   [],
-      spawnRadius:   this.spawnRadius,
-      recentPaths:   [],
-      h3Cells:       [],
-      h3Resolution:  DEFAULT_RESOLUTION,
-      tick:          0,
-      timeline:      [],
+      entryNodeIds: [],
+      exitNodeIds: [],
+      spawnRadius: this.spawnRadius,
+      recentPaths: [],
+      h3Cells: [],
+      h3Resolution: DEFAULT_RESOLUTION,
+      tick: 0,
+      timeline: [],
     };
     this.#buildEdgeLookup();
   }
@@ -153,8 +153,8 @@ export class SimulationEngine {
     this.sessionPeak = 1;  // reset normalisation on resolution change
   }
 
-  setSpawnRate(r: number)  { this.spawnRate  = r; }
-  setTimeScale(s: number)  { this.timeScale  = s; }
+  setSpawnRate(r: number) { this.spawnRate = r; }
+  setTimeScale(s: number) { this.timeScale = s; }
 
   blockEdge(edgeId: string) {
     const e = this.snap.graph.edges.get(edgeId);
@@ -186,14 +186,14 @@ export class SimulationEngine {
 
   reset() {
     this.stop();
-    this.snap.agents      = [];
+    this.snap.agents = [];
     this.snap.recentPaths = [];
-    this.snap.h3Cells     = [];
-    this.snap.tick        = 0;
-    this.snap.timeline    = [];
-    this.agentIdx         = 0;
-    this.spawnAccum       = 0;
-    this.sessionPeak      = 1;
+    this.snap.h3Cells = [];
+    this.snap.tick = 0;
+    this.snap.timeline = [];
+    this.agentIdx = 0;
+    this.spawnAccum = 0;
+    this.sessionPeak = 1;
     for (const e of this.snap.graph.edges.values()) {
       e.flow = 0; e.weight = e.baseWeight;
     }
@@ -232,7 +232,7 @@ export class SimulationEngine {
 
   #tick(ts: number) {
     const raw = (ts - this.lastTs) / 1000;
-    const dt  = Math.min(raw, 0.1) * this.timeScale;
+    const dt = Math.min(raw, 0.1) * this.timeScale;
     this.lastTs = ts;
     this.snap.tick++;
 
@@ -242,7 +242,7 @@ export class SimulationEngine {
     while (
       this.spawnAccum >= interval &&
       this.snap.entryNodeIds.length > 0 &&
-      this.snap.exitNodeIds.length  > 0 &&
+      this.snap.exitNodeIds.length > 0 &&
       this.snap.agents.length < 1500
     ) {
       this.#spawnAgent();
@@ -266,18 +266,19 @@ export class SimulationEngine {
   }
 
   #spawnAgent() {
-    const pool    = this.spawnPool.length > 0 ? this.spawnPool : this.snap.entryNodeIds;
+    const pool = this.spawnPool.length > 0 ? this.spawnPool : this.snap.entryNodeIds;
     const startId = pool[Math.floor(Math.random() * pool.length)];
-    const exitId  = this.snap.exitNodeIds[Math.floor(Math.random() * this.snap.exitNodeIds.length)];
-    if (!startId || !exitId || startId === exitId) return;
+    const exitIds = this.snap.exitNodeIds;
+    if (!startId || exitIds.length === 0 || exitIds.includes(startId)) return;
 
     const solver = this.algorithm === 'astar' ? aStar
-                 : this.algorithm === 'bfs'   ? bfs
-                 : dijkstra;
+      : this.algorithm === 'bfs' ? bfs
+        : dijkstra;
 
-    const t0     = performance.now();
-    const result = solver(this.snap.graph, startId, exitId);
-    const rt     = performance.now() - t0;
+    const t0 = performance.now();
+    // Allow the solver to automatically find the best exit out of ALL exits!
+    const result = solver(this.snap.graph, startId, exitIds);
+    const rt = performance.now() - t0;
     if (result.path.length < 2) return;
 
     const pathCoords: [number, number][] = result.path.map(id => {
@@ -286,7 +287,7 @@ export class SimulationEngine {
     });
 
     const palette = ALGO_PALETTE[this.algorithm];
-    const color   = palette[this.agentIdx % palette.length];
+    const color = palette[this.agentIdx % palette.length];
 
     this.snap.agents.push({
       id: `a${this.agentIdx++}`,
@@ -306,9 +307,9 @@ export class SimulationEngine {
       ...this.snap.recentPaths.map(p => ({ ...p, age: p.age + 1 })),
     ].slice(0, 10);
 
-    this.snap.metrics.edgesRelaxed    = result.edgesRelaxed;
-    this.snap.metrics.nodesExplored   = result.visitedOrder.length;
-    this.snap.metrics.runtimeMs       = parseFloat(rt.toFixed(2));
+    this.snap.metrics.edgesRelaxed = result.edgesRelaxed;
+    this.snap.metrics.nodesExplored = result.visitedOrder.length;
+    this.snap.metrics.runtimeMs = parseFloat(rt.toFixed(2));
     this.snap.metrics.totalPathMetres = result.totalWeight;
     this.snap.metrics.currentOperation =
       `${this.algorithm.toUpperCase()} · ${result.path.length} hops · ${Math.round(result.totalWeight)} m`;
@@ -318,17 +319,17 @@ export class SimulationEngine {
     for (const a of this.snap.agents) {
       if (a.status !== 'moving') continue;
       const from = a.pathCoords[a.pathIndex];
-      const to   = a.pathCoords[a.pathIndex + 1];
+      const to = a.pathCoords[a.pathIndex + 1];
       if (!from || !to) { a.status = 'arrived'; continue; }
 
-      const segLen  = haversine(from[1], from[0], to[1], to[0]);
-      a.progress   += segLen > 0 ? (a.speed * dt) / segLen : 1;
+      const segLen = haversine(from[1], from[0], to[1], to[0]);
+      a.progress += segLen > 0 ? (a.speed * dt) / segLen : 1;
 
       if (a.progress >= 1) {
         a.pathIndex++;
         a.progress = 0;
         if (a.pathIndex >= a.pathCoords.length - 1) {
-          a.status   = 'arrived';
+          a.status = 'arrived';
           a.position = a.pathCoords.at(-1)!;
           this.#log(`✓ Agent reached exit safely`);
           continue;
@@ -355,14 +356,18 @@ export class SimulationEngine {
 
     for (const a of this.snap.agents) {
       if (a.status !== 'moving') continue;
-      const cur  = a.path[a.pathIndex];
-      const next = a.path[a.pathIndex + 1];
-      if (!cur || !next) continue;
 
-      const edgeId = this.edgeByEndpoints.get(`${cur}→${next}`);
-      if (edgeId) {
-        const e = this.snap.graph.edges.get(edgeId);
-        if (e) e.flow++;
+      // Calculate intended flow across the agent's remaining entire path
+      for (let i = Math.max(0, a.pathIndex - 1); i < a.path.length - 1; i++) {
+        const cur = a.path[i];
+        const next = a.path[i + 1];
+        if (!cur || !next) continue;
+
+        const edgeId = this.edgeByEndpoints.get(`${cur}→${next}`);
+        if (edgeId) {
+          const e = this.snap.graph.edges.get(edgeId);
+          if (e) e.flow++;
+        }
       }
     }
 
@@ -385,10 +390,10 @@ export class SimulationEngine {
       if (!e.blocked) { totalC += getCongestionLevel(e); n++; }
     }
 
-    this.snap.metrics.activeAgents  = active;
+    this.snap.metrics.activeAgents = active;
     this.snap.metrics.arrivedAgents = arrived;
-    this.snap.metrics.totalAgents   = this.snap.agents.length;
-    this.snap.metrics.congestion    = n > 0 ? totalC / n : 0;
+    this.snap.metrics.totalAgents = this.snap.agents.length;
+    this.snap.metrics.congestion = n > 0 ? totalC / n : 0;
   }
 
   #computeH3Density() {
@@ -402,8 +407,8 @@ export class SimulationEngine {
     if (result.maxCount > this.sessionPeak) this.sessionPeak = result.maxCount;
 
     this.snap.h3Cells = result.cells;
-    this.snap.metrics.maxH3Density   = result.maxCount;
-    this.snap.metrics.hotspotCount   = result.hotspots.length;
+    this.snap.metrics.maxH3Density = result.maxCount;
+    this.snap.metrics.hotspotCount = result.hotspots.length;
     this.snap.metrics.h3CoveredCells = result.totalCovered;
 
     // Critical density alert (at most once every ~5 s at 60 fps)
