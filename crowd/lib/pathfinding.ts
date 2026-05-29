@@ -42,7 +42,7 @@ class MinHeap<T> {
 
   #sinkDown(i: number) {
     const n = this.heap.length;
-    for (;;) {
+    for (; ;) {
       let s = i;
       const l = 2 * i + 1, r = 2 * i + 2;
       if (l < n && this.heap[l].key < this.heap[s].key) s = l;
@@ -86,8 +86,8 @@ export function dijkstra(
   const t0 = performance.now();
   const endIds = new Set(Array.isArray(endIdInput) ? endIdInput : [endIdInput]);
 
-  const dist    = new Map<string, number>();
-  const prev    = new Map<string, string | null>();
+  const dist = new Map<string, number>();
+  const prev = new Map<string, string | null>();
   const visited = new Set<string>();
   const visitedOrder: string[] = [];
   let edgesRelaxed = 0;
@@ -163,7 +163,7 @@ export function aStar(
   };
 
   const gScore = new Map<string, number>();
-  const prev   = new Map<string, string | null>();
+  const prev = new Map<string, string | null>();
   const closed = new Set<string>();
   const visitedOrder: string[] = [];
   let edgesRelaxed = 0;
@@ -225,7 +225,7 @@ export function bfs(
   const t0 = performance.now();
   const endIds = new Set(Array.isArray(endIdInput) ? endIdInput : [endIdInput]);
 
-  const prev    = new Map<string, string | null>();
+  const prev = new Map<string, string | null>();
   const visited = new Set<string>();
   const visitedOrder: string[] = [];
   let edgesRelaxed = 0;
@@ -234,7 +234,7 @@ export function bfs(
   const queue: string[] = [startId];
   let head = 0;
   visited.add(startId);
-  
+
   let reachedEndId: string | null = null;
 
   while (head < queue.length) {
@@ -275,6 +275,6 @@ function emptyResult(t0: number): PathResult {
 
 export const ALGORITHM_META: Record<string, { label: string; complexity: string; space: string }> = {
   dijkstra: { label: "Dijkstra's Algorithm", complexity: 'O((V + E) log V)', space: 'O(V)' },
-  astar:    { label: 'A* Search',            complexity: 'O(E log V)',       space: 'O(V)' },
-  bfs:      { label: 'BFS (unweighted)',     complexity: 'O(V + E)',         space: 'O(V)' },
+  astar: { label: 'A* Search', complexity: 'O(E log V)', space: 'O(V)' },
+  bfs: { label: 'BFS (unweighted)', complexity: 'O(V + E)', space: 'O(V)' },
 };
