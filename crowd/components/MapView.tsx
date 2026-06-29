@@ -13,10 +13,11 @@ import type { SimulationSnapshot, TrackedPath } from '@/lib/simulation';
 import type { GeoEdge, GeoNode } from '@/lib/graph';
 import { getCongestionLevel } from '@/lib/graph';
 import { densityColor, getVenueGridCells, type HexCell } from '@/lib/h3-spatial';
+import type { CrowdZone } from '@/lib/zones';
 
 // ─── Public types ─────────────────────────────────────────────────────────────
 
-export type InteractionMode = 'view' | 'add-entry' | 'add-exit' | 'block-road';
+export type InteractionMode = 'view' | 'add-entry' | 'add-exit' | 'block-road' | 'pick-location';
 
 interface MapViewProps {
   snapshot: SimulationSnapshot | null;
@@ -31,6 +32,8 @@ interface MapViewProps {
   showH3Counts: boolean;
   onNodeClick?: (nodeId: string) => void;
   onEdgeClick?: (edgeId: string) => void;
+  onLocationPick?: (lng: number, lat: number) => void;
+  onViewChange?: (center: [number, number], zoom: number) => void;
 }
 
 // ─── Free dark map style (no API key) ─────────────────────────────────────────
@@ -63,7 +66,7 @@ function hwWidth(hw: string): number {
 
 export function MapView({
   snapshot, center, zoom, venueKey, bbox, mode, is3D, showH3Layer, showH3Counts,
-  onNodeClick, onEdgeClick,
+  onNodeClick, onEdgeClick, onLocationPick, onViewChange,
 }: MapViewProps) {
   const [viewState, setViewState] = useState({
     longitude: center[0], latitude: center[1],
@@ -291,21 +294,87 @@ export function MapView({
       updateTriggers: { getPosition: [snapshot.tick] },
     });
 
+    // ── 11. Crowd Dispersal Zones ────────────────────────────────────────
+    const { zones } = snapshot;
+    const attractZones = zones.filter(z => z.type === 'attract');
+    const repelZones = zones.filter(z => z.type === 'repel');
+
+    const attractMarkersLayer = new ScatterplotLayer<CrowdZone>({
+      id: 'zones-attract-markers',
+      data: attractZones,
+      getPosition: (z: CrowdZone): [number, number, number] => [z.center[0], z.center[1], 0],
+      getRadius: () => 15,
+      getFillColor: (): [number, number, number, number] => [168, 85, 247, 200], // purple
+      getLineColor: (): [number, number, number, number] => [219, 39, 119, 255],
+      stroked: true,
+      filled: true,
+      lineWidthMinPixels: 2,
+      radiusMinPixels: 4,
+      radiusMaxPixels: 16,
+      updateTriggers: { getPosition: [snapshot.tick] },
+    });
+
+    const repelMarkersLayer = new ScatterplotLayer<CrowdZone>({
+      id: 'zones-repel-markers',
+      data: repelZones,
+      getPosition: (z: CrowdZone): [number, number, number] => [z.center[0], z.center[1], 0],
+      getRadius: () => 15,
+      getFillColor: (): [number, number, number, number] => [239, 68, 68, 200], // red
+      getLineColor: (): [number, number, number, number] => [153, 27, 27, 255],
+      stroked: true,
+      filled: true,
+      lineWidthMinPixels: 2,
+      radiusMinPixels: 4,
+      radiusMaxPixels: 16,
+      updateTriggers: { getPosition: [snapshot.tick] },
+    });
+
+    const zoneRadiiLayer = new ScatterplotLayer<CrowdZone>({
+      id: 'zones-radii',
+      data: zones,
+      getPosition: (z: CrowdZone): [number, number, number] => [z.center[0], z.center[1], 0],
+      getRadius: (z: CrowdZone) => z.radius,
+      getFillColor: (z: CrowdZone): [number, number, number, number] => {
+        const alpha = Math.round(30 + (z.strength / 100) * 40);
+        return z.type === 'attract'
+          ? [168, 85, 247, alpha] // purple
+          : [239, 68, 68, alpha]; // red
+      },
+      getLineColor: (z: CrowdZone): [number, number, number, number] => {
+        return z.type === 'attract'
+          ? [168, 85, 247, 120]
+          : [239, 68, 68, 120];
+      },
+      stroked: true,
+      filled: true,
+      lineWidthMinPixels: 1,
+      radiusUnits: 'meters',
+      updateTriggers: {
+        getFillColor: [snapshot.tick],
+        getRadius: [snapshot.tick],
+      },
+    });
+
     return [
       ...(h3GridLayer ? [h3GridLayer] : []),   // 0 - ghost hex grid (bottom)
       roadsLayer, blockedLayer,                       // 1,2 - road network
       ...(h3DensityLayer ? [h3DensityLayer] : []),   // 3 - density heatmap
       ...(h3CountsLayer ? [h3CountsLayer] : []),   // 3.5 - cell counts
       pathsLayer,                                     // 4 - evac trails
+      zoneRadiiLayer,                                 // 11a - zone radius circles
       spawnZoneLayer, exitZoneLayer,                  // 5,6 - zone circles
       interLayer,                                     // 7 - pickable intersections
       entryMarkerLayer, exitMarkerLayer,              // 8,9 - markers
+      attractMarkersLayer, repelMarkersLayer,         // 11b,11c - zone markers
       agentsLayer,                                    // 10 - agents (top)
     ];
   }, [snapshot, mode, is3D, showH3Layer, showH3Counts, gridCells, onNodeClick, onEdgeClick]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onVSC = useCallback(({ viewState: vs }: any) => setViewState(vs), []);
+  const onVSC = useCallback(({ viewState: vs }: any) => {
+    setViewState(vs);
+    if (onViewChange) onViewChange([vs.longitude, vs.latitude], vs.zoom);
+  }, [onViewChange]);
 
   return (
     <DeckGL
@@ -314,8 +383,13 @@ export function MapView({
       onViewStateChange={onVSC}
       controller={true}
       layers={layers}
-      getCursor={() => (mode === 'view' ? 'grab' : 'crosshair')}
+      getCursor={() => (mode === 'pick-location' ? 'crosshair' : mode === 'view' ? 'grab' : 'crosshair')}
       style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%' }}
+      onClick={(info) => {
+        if (mode === 'pick-location' && info.coordinate && onLocationPick) {
+          onLocationPick(info.coordinate[0], info.coordinate[1]);
+        }
+      }}
     >
       <Map mapStyle={MAP_STYLE} reuseMaps />
     </DeckGL>

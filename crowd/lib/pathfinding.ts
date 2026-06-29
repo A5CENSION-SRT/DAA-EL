@@ -1,5 +1,6 @@
 import { type Graph, getNeighbors, updateEdgeWeight } from './graph';
 import { haversine } from './haversine';
+import { type DirectionPreference, getBearing, directionMatches } from './zones';
 
 // ─── Result type ──────────────────────────────────────────────────────────────
 
@@ -9,6 +10,32 @@ export interface PathResult {
   visitedOrder: string[];  // nodes touched during search (visualisation)
   edgesRelaxed: number;
   runtimeMs: number;
+}
+
+export interface PathfindingOptions {
+  directionPreference?: DirectionPreference;
+  avoidZoneIds?: string[]; // Zone IDs to avoid
+  attractZoneIds?: string[]; // Zone IDs to move toward
+}
+
+// ─── Direction Cost Helper ────────────────────────────────────────────────────
+
+function getDirectionalCostModifier(
+  options: PathfindingOptions | undefined,
+  sourceCoord: [number, number],
+  targetCoord: [number, number],
+): number {
+  if (!options?.directionPreference || !options.directionPreference.enabled || options.directionPreference.directions.length === 0) {
+    return 1.0; // No modifier
+  }
+
+  const bearing = getBearing(sourceCoord, targetCoord);
+  const dirMatch = options.directionPreference.directions.some(d =>
+    directionMatches(d, bearing, Math.PI / 4)
+  );
+
+  const weight = options.directionPreference.weight || 0.5;
+  return dirMatch ? 1.0 - weight : 1.0 + weight;
 }
 
 // ─── Min-heap (priority queue) ────────────────────────────────────────────────
@@ -82,6 +109,7 @@ export function dijkstra(
   graph: Graph,
   startId: string,
   endIdInput: string | string[],
+  options?: PathfindingOptions,
 ): PathResult {
   const t0 = performance.now();
   const endIds = new Set(Array.isArray(endIdInput) ? endIdInput : [endIdInput]);
@@ -110,11 +138,20 @@ export function dijkstra(
     }
 
     const uDist = dist.get(u) ?? Infinity;
+    const uNode = graph.nodes.get(u);
 
     for (const { node: v, edge } of getNeighbors(graph, u)) {
       updateEdgeWeight(graph, edge.id);
       edgesRelaxed++;
-      const alt = uDist + edge.weight;
+      let costModifier = 1.0;
+      if (options?.directionPreference && uNode) {
+        costModifier = getDirectionalCostModifier(
+          options,
+          [uNode.lng, uNode.lat],
+          [v.lng, v.lat],
+        );
+      }
+      const alt = uDist + edge.weight * costModifier;
       if (alt < (dist.get(v.id) ?? Infinity)) {
         dist.set(v.id, alt);
         prev.set(v.id, u);
@@ -144,6 +181,7 @@ export function aStar(
   graph: Graph,
   startId: string,
   endIdInput: string | string[],
+  options?: PathfindingOptions,
 ): PathResult {
   const t0 = performance.now();
   const endIds = new Set(Array.isArray(endIdInput) ? endIdInput : [endIdInput]);
@@ -186,12 +224,21 @@ export function aStar(
     }
 
     const curG = gScore.get(cur) ?? Infinity;
+    const curNode = graph.nodes.get(cur);
 
     for (const { node: nb, edge } of getNeighbors(graph, cur)) {
       if (closed.has(nb.id)) continue;
       updateEdgeWeight(graph, edge.id);
       edgesRelaxed++;
-      const tentG = curG + edge.weight;
+      let costModifier = 1.0;
+      if (options?.directionPreference && curNode) {
+        costModifier = getDirectionalCostModifier(
+          options,
+          [curNode.lng, curNode.lat],
+          [nb.lng, nb.lat],
+        );
+      }
+      const tentG = curG + edge.weight * costModifier;
       if (tentG < (gScore.get(nb.id) ?? Infinity)) {
         prev.set(nb.id, cur);
         gScore.set(nb.id, tentG);
@@ -221,6 +268,7 @@ export function bfs(
   graph: Graph,
   startId: string,
   endIdInput: string | string[],
+  options?: PathfindingOptions,
 ): PathResult {
   const t0 = performance.now();
   const endIds = new Set(Array.isArray(endIdInput) ? endIdInput : [endIdInput]);

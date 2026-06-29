@@ -8,6 +8,9 @@ import {
   buildH3Density, DEFAULT_RESOLUTION, CRITICAL_THRESHOLD,
   type HexCell,
 } from './h3-spatial';
+import {
+  type CrowdZone, type DirectionPreference,
+} from './zones';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -60,6 +63,8 @@ export interface SimulationSnapshot {
   recentPaths: TrackedPath[];  // last N computed paths
   h3Cells: HexCell[];      // current hexagonal density grid
   h3Resolution: number;
+  zones: CrowdZone[];          // crowd dispersal zones
+  directionPreference: DirectionPreference;  // 8-direction routing preference
   tick: number;
   timeline: TimelineEvent[];
 }
@@ -87,6 +92,7 @@ export class SimulationEngine {
   private spawnRadius = 200;
   private spawnPool: string[] = [];
   private sessionPeak = 1;   // running peak H3 density (for normalisation)
+  private spawningEnabled = true; // whether to auto-spawn during tick
 
   /**
    * O(1) edge lookup: `${sourceId}→${targetId}` → edgeId
@@ -112,6 +118,8 @@ export class SimulationEngine {
       recentPaths: [],
       h3Cells: [],
       h3Resolution: DEFAULT_RESOLUTION,
+      zones: [],
+      directionPreference: { enabled: false, directions: [], weight: 0 },
       tick: 0,
       timeline: [],
     };
@@ -155,6 +163,31 @@ export class SimulationEngine {
 
   setSpawnRate(r: number) { this.spawnRate = r; }
   setTimeScale(s: number) { this.timeScale = s; }
+  setSpawningEnabled(enabled: boolean) { this.spawningEnabled = enabled; }
+
+  // Zone management
+  addZone(zone: Omit<CrowdZone, 'id'>): void {
+    const newZone: CrowdZone = {
+      ...zone,
+      id: `zone_${this.snap.zones.length}_${Date.now()}`,
+    };
+    this.snap.zones.push(newZone);
+  }
+
+  updateZone(id: string, updates: Partial<CrowdZone>): void {
+    const zone = this.snap.zones.find(z => z.id === id);
+    if (zone) {
+      Object.assign(zone, updates);
+    }
+  }
+
+  removeZone(id: string): void {
+    this.snap.zones = this.snap.zones.filter(z => z.id !== id);
+  }
+
+  setDirectionPreference(pref: DirectionPreference): void {
+    this.snap.directionPreference = pref;
+  }
 
   blockEdge(edgeId: string) {
     const e = this.snap.graph.edges.get(edgeId);
@@ -166,6 +199,17 @@ export class SimulationEngine {
   unblockEdge(edgeId: string) {
     const e = this.snap.graph.edges.get(edgeId);
     if (e) e.blocked = false;
+  }
+
+  /** Spawn a batch of agents immediately without starting the simulation loop */
+  spawnBatch(count: number) {
+    if (this.snap.entryNodeIds.length === 0 || this.snap.exitNodeIds.length === 0) return;
+    for (let i = 0; i < count; i++) {
+      this.#spawnAgent();
+    }
+    this.#recalcFlows();
+    this.#refreshMetrics();
+    this.onUpdate?.(this.snap);
   }
 
   setOnUpdate(cb: (s: SimulationSnapshot) => void) { this.onUpdate = cb; }
@@ -189,6 +233,7 @@ export class SimulationEngine {
     this.snap.agents = [];
     this.snap.recentPaths = [];
     this.snap.h3Cells = [];
+    this.snap.zones = [];
     this.snap.tick = 0;
     this.snap.timeline = [];
     this.agentIdx = 0;
@@ -236,26 +281,28 @@ export class SimulationEngine {
     this.lastTs = ts;
     this.snap.tick++;
 
-    // Spawn agents
+    // Spawn agents (only when spawning is enabled)
     const interval = 1 / Math.max(0.1, this.spawnRate);
     this.spawnAccum += dt;
     while (
+      this.spawningEnabled &&
       this.spawnAccum >= interval &&
       this.snap.entryNodeIds.length > 0 &&
       this.snap.exitNodeIds.length > 0 &&
-      this.snap.agents.length < 1500
+      this.snap.agents.length < 10000
     ) {
       this.#spawnAgent();
       this.spawnAccum -= interval;
     }
+    if (!this.spawningEnabled) this.spawnAccum = 0; // drain accumulator
 
     this.#moveAgents(dt);
     this.#recalcFlows();
     this.#refreshMetrics();
 
     // Throttle H3 density: every tick when sparse, every 2nd tick when crowded.
-    // latLngToCell is O(1) but 1500 × 60fps = 90k calls/s without throttling.
-    const h3Interval = this.snap.agents.length > 400 ? 2 : 1;
+    // latLngToCell is O(1) but large agent counts need throttling.
+    const h3Interval = this.snap.agents.length > 1000 ? 2 : 1;
     if (this.snap.tick % h3Interval === 0) {
       this.#computeH3Density();
     }
@@ -277,7 +324,9 @@ export class SimulationEngine {
 
     const t0 = performance.now();
     // Allow the solver to automatically find the best exit out of ALL exits!
-    const result = solver(this.snap.graph, startId, exitIds);
+    const result = solver(this.snap.graph, startId, exitIds, {
+      directionPreference: this.snap.directionPreference,
+    });
     const rt = performance.now() - t0;
     if (result.path.length < 2) return;
 
