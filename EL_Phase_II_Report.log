@@ -1,9 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.1.22)  30 JUN 2026 00:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.1.22)  30 JUN 2026 00:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**EL_Phase_II_Report.tex
-(./EL_Phase_II_Report.tex
+**"/home/snehal-reddy/Coding/Repositories/DAA EL/EL_Phase_II_Report.tex" -outpu
+t-directory=/home/snehal-reddy/Coding/Repositories/DAA EL
+(/home/snehal-reddy/Coding/Repositories/DAA EL/EL_Phase_II_Report.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
@@ -980,7 +981,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 123.
 
 
-<images/watermark.png, id=191, 603.25375pt x 593.21625pt>
+<images/watermark.png, id=220, 603.25375pt x 593.21625pt>
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
 Package pdftex.def Info: images/watermark.png  used on input line 154.
@@ -1013,21 +1014,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 274.
+Package pdftex.def Info: images/watermark.png  used on input line 289.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [3]
 Chapter 1.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 287.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 302.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 287.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 302.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 287.
-<images/ui_dashboard_overview.png, id=214, 2890.8pt x 1667.22874pt>
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 302.
+<images/ui_dashboard_overview.png, id=242, 2890.8pt x 1667.22874pt>
 File: images/ui_dashboard_overview.png Graphic file (type png)
 <use images/ui_dashboard_overview.png>
-Package pdftex.def Info: images/ui_dashboard_overview.png  used on input line 2
-93.
+Package pdftex.def Info: images/ui_dashboard_overview.png  used on input line 3
+08.
 (pdftex.def)             Requested size: 407.66833pt x 235.1149pt.
 
 
@@ -1036,11 +1037,11 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.297 
+l.312 
       
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 297.
+Package pdftex.def Info: images/watermark.png  used on input line 312.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
  [1
 
@@ -1049,7 +1050,7 @@ Package pdftex.def Info: images/watermark.png  used on input line 297.
 File: images/ui_dashboard_overview.png Graphic file (type png)
 <use images/ui_dashboard_overview.png>
 Package pdftex.def Info: images/ui_dashboard_overview.png  used on input line 3
-11.
+26.
 (pdftex.def)             Requested size: 407.66833pt x 235.1149pt.
 
 
@@ -1062,7 +1063,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 315.
+Package pdftex.def Info: images/watermark.png  used on input line 330.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [2 <./images/ui_dashboard_overview.png>]
 
@@ -1075,25 +1076,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 319.
+Package pdftex.def Info: images/watermark.png  used on input line 334.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [3]
 Chapter 2.
 
 LaTeX Warning: Citation `pauls1985movement' on page 4 undefined on input line 3
-22.
+37.
 
 
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 329.
+Package pdftex.def Info: images/watermark.png  used on input line 344.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [4
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3
-36.
+51.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
@@ -1107,7 +1108,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 347.
+Package pdftex.def Info: images/watermark.png  used on input line 362.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [5]
 Chapter 3.
@@ -1115,13 +1116,13 @@ Chapter 3.
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 378.
+Package pdftex.def Info: images/watermark.png  used on input line 393.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [6
 
 ]
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
-09.
+24.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -1140,7 +1141,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 410.
+Package pdftex.def Info: images/watermark.png  used on input line 425.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [7]
 
@@ -1153,10 +1154,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 423.
+Package pdftex.def Info: images/watermark.png  used on input line 438.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [8]
-Overfull \hbox (11.8075pt too wide) in paragraph at lines 428--429
+Overfull \hbox (11.8075pt too wide) in paragraph at lines 443--444
 []\OT1/ptm/b/n/12 (-20) Polygon Zones: \OT1/ptm/m/n/12 (-20) De-fined by a clos
 ed se-quence of $\OML/ztmcm/m/it/12 K$ \OT1/ptm/m/n/12 (-20) ge-o-graphic ver-t
 ices $\OT1/ptm/b/n/12 (-20) P[] \OT1/ztmcm/m/n/12 = \OMS/ztmcm/m/n/12 f\OT1/ptm
@@ -1175,7 +1176,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 454.
+Package pdftex.def Info: images/watermark.png  used on input line 469.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [9]
 
@@ -1188,7 +1189,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 486.
+Package pdftex.def Info: images/watermark.png  used on input line 501.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [10]
 
@@ -1201,7 +1202,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 503.
+Package pdftex.def Info: images/watermark.png  used on input line 518.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [11]
 Chapter 4.
@@ -1209,7 +1210,7 @@ Chapter 4.
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 521.
+Package pdftex.def Info: images/watermark.png  used on input line 536.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [12
 
@@ -1224,7 +1225,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 559.
+Package pdftex.def Info: images/watermark.png  used on input line 574.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [13]
 
@@ -1237,7 +1238,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 587.
+Package pdftex.def Info: images/watermark.png  used on input line 602.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [14]
 
@@ -1250,30 +1251,30 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 591.
+Package pdftex.def Info: images/watermark.png  used on input line 606.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [15]
 Chapter 5.
-<images/algorithm_comparison.jpeg, id=349, 1027.84pt x 1027.84pt>
+<images/algorithm_comparison.jpeg, id=377, 1027.84pt x 1027.84pt>
 File: images/algorithm_comparison.jpeg Graphic file (type jpg)
 <use images/algorithm_comparison.jpeg>
 Package pdftex.def Info: images/algorithm_comparison.jpeg  used on input line 6
-42.
+57.
 (pdftex.def)             Requested size: 452.9679pt x 452.97244pt.
 
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 646.
+Package pdftex.def Info: images/watermark.png  used on input line 661.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [16
 
 ]
-<images/simulation_agent_movement.png, id=357, 2890.8pt x 1591.9475pt>
+<images/simulation_agent_movement.png, id=385, 2890.8pt x 1591.9475pt>
 File: images/simulation_agent_movement.png Graphic file (type png)
 <use images/simulation_agent_movement.png>
 Package pdftex.def Info: images/simulation_agent_movement.png  used on input li
-ne 654.
+ne 669.
 (pdftex.def)             Requested size: 430.31812pt x 236.95999pt.
 
 
@@ -1286,14 +1287,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 657.
+Package pdftex.def Info: images/watermark.png  used on input line 672.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [17 <./images/algorithm_comparison.jpeg>]
-<images/h3_density_visualization.png, id=365, 2890.8pt x 1591.9475pt>
+<images/h3_density_visualization.png, id=393, 2890.8pt x 1591.9475pt>
 File: images/h3_density_visualization.png Graphic file (type png)
 <use images/h3_density_visualization.png>
 Package pdftex.def Info: images/h3_density_visualization.png  used on input lin
-e 663.
+e 678.
 (pdftex.def)             Requested size: 430.31812pt x 236.95999pt.
 
 
@@ -1306,14 +1307,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 667.
+Package pdftex.def Info: images/watermark.png  used on input line 682.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [18 <./images/simulation_agent_movement.png>]
-<images/dispersal_zones_interaction.png, id=373, 2890.8pt x 1591.9475pt>
+<images/dispersal_zones_interaction.png, id=401, 2890.8pt x 1591.9475pt>
 File: images/dispersal_zones_interaction.png Graphic file (type png)
 <use images/dispersal_zones_interaction.png>
 Package pdftex.def Info: images/dispersal_zones_interaction.png  used on input 
-line 672.
+line 687.
 (pdftex.def)             Requested size: 430.31812pt x 236.95999pt.
 
 
@@ -1326,14 +1327,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 676.
+Package pdftex.def Info: images/watermark.png  used on input line 691.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [19 <./images/h3_density_visualization.png>]
-<images/performance_metrics.jpeg, id=382, 867.24pt x 722.7pt>
+<images/performance_metrics.jpeg, id=410, 867.24pt x 722.7pt>
 File: images/performance_metrics.jpeg Graphic file (type jpg)
 <use images/performance_metrics.jpeg>
-Package pdftex.def Info: images/performance_metrics.jpeg  used on input line 68
-4.
+Package pdftex.def Info: images/performance_metrics.jpeg  used on input line 69
+9.
 (pdftex.def)             Requested size: 407.66833pt x 339.72418pt.
 
 
@@ -1346,14 +1347,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 688.
+Package pdftex.def Info: images/watermark.png  used on input line 703.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [20 <./images/dispersal_zones_interaction.png>]
-<images/algorithm_exploration_efficiency.png, id=392, 722.7pt x 433.62pt>
+<images/algorithm_exploration_efficiency.png, id=420, 722.7pt x 433.62pt>
 File: images/algorithm_exploration_efficiency.png Graphic file (type png)
 <use images/algorithm_exploration_efficiency.png>
 Package pdftex.def Info: images/algorithm_exploration_efficiency.png  used on i
-nput line 695.
+nput line 710.
 (pdftex.def)             Requested size: 430.31812pt x 258.18906pt.
 
 
@@ -1366,14 +1367,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 699.
+Package pdftex.def Info: images/watermark.png  used on input line 714.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [21 <./images/performance_metrics.jpeg>]
-<images/congestion_weighting_curve.png, id=401, 578.16pt x 361.35pt>
+<images/congestion_weighting_curve.png, id=429, 578.16pt x 361.35pt>
 File: images/congestion_weighting_curve.png Graphic file (type png)
 <use images/congestion_weighting_curve.png>
 Package pdftex.def Info: images/congestion_weighting_curve.png  used on input l
-ine 706.
+ine 721.
 (pdftex.def)             Requested size: 385.02547pt x 240.63658pt.
 
 
@@ -1386,14 +1387,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 710.
+Package pdftex.def Info: images/watermark.png  used on input line 725.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [22 <./images/algorithm_exploration_efficiency.png>]
-<images/population_vs_latency.png, id=411, 722.7pt x 433.62pt>
+<images/population_vs_latency.png, id=439, 722.7pt x 433.62pt>
 File: images/population_vs_latency.png Graphic file (type png)
 <use images/population_vs_latency.png>
 Package pdftex.def Info: images/population_vs_latency.png  used on input line 7
-17.
+32.
 (pdftex.def)             Requested size: 430.31812pt x 258.18906pt.
 
 
@@ -1406,14 +1407,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 721.
+Package pdftex.def Info: images/watermark.png  used on input line 736.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [23 <./images/congestion_weighting_curve.png>]
-<images/time_complexity_benchmark.png, id=421, 722.7pt x 433.62pt>
+<images/time_complexity_benchmark.png, id=449, 722.7pt x 433.62pt>
 File: images/time_complexity_benchmark.png Graphic file (type png)
 <use images/time_complexity_benchmark.png>
 Package pdftex.def Info: images/time_complexity_benchmark.png  used on input li
-ne 729.
+ne 744.
 (pdftex.def)             Requested size: 407.66833pt x 244.59877pt.
 
 
@@ -1426,19 +1427,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 733.
+Package pdftex.def Info: images/watermark.png  used on input line 748.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [24 <./images/population_vs_latency.png>]
-<images/space_complexity_benchmark.png, id=429, 722.7pt x 433.62pt>
+<images/space_complexity_benchmark.png, id=457, 722.7pt x 433.62pt>
 File: images/space_complexity_benchmark.png Graphic file (type png)
 <use images/space_complexity_benchmark.png>
 Package pdftex.def Info: images/space_complexity_benchmark.png  used on input l
-ine 736.
+ine 751.
 (pdftex.def)             Requested size: 407.66833pt x 244.59877pt.
-<images/h3_resolution_load.png, id=434, 722.7pt x 433.62pt>
+<images/h3_resolution_load.png, id=462, 722.7pt x 433.62pt>
 File: images/h3_resolution_load.png Graphic file (type png)
 <use images/h3_resolution_load.png>
-Package pdftex.def Info: images/h3_resolution_load.png  used on input line 748.
+Package pdftex.def Info: images/h3_resolution_load.png  used on input line 763.
 
 (pdftex.def)             Requested size: 407.66833pt x 244.59877pt.
 
@@ -1452,14 +1453,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 751.
+Package pdftex.def Info: images/watermark.png  used on input line 766.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [25 <./images/time_complexity_benchmark.png> <./images/space_complexity_benchma
 rk.png>]
-<images/h3_scale_vs_cells.png, id=441, 650.43pt x 397.485pt>
+<images/h3_scale_vs_cells.png, id=470, 650.43pt x 397.485pt>
 File: images/h3_scale_vs_cells.png Graphic file (type png)
 <use images/h3_scale_vs_cells.png>
-Package pdftex.def Info: images/h3_scale_vs_cells.png  used on input line 755.
+Package pdftex.def Info: images/h3_scale_vs_cells.png  used on input line 770.
 (pdftex.def)             Requested size: 407.66833pt x 249.13713pt.
 
 
@@ -1472,14 +1473,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 761.
+Package pdftex.def Info: images/watermark.png  used on input line 776.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [26 <./images/h3_resolution_load.png> <./images/h3_scale_vs_cells.png>]
-<images/rerouting_validation.jpeg, id=454, 1027.84pt x 1027.84pt>
+<images/rerouting_validation.jpeg, id=483, 1027.84pt x 1027.84pt>
 File: images/rerouting_validation.jpeg Graphic file (type jpg)
 <use images/rerouting_validation.jpeg>
 Package pdftex.def Info: images/rerouting_validation.jpeg  used on input line 7
-69.
+84.
 (pdftex.def)             Requested size: 407.66833pt x 407.66264pt.
 
 
@@ -1492,13 +1493,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 773.
+Package pdftex.def Info: images/watermark.png  used on input line 788.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [27]
-<images/h3_binning_latency.png, id=464, 722.7pt x 433.62pt>
+<images/h3_binning_latency.png, id=492, 722.7pt x 433.62pt>
 File: images/h3_binning_latency.png Graphic file (type png)
 <use images/h3_binning_latency.png>
-Package pdftex.def Info: images/h3_binning_latency.png  used on input line 781.
+Package pdftex.def Info: images/h3_binning_latency.png  used on input line 796.
 
 (pdftex.def)             Requested size: 407.66833pt x 244.59877pt.
 
@@ -1512,7 +1513,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 785.
+Package pdftex.def Info: images/watermark.png  used on input line 800.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [28 <./images/rerouting_validation.jpeg>]
 
@@ -1525,7 +1526,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 797.
+Package pdftex.def Info: images/watermark.png  used on input line 812.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [29 <./images/h3_binning_latency.png>]
 
@@ -1538,7 +1539,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 817.
+Package pdftex.def Info: images/watermark.png  used on input line 832.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [30]
 
@@ -1551,7 +1552,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 839.
+Package pdftex.def Info: images/watermark.png  used on input line 854.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [31]
 
@@ -1564,7 +1565,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 857.
+Package pdftex.def Info: images/watermark.png  used on input line 872.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [32]
 Chapter 6.
@@ -1572,7 +1573,7 @@ Chapter 6.
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 877.
+Package pdftex.def Info: images/watermark.png  used on input line 892.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [33
 
@@ -1587,7 +1588,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 901.
+Package pdftex.def Info: images/watermark.png  used on input line 916.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [34]
 
@@ -1600,18 +1601,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 931.
+Package pdftex.def Info: images/watermark.png  used on input line 946.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
-[35] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-)
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 937.
+[35]
+Chapter 7.
 
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 973.
+Package pdftex.def Info: images/watermark.png  used on input line 954.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [36
 
@@ -1626,7 +1624,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 1020.
+Package pdftex.def Info: images/watermark.png  used on input line 973.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [37]
 
@@ -1639,7 +1637,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 1070.
+Package pdftex.def Info: images/watermark.png  used on input line 991.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [38]
 
@@ -1652,15 +1650,46 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 1139.
+Package pdftex.def Info: images/watermark.png  used on input line 1016.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
 [39]
 
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 1174.
+Package pdftex.def Info: images/watermark.png  used on input line 1038.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
-[40
+[40]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+File: images/watermark.png Graphic file (type png)
+<use images/watermark.png>
+Package pdftex.def Info: images/watermark.png  used on input line 1038.
+(pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
+[41] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/09/23 1.10c listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 1044.
+
+
+File: images/watermark.png Graphic file (type png)
+<use images/watermark.png>
+Package pdftex.def Info: images/watermark.png  used on input line 1080.
+(pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
+[42
 
 ]
 
@@ -1673,9 +1702,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 1215.
+Package pdftex.def Info: images/watermark.png  used on input line 1127.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
-[41]
+[43]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1686,9 +1715,56 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: images/watermark.png Graphic file (type png)
 <use images/watermark.png>
-Package pdftex.def Info: images/watermark.png  used on input line 1236.
+Package pdftex.def Info: images/watermark.png  used on input line 1177.
 (pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
-[42] (./EL_Phase_II_Report.aux)
+[44]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+File: images/watermark.png Graphic file (type png)
+<use images/watermark.png>
+Package pdftex.def Info: images/watermark.png  used on input line 1264.
+(pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
+[45]
+
+File: images/watermark.png Graphic file (type png)
+<use images/watermark.png>
+Package pdftex.def Info: images/watermark.png  used on input line 1299.
+(pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
+[46
+
+]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+File: images/watermark.png Graphic file (type png)
+<use images/watermark.png>
+Package pdftex.def Info: images/watermark.png  used on input line 1340.
+(pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
+[47]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+File: images/watermark.png Graphic file (type png)
+<use images/watermark.png>
+Package pdftex.def Info: images/watermark.png  used on input line 1361.
+(pdftex.def)             Requested size: 179.25418pt x 176.26451pt.
+[48] (./EL_Phase_II_Report.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1698,16 +1774,16 @@ L3 programming layer <2025-01-18>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `EL_Phase_II_Report.out' has not changed.
-(rerunfilecheck)             Checksum: 76260E5C74BA79CBF1D5AAABC5EC4A4A;10257.
+(rerunfilecheck)             Checksum: 04BB8BD244444A41320FEAB32E29854D;12488.
  ) 
 Here is how much of TeX's memory you used:
- 28899 strings out of 475178
- 525079 string characters out of 5766539
- 1412151 words of memory out of 5000000
- 50707 multiletter control sequences out of 15000+600000
- 618214 words of font info for 358 fonts, out of 8000000 for 9000
+ 28944 strings out of 475178
+ 525622 string characters out of 5766539
+ 1412811 words of memory out of 5000000
+ 50716 multiletter control sequences out of 15000+600000
+ 622104 words of font info for 372 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,13n,91p,1015b,2106s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,91p,1127b,2104s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
@@ -1719,10 +1795,10 @@ bol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmri8a.pfb>
-Output written on EL_Phase_II_Report.pdf (46 pages, 9637610 bytes).
+Output written on EL_Phase_II_Report.pdf (52 pages, 9657462 bytes).
 PDF statistics:
- 854 PDF objects out of 1000 (max. 8388607)
- 745 compressed objects within 8 object streams
- 327 named destinations out of 1000 (max. 500000)
- 80333 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 921 PDF objects out of 1000 (max. 8388607)
+ 805 compressed objects within 9 object streams
+ 345 named destinations out of 1000 (max. 500000)
+ 80389 words of extra memory for PDF output out of 89155 (max. 10000000)
 
