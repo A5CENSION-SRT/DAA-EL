@@ -29,10 +29,7 @@ const MapView = dynamic(
     },
 );
 
-// ─── Location pick state ──────────────────────────────────────────────────────
-// Phase 1: user pans/zooms freely → "Set Corner 1"
-// Phase 2: user clicked corner 1 → "Set Corner 2"
-// Phase 3: both corners set → show preview bbox + confirm
+// Location picking state
 type PickPhase = 'idle' | 'corner1' | 'corner2' | 'confirm';
 
 export default function H3CrowdControlSystem() {
@@ -46,14 +43,14 @@ export default function H3CrowdControlSystem() {
     const [spawnRadius, setSpawnRadiusUI] = useState(200);
     const [h3Res, setH3ResUI] = useState(10);
 
-    // ── Location picking ──────────────────────────────────────────────────────
+    // Location picking
     const [pickPhase, setPickPhase] = useState<PickPhase>('idle');
     const [corner1, setCorner1] = useState<[number, number] | null>(null);
     const [corner2, setCorner2] = useState<[number, number] | null>(null);
     const [liveCenter, setLiveCenter] = useState<[number, number]>([77.6076, 12.9752]);
     const [liveZoom, setLiveZoom] = useState(15);
 
-    // ── Map/graph state ───────────────────────────────────────────────────────
+    // Map graph state
     const [graph, setGraph] = useState<Graph | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -69,7 +66,7 @@ export default function H3CrowdControlSystem() {
         } finally { setLoading(false); }
     }, []);
 
-    // Confirm bbox and load OSM data for that area
+    // Load OSM area
     const confirmBbox = useCallback(async () => {
         if (!corner1 || !corner2) return;
         const minLng = Math.min(corner1[0], corner2[0]);
@@ -127,7 +124,7 @@ export default function H3CrowdControlSystem() {
         if (mode === 'block-road') { blockEdge(id); setMode('view'); }
     }, [mode, blockEdge]);
 
-    // Map click during bbox picking
+    // Map click picking
     const handleLocationPick = useCallback((lng: number, lat: number) => {
         if (pickPhase === 'corner1') {
             setCorner1([lng, lat]);
@@ -151,7 +148,7 @@ export default function H3CrowdControlSystem() {
     const isPicking = pickPhase !== 'idle';
     const effectiveMode: InteractionMode = isPicking ? 'pick-location' : mode;
 
-    // Bbox preview corners for the overlay marker
+    // Bbox preview corners
     const bboxPreview = corner1 && corner2 ? {
         minLng: Math.min(corner1[0], corner2[0]),
         maxLng: Math.max(corner1[0], corner2[0]),
@@ -163,7 +160,7 @@ export default function H3CrowdControlSystem() {
         <main className="h-screen overflow-hidden flex flex-col bg-[#050608] text-slate-300 font-sans">
             <div className="mx-auto flex w-full flex-1 min-h-0 flex-col gap-2 p-2 sm:p-3">
 
-                {/* ═══ HEADER ═══════════════════════════════════════════════════════ */}
+                {/* Header */}
                 <header className="flex flex-wrap items-center gap-2 rounded-sm border border-white/5 bg-[#090a0f] px-4 py-2 shadow-sm">
                     <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-blue-500/10 border border-blue-500/20">
                         <HexagonIcon className="h-4 w-4 text-blue-400" />
@@ -196,7 +193,7 @@ export default function H3CrowdControlSystem() {
 
                     <div className="h-5 w-px bg-white/10 hidden sm:block" />
 
-                    {/* ── Spawn control ── */}
+                    {/* Spawn control */}
                     <button
                         onClick={() => spawnBatch(50)}
                         disabled={!canRun}
@@ -206,7 +203,7 @@ export default function H3CrowdControlSystem() {
                         <UserPlus className="h-3 w-3" />Spawn
                     </button>
 
-                    {/* Spawn auto-toggle when running */}
+                    {/* Auto spawn toggle */}
                     {running && (
                         <button
                             onClick={() => setSpawningEnabled(!spawning)}
@@ -217,7 +214,7 @@ export default function H3CrowdControlSystem() {
                         </button>
                     )}
 
-                    {/* ── Run control ── */}
+                    {/* Run control */}
                     {running
                         ? <button onClick={stop} className="flex h-7 items-center gap-1.5 rounded-sm border border-white/10 px-3 text-[11px] font-medium text-slate-300 hover:border-white/20 hover:text-white transition-colors">
                             <Pause className="h-3 w-3" />Pause
@@ -235,7 +232,7 @@ export default function H3CrowdControlSystem() {
                     </button>
                 </header>
 
-                {/* ═══ METRICS STRIP ═══════════════════════════════════════════════ */}
+                {/* Metrics strip */}
                 <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
                     {([
                         { label: 'Nodes', val: graph ? graph.nodes.size : 0, Icon: Network, color: 'text-blue-300' },
@@ -261,14 +258,14 @@ export default function H3CrowdControlSystem() {
                     ))}
                 </div>
 
-                {/* ═══ MAIN GRID ════════════════════════════════════════════════════ */}
+                {/* Main grid */}
                 <div className="grid gap-3 xl:grid-cols-[minmax(0,1fr)_300px] flex-1 min-h-0">
 
-                    {/* LEFT: Map */}
+                    {/* Left: Map */}
                     <section className="flex min-w-0 flex-col gap-2 h-full min-h-0">
                         <div className="rounded-2xl border border-slate-700/60 bg-[#0c0f1a] overflow-hidden relative flex-1 min-h-0 flex flex-col">
 
-                            {/* Mode hint — top center */}
+                            {/* Mode hint */}
                             {(effectiveMode !== 'view') && (
                                 <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
                                     <span className="shadow-lg rounded-full border border-white/15 bg-slate-900/90 backdrop-blur-md px-4 py-1.5 text-xs font-semibold text-slate-200">
@@ -282,7 +279,7 @@ export default function H3CrowdControlSystem() {
                                 </div>
                             )}
 
-                            {/* Bbox pick overlay — bottom center */}
+                            {/* Bbox picker overlay */}
                             {isPicking && (
                                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-stretch gap-2 max-w-md w-full px-4">
                                     <div className="flex-1 rounded-xl border border-white/10 bg-black/85 backdrop-blur-md px-4 py-3 text-xs space-y-2">
@@ -384,7 +381,7 @@ export default function H3CrowdControlSystem() {
                         </div>
                     </section>
 
-                    {/* RIGHT: Sidebar */}
+                    {/* Right: Sidebar */}
                     <aside className="flex flex-col gap-2 h-full min-h-0 overflow-y-auto">
 
                         {/* Location */}
@@ -401,7 +398,7 @@ export default function H3CrowdControlSystem() {
                                 </SelectContent>
                             </Select>
 
-                            {/* Pick on map button / step instructions */}
+                            {/* Selection actions */}
                             {pickPhase === 'idle' ? (
                                 <button
                                     onClick={() => { setPickPhase('corner1'); }}

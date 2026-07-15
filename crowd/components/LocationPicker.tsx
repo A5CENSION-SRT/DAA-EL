@@ -35,7 +35,7 @@ export function LocationPicker({ onLocationDefined, initialCenter = [77.6076, 12
                 <p className="text-[11px] text-slate-500">Zoom & pan the map, then click "Define"</p>
             </div>
 
-            {/* Map preview - simplified version */}
+            // Map preview
             <div className="relative h-48 rounded-lg border border-slate-700/60 bg-[#07090f] overflow-hidden">
                 <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
                     <div className="relative">
@@ -44,7 +44,7 @@ export function LocationPicker({ onLocationDefined, initialCenter = [77.6076, 12
                     </div>
                 </div>
 
-                {/* Zoom controls */}
+                // Zoom controls
                 <div className="absolute bottom-3 right-3 z-30 flex flex-col gap-1">
                     <button
                         onClick={() => handleZoomChange(1)}
@@ -60,13 +60,13 @@ export function LocationPicker({ onLocationDefined, initialCenter = [77.6076, 12
                     </button>
                 </div>
 
-                {/* Zoom level display */}
+                // Zoom display
                 <div className="absolute top-3 left-3 z-30 rounded-md border border-slate-600 bg-slate-900/60 px-2 py-1">
                     <p className="text-xs font-mono text-slate-300">Zoom: {zoom.toFixed(1)}</p>
                 </div>
             </div>
 
-            {/* Coordinates display */}
+            // Coordinates
             <div className="grid grid-cols-2 gap-2 rounded-md border border-slate-700/60 bg-slate-900/40 p-2.5">
                 <div>
                     <p className="text-[10px] font-semibold uppercase text-slate-500 mb-0.5">Latitude</p>
@@ -78,7 +78,7 @@ export function LocationPicker({ onLocationDefined, initialCenter = [77.6076, 12
                 </div>
             </div>
 
-            {/* Action buttons */}
+            // Action buttons
             <div className="flex gap-2">
                 <button
                     onClick={() => onLocationDefined(center, zoom)}

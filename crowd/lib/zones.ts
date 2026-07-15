@@ -1,21 +1,10 @@
-/**
- * Crowd Dispersal Zones - Core data types and utility functions
- *
- * This module provides:
- * - Zone data structures (attraction and repulsion zones)
- * - Direction preferences for 8-compass routing
- * - Geographic utility functions (bearing, direction matching)
- * - Point-in-polygon detection for zone membership
- */
+// Zones library
 
-// ─── Direction Types ──────────────────────────────────────────────────────────
+// Direction types
 
 export type CardinalDirection = 'N' | 'NE' | 'E' | 'SE' | 'S' | 'SW' | 'W' | 'NW';
 
-/**
- * Direction to angle mapping (in radians, clockwise from North)
- * N = 0, NE = π/4, E = π/2, SE = 3π/4, S = π, SW = 5π/4, W = 3π/2, NW = 7π/4
- */
+// Angles in radians
 export const DIRECTION_ANGLES: Record<CardinalDirection, number> = {
     N: 0,
     NE: Math.PI / 4,
@@ -27,82 +16,59 @@ export const DIRECTION_ANGLES: Record<CardinalDirection, number> = {
     NW: (7 * Math.PI) / 4,
 };
 
-// ─── Zone Types ───────────────────────────────────────────────────────────────
+// Zone types
 
-/**
- * Represents a crowd zone (attraction or repulsion)
- */
+// Crowd zone interface
 export interface CrowdZone {
     id: string;
     type: 'attract' | 'repel';
-    center: [number, number]; // [lng, lat]
-    vertices?: [number, number][]; // Optional polygon vertices for polygon-type zones
+    center: [number, number]; // Coordinates
+    vertices?: [number, number][]; // Polygon vertices
     isPolygon: boolean;
-    radius: number; // metres (for point zones)
-    strength: number; // 0-100 (attraction or repulsion strength)
+    radius: number; // Radius metres
+    strength: number; // Zone strength
 }
 
-/**
- * Represents directional preference for agent routing
- */
+// Route preferences
 export interface DirectionPreference {
     enabled: boolean;
     directions: CardinalDirection[];
-    weight: number; // 0-1, how strongly to favor these directions
+    weight: number; // Preference weight
 }
 
-// ─── Direction Utility Functions ──────────────────────────────────────────────
+// Direction helpers
 
-/**
- * Convert an angle in radians to the nearest cardinal direction
- *
- * @param angle - Angle in radians (0 = North, π/2 = East, π = South, 3π/2 = West)
- * @returns The nearest cardinal direction
- */
+// Angle to direction
 export function directionFromAngle(angle: number): CardinalDirection {
-    // Normalize angle to [0, 2π)
+    // Normalize angle
     const normalized = ((angle % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
 
-    // Each direction covers a 45° wedge, with N centered at 0
+    // 45 degree wedges
     const octant = Math.round((normalized * 8) / (2 * Math.PI)) % 8;
     const directions: CardinalDirection[] = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
     return directions[octant];
 }
 
-/**
- * Calculate the bearing (angle) from one coordinate to another
- * Uses the haversine formula to compute initial bearing
- *
- * @param from - Starting coordinate [lng, lat]
- * @param to - Ending coordinate [lng, lat]
- * @returns Bearing in radians (0 = North, clockwise)
- */
+// Calculate bearing
 export function getBearing(from: [number, number], to: [number, number]): number {
     const [lng1, lat1] = from;
     const [lng2, lat2] = to;
 
-    // Convert to radians
+    // To radians
     const φ1 = (lat1 * Math.PI) / 180;
     const φ2 = (lat2 * Math.PI) / 180;
     const Δλ = ((lng2 - lng1) * Math.PI) / 180;
 
-    // Forward azimuth formula
+    // Azimuth formula
     const y = Math.sin(Δλ) * Math.cos(φ2);
     const x = Math.cos(φ1) * Math.sin(φ2) - Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
     const bearing = Math.atan2(y, x);
 
-    // Normalize to [0, 2π)
+    // Normalize bearing
     return ((bearing % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
 }
 
-/**
- * Check if a bearing matches a given cardinal direction within a tolerance
- *
- * @param direction - The cardinal direction to check against
- * @param bearing - The bearing in radians
- * @param tolerance - Tolerance in radians (default: π/4 = 45°)
- * @returns True if bearing is within tolerance of the direction
- */
+// Match direction
 export function directionMatches(
     direction: CardinalDirection,
     bearing: number,
@@ -111,7 +77,7 @@ export function directionMatches(
     const dirAngle = DIRECTION_ANGLES[direction];
     let diff = Math.abs(bearing - dirAngle);
 
-    // Handle wraparound at 2π
+    // Wrap 2pi
     if (diff > Math.PI) {
         diff = 2 * Math.PI - diff;
     }
@@ -119,16 +85,9 @@ export function directionMatches(
     return diff <= tolerance;
 }
 
-// ─── Geometric Utility Functions ──────────────────────────────────────────────
+// Geometry helpers
 
-/**
- * Point-in-polygon detection using the ray casting algorithm
- * Works for both convex and concave polygons
- *
- * @param point - Point to test [lng, lat]
- * @param polygon - Polygon vertices in order [[lng, lat], ...]
- * @returns True if point is inside or on the polygon boundary
- */
+// Point inside polygon
 export function pointInPolygon(point: [number, number], polygon: [number, number][]): boolean {
     const [x, y] = point;
 
@@ -150,19 +109,12 @@ export function pointInPolygon(point: [number, number], polygon: [number, number
     return inside;
 }
 
-/**
- * Calculate the distance between two coordinates (metres)
- * Uses the haversine formula
- *
- * @param from - Starting coordinate [lng, lat]
- * @param to - Ending coordinate [lng, lat]
- * @returns Distance in metres
- */
+// Coordinate distance
 export function distance(from: [number, number], to: [number, number]): number {
     const [lng1, lat1] = from;
     const [lng2, lat2] = to;
 
-    const R = 6_371_000; // Earth radius in metres
+    const R = 6_371_000; // Earth radius
     const φ1 = (lat1 * Math.PI) / 180;
     const φ2 = (lat2 * Math.PI) / 180;
     const Δφ = ((lat2 - lat1) * Math.PI) / 180;
@@ -175,12 +127,7 @@ export function distance(from: [number, number], to: [number, number]): number {
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-/**
- * Calculate the centroid of a polygon
- *
- * @param polygon - Polygon vertices [[lng, lat], ...]
- * @returns Centroid coordinate [lng, lat]
- */
+// Polygon centroid
 export function polygonCentroid(polygon: [number, number][]): [number, number] {
     if (polygon.length === 0) return [0, 0];
 
@@ -195,17 +142,11 @@ export function polygonCentroid(polygon: [number, number][]): [number, number] {
     return [sumLng / polygon.length, sumLat / polygon.length];
 }
 
-/**
- * Calculate the area of a polygon in square metres
- * Uses the shoelace formula with haversine distance approximation
- *
- * @param polygon - Polygon vertices [[lng, lat], ...]
- * @returns Area in square metres
- */
+// Polygon area
 export function polygonArea(polygon: [number, number][]): number {
     if (polygon.length < 3) return 0;
 
-    // Shoelace formula for lat/lng
+    // Shoelace formula
     let sum = 0;
     for (let i = 0; i < polygon.length; i++) {
         const [lng1, lat1] = polygon[i];
@@ -213,8 +154,7 @@ export function polygonArea(polygon: [number, number][]): number {
         sum += (lng2 - lng1) * (lat2 + lat1);
     }
 
-    // Rough conversion to square metres (at equator, 1 degree ≈ 111 km)
-    // This is approximate and improves near equator
+    // Approximate scaling
     const latAvg = polygon.reduce((sum, [, lat]) => sum + lat, 0) / polygon.length;
     const metersPerDegreeLng = 111_000 * Math.cos((latAvg * Math.PI) / 180);
     const metersPerDegreeLat = 111_000;
@@ -222,19 +162,14 @@ export function polygonArea(polygon: [number, number][]): number {
     return Math.abs((sum * metersPerDegreeLng * metersPerDegreeLat) / 2);
 }
 
-/**
- * Generate a unique zone ID
- * Format: "zone_<timestamp>_<randomSuffix>"
- */
+// Generate ID
 export function generateZoneId(): string {
     const timestamp = Date.now();
     const random = Math.random().toString(36).substr(2, 9);
     return `zone_${timestamp}_${random}`;
 }
 
-/**
- * Create a new attraction zone
- */
+// Attraction zone
 export function createAttractionZone(
     center: [number, number],
     radius: number = 100,
@@ -250,9 +185,7 @@ export function createAttractionZone(
     };
 }
 
-/**
- * Create a new repulsion zone
- */
+// Repulsion zone
 export function createRepulsionZone(
     center: [number, number],
     radius: number = 100,
@@ -268,9 +201,7 @@ export function createRepulsionZone(
     };
 }
 
-/**
- * Create a polygon-type zone
- */
+// Polygon zone
 export function createPolygonZone(
     vertices: [number, number][],
     type: 'attract' | 'repel' = 'attract',

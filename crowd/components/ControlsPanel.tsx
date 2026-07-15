@@ -82,7 +82,7 @@ export function ControlsPanel(props: ControlsPanelProps) {
     return (
         <div className="overflow-y-auto pr-1 space-y-2">
             <Accordion type="multiple" defaultValue={["sim", "zone"]}>
-                {/* ─── Simulation Settings ─── */}
+                // Simulation settings
                 <AccordionItem value="sim">
                     <AccordionTrigger className="px-2">
                         <div className="flex items-center gap-2">
@@ -120,7 +120,7 @@ export function ControlsPanel(props: ControlsPanelProps) {
                     </AccordionContent>
                 </AccordionItem>
 
-                {/* ─── H3 Spatial ─── */}
+                // H3 spatial
                 <AccordionItem value="h3">
                     <AccordionTrigger className="px-2">
                         <div className="flex items-center gap-2">
@@ -152,7 +152,7 @@ export function ControlsPanel(props: ControlsPanelProps) {
                     </AccordionContent>
                 </AccordionItem>
 
-                {/* ─── Crowd Zone ─── */}
+                // Crowd zone
                 <AccordionItem value="zone">
                     <AccordionTrigger className="px-2">
                         <div className="flex items-center gap-2">
@@ -220,7 +220,7 @@ export function ControlsPanel(props: ControlsPanelProps) {
                     </AccordionContent>
                 </AccordionItem>
 
-                {/* ─── Metrics ─── */}
+                // Metrics
                 <AccordionItem value="metrics">
                     <AccordionTrigger className="px-2">
                         <div className="flex items-center gap-2">

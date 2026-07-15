@@ -1,0 +1,2276 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.7.1)  14 JUL 2026 15:02
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**\documentclass[conference]{IEEEtran}
+
+*\IEEEoverridecommandlockouts
+(./IEEEtran.cls
+Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
+-- See the "IEEEtran_HOWTO" manual for usage information.
+-- http://www.michaelshell.org/tex/ieeetran/
+\@IEEEtrantmpdimenA=\dimen148
+\@IEEEtrantmpdimenB=\dimen149
+\@IEEEtrantmpdimenC=\dimen150
+\@IEEEtrantmpcountA=\count275
+\@IEEEtrantmpcountB=\count276
+\@IEEEtrantmpcountC=\count277
+\@IEEEtrantmptoksA=\toks17
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 5
+03.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+-- Using 8.5in x 11in (letter) paper.
+-- Using PDF output.
+\@IEEEnormalsizeunitybaselineskip=\dimen151
+-- This is a 10 point document.
+LaTeX Encoding Info:    Redeclaring text command \textunderscore (encoding ?) o
+n input line 937.
+\CLASSINFOnormalsizebaselineskip=\dimen152
+\CLASSINFOnormalsizeunitybaselineskip=\dimen153
+\IEEEnormaljot=\dimen154
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <11> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <11> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <20> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+\IEEEquantizedlength=\dimen155
+\IEEEquantizedlengthdiff=\dimen156
+\IEEEquantizedtextheightdiff=\dimen157
+\IEEEilabelindentA=\dimen158
+\IEEEilabelindentB=\dimen159
+\IEEEilabelindent=\dimen160
+\IEEEelabelindent=\dimen161
+\IEEEdlabelindent=\dimen162
+\IEEElabelindent=\dimen163
+\IEEEiednormlabelsep=\dimen164
+\IEEEiedmathlabelsep=\dimen165
+\IEEEiedtopsep=\skip49
+\c@section=\count278
+\c@subsection=\count279
+\c@subsubsection=\count280
+\c@paragraph=\count281
+\c@IEEEsubequation=\count282
+\abovecaptionskip=\skip50
+\belowcaptionskip=\skip51
+\c@figure=\count283
+\c@table=\count284
+\@IEEEeqnnumcols=\count285
+\@IEEEeqncolcnt=\count286
+\@IEEEsubeqnnumrollback=\count287
+\@IEEEquantizeheightA=\dimen166
+\@IEEEquantizeheightB=\dimen167
+\@IEEEquantizeheightC=\dimen168
+\@IEEEquantizeprevdepth=\dimen169
+\@IEEEquantizemultiple=\count288
+\@IEEEquantizeboxA=\box53
+\@IEEEtmpitemindent=\dimen170
+\IEEEPARstartletwidth=\dimen171
+\c@IEEEbiography=\count289
+\@IEEEtranrubishbin=\box54
+)
+** ATTENTION: Overriding command lockouts (line 0).
+
+*\usepackage{cite}
+
+*\usepackage{amsmath,amssymb,amsfonts}
+(/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 332.
+Package: cite 2015/02/27  v 5.5
+)
+*\usepackage{algorithmic}
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip52
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen172
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen173
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count290
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count291
+\leftroot@=\count292
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count293
+\DOTSCASE@=\count294
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box55
+\strutbox@=\box56
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen174
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count295
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count296
+\dotsspace@=\muskip17
+\c@parentequation=\count297
+\dspbrk@lvl=\count298
+\tag@help=\toks19
+\row@=\count299
+\column@=\count300
+\maxfields@=\count301
+\andhelp@=\toks20
+\eqnshift@=\dimen175
+\alignsep@=\dimen176
+\tagshift@=\dimen177
+\tagwidth@=\dimen178
+\totwidth@=\dimen179
+\lineht@=\dimen180
+\@envbody=\toks21
+\multlinegap=\skip53
+\multlinetaggap=\skip54
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+*\usepackage{graphicx}
+(/home/snehal-reddy/texmf/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks23
+)
+\c@ALC@unique=\count302
+\c@ALC@line=\count303
+\c@ALC@rem=\count304
+\c@ALC@depth=\count305
+\ALC@tlm=\skip55
+\algorithmicindent=\skip56
+)
+*\usepackage{textcomp}
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen181
+\Gin@req@width=\dimen182
+)
+*\usepackage{xcolor}
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+)
+*\usepackage{array}
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+*\usepackage{multirow}
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen183
+\ar@mcellbox=\box57
+\extrarowheight=\dimen184
+\NC@list=\toks24
+\extratabsurround=\skip57
+\backup@length=\skip58
+\ar@cellbox=\box58
+)
+*\usepackage{longtable}
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip59
+\multirow@cntb=\count306
+\multirow@dima=\skip60
+\bigstrutjot=\dimen185
+)
+*\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
+\LTleft=\skip61
+\LTright=\skip62
+\LTpre=\skip63
+\LTpost=\skip64
+\LTchunksize=\count307
+\LTcapwidth=\dimen186
+\LT@head=\box59
+\LT@firsthead=\box60
+\LT@foot=\box61
+\LT@lastfoot=\box62
+\LT@gbox=\box63
+\LT@cols=\count308
+\LT@rows=\count309
+\c@LT@tables=\count310
+\c@LT@chunks=\count311
+\LT@p@ftn=\toks25
+)
+*    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+*\begin{document}
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count312
+)
+No file file.aux.
+\openout1 = `file.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+-- Lines per column: 56 (exact).
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count313
+\scratchdimen=\dimen187
+\scratchbox=\box64
+\nofMPsegments=\count314
+\nofMParguments=\count315
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count316
+\MPscratchDim=\dimen188
+\MPnumerator=\count317
+\makeMPintoPDFobject=\count318
+\everyMPtoPDFconversion=\toks27
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+*
+(Please type a command or say `\end')
+*\title{Real-Time Geospatial Crowd-Flow Simulation Using Dynamic Graph Routing 
+and Hexagonal Spatial Indexing\\}
+
+*\author{\IEEEauthorblockN{Sumukha Upadhyaya}
+
+*\IEEEauthorblockA{\textit{Dept. of ISE} \\
+
+*\textit{RV College of Engineering}\\
+
+*Bangalore, India \\
+
+*sumukhau.is24@rvce.edu.in}
+
+*\and
+
+*\IEEEauthorblockN{Snehal Reddy Thadigotla}
+
+*\IEEEauthorblockA{\textit{Dept. of ISE} \\
+
+*\textit{RV College of Engineering}\\
+
+*Bangalore, India \\
+
+*snehalreddyt.is24@rvce.edu.in}
+
+*}
+
+*\maketitle
+
+*
+(Please type a command or say `\end')
+*\begin{abstract}
+
+*Large-scale pedestrian evacuation from urban venues presents a fundamental cha
+llenge in public safety and emergency operations management. Existing evacuatio
+n planning approaches rely on static graph models or simplified fluid-dynamics 
+approximations that do not account for adaptive pedestrian routing behaviour or
+ real-time congestion feedback. This paper presents H3 SPATIAL CROWD CONTROL, a
+ real-time, client-side geospatial simulation system that models urban venues a
+s dynamic weighted graphs extracted directly from OpenStreetMap data, simulates
+ goal-seeking pedestrian agents using classical graph-search routing algorithms
+, and continuously estimates spatial crowd pressure using Uber's H3 hexagonal h
+ierarchical spatial index. The system ingests volunteered geographic informatio
+n for five real-world venues spanning Asia and Europe (MG Road Bangalore, Times
+ Square NYC, Wembley Stadium London, Connaught Place New Delhi, and CST Mumbai 
+Station) and converts walkable road networks into a graph representation with c
+ongestion-aware edge reweighting that dynamically inflates routing costs as sim
+ulated pedestrian flow accumulates. Three classical routing algorithms—Dijkst
+ra shortest-path, A* heuristic-guided search, and breadth-first search—are co
+mpared under identical crowd conditions to assess algorithmic trade-offs in rea
+l-time evacuation scenarios. Agent-based microscopic simulation combines pedest
+rian movement with mesoscopic H3 spatial density analysis to identify crowd pre
+ssure hotspots at block granularity ($66$ metres per cell at resolution $10$). 
+A prototype interactive dashboard implemented in React, TypeScript, Next.js, an
+d Deck.gl provides real-time manipulation of simulation parameters including ve
+nue selection, algorithm choice, agent spawn rate, H3 resolution, entry and exi
+t configuration, and emergency road blocking. Preliminary evaluation demonstrat
+es stable simulation of up to $1500$ concurrent pedestrian agents with sub-$100
+$ millisecond frame rates on contemporary client hardware, robust pathfinding a
+cross fragmented urban networks containing $5000+$ nodes and $8000+$ edges, and
+ reliable H3 hotspot detection at critical density thresholds of $8$ agents per
+ cell. The system demonstrates that interactive evacuation flow visualization i
+s achievable using entirely client-side computation, opening new possibilities 
+for emergency planning tool deployment without server infrastructure dependenci
+es.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 0.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 0.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+*\end{abstract}
+
+Underfull \hbox (badness 3179) detected at line 0
+[]\OT1/ptm/b/it/9 Abstract\OT1/ptm/b/n/9 ---Large-scale pedes-trian evac-u-a-ti
+on from ur-ban
+ []
+
+
+*
+(Please type a command or say `\end')
+*\begin{IEEEkeywords}
+
+*Crowd Evacuation, Agent-Based Simulation, Graph-Theoretic Routing, Hexagonal S
+patial Indexing, Emergency Operations, Geospatial Visualization, OpenStreetMap
+
+*\end{IEEEkeywords}
+
+*
+(Please type a command or say `\end')
+*\section{Introduction}
+
+*
+(Please type a command or say `\end')
+*Pedestrian evacuation from dense urban venues—sports stadiums, transit hubs,
+ shopping districts, public squares—represents a critical infrastructure chal
+lenge with direct public health and safety implications. High-consequence incid
+ents including the 2010 Duisburg Love Parade crush (killing 21 attendees), the 
+2013 Stampede in Mina during the Hajj pilgrimage (killing more than 2000), and 
+recurring incidents at stadium exits and music festivals demonstrate that naive
+ evacuation routing without real-time congestion feedback produces bottlenecks 
+and dangerous crowding even when nominally sufficient exit capacity exists \cit
+e{helbing2000simulating}. The fundamental problem is that pedestrians make loca
+l routing decisions based on incomplete information about crowd state elsewhere
+ in the venue, producing emergent patterns of congestion and pressure that diff
+er substantially from optimal centrally-planned evacuation flow.
+
+LaTeX Warning: Citation `helbing2000simulating' on page 1 undefined on input li
+ne 0.
+
+
+*
+
+Underfull \hbox (badness 10000) detected at line 0
+\OT1/ptm/m/n/10 sta-di-ums, tran-sit hubs, shop-ping dis-tricts, pub-lic
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 0
+\OT1/ptm/m/n/10 squares|represents a crit-i-cal in-fras-truc-ture chal-lenge
+ []
+
+
+Underfull \hbox (badness 1354) detected at line 0
+\OT1/ptm/m/n/10 con-ges-tion feed-back pro-duces bot-tle-necks and dan-ger-ous
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+(Please type a command or say `\end')
+*Traditional evacuation planning relies on capacity analysis and static evacuat
+ion time estimation—given an exit count and assumed pedestrian throughput per
+ exit, compute minutes to clear the venue. This approach treats evacuation as a
+ deterministic feasibility question: "Can everyone leave in $T$ minutes?" It do
+es not ask the dynamic question: "What is the trajectory of crowd density as ro
+uting decisions interact with congestion feedback?" Modern urban venues now int
+egrate wireless sensor networks, mobile crowd-sensing applications, and real-ti
+me position data that enable dynamic monitoring of pedestrian location and dens
+ity. Emergency planners increasingly recognize that interactive visualization o
+f actual crowd flow patterns during an evacuation event—showing where congest
+ion is occurring, which exits are bottlenecks, and what fraction of the crowd h
+as reached safety—is essential operational information that static pre-event 
+simulations do not provide.
+
+*
+(Please type a command or say `\end')
+*Graph-theoretic routing algorithms have been extensively applied to vehicle na
+vigation (GPS systems, traffic routing) and to static pedestrian pathfinding in
+ building interiors. However, the application of adaptive, congestion-aware rou
+ting to large-scale outdoor urban pedestrian evacuation remains less extensivel
+y studied, particularly with real-time visual feedback to emergency operators. 
+Existing evacuation simulation tools (VISSIM, MassMotion, Legion, Pathfinder) a
+re primarily desktop applications that require significant computational resour
+ces and specialized expertise to configure. A web-based, client-side evacuation
+ simulator that uses freely available OpenStreetMap data could democratize acce
+ss to evacuation visualization and planning for smaller municipalities and venu
+es without access to commercial simulation software.
+
+*
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/base/8r.enc}
+
+
+]
+(Please type a command or say `\end')
+*The central technical contribution of this work is a demonstration that intera
+ctive real-time evacuation simulation is achievable using entirely client-side 
+computation on contemporary consumer hardware, without server infrastructure or
+ specialized simulation engines. The system integrates four distinct technical 
+layers: (1) volunteered geographic information acquisition from OpenStreetMap v
+ia the Overpass API, (2) dynamic graph construction with congestion-sensitive e
+dge reweighting, (3) classical weighted and unweighted routing algorithms opera
+ting on that graph, and (4) hierarchical hexagonal spatial indexing for real-ti
+me crowd density aggregation and hotspot detection. By unifying these four comp
+onents in a single interactive dashboard, the system demonstrates that emergenc
+y operation planners can visualize evacuation scenarios in real-time, manipulat
+e constraints (block a road, change exit locations, increase spawn rate), and i
+mmediately observe the impact on crowd flow patterns without waiting for batch 
+simulation jobs to complete.
+
+*
+(Please type a command or say `\end')
+*This paper proposes H3 SPATIAL CROWD CONTROL, a browser-based evacuation flow 
+simulator that operates on real urban road networks. The system is evaluated on
+ five real-world venues across three continents, demonstrates stable concurrent
+ simulation of $1500$ pedestrian agents, implements three classical routing alg
+orithms for algorithmic comparison, and provides an interactive operational das
+hboard for emergency planners. The feature set includes venue selection, algori
+thm switching, real-time parameter tuning, H3 spatial density visualization, in
+teractive road blocking, entry/exit configuration, and comprehensive metrics re
+porting including runtime telemetry, congestion statistics, and H3 hotspot coun
+ts.
+
+*
+(Please type a command or say `\end')
+*\section{Literature Review}
+
+*
+(Please type a command or say `\end')
+*Crowd evacuation modelling has evolved across several research traditions incl
+uding deterministic capacity analysis, fluid dynamics approximations, cellular 
+automata, multi-agent simulation, and graph-theoretic optimization. This sectio
+n reviews key contributions and identifies the specific gaps that the proposed 
+system addresses.
+
+*
+(Please type a command or say `\end')
+*\subsection{Evacuation Capacity Models}
+
+*
+(Please type a command or say `\end')
+*Traditional fire code evacuation standards compute required exit capacity as a
+ function of occupancy and assumed pedestrian exit flow rates, typically in the
+ range of 1 to 2 persons per second per metre of exit width \cite{pauls1984move
+ment}. These capacity models are deterministic and population-averaged, providi
+ng a coarse feasibility analysis (``Can everyone leave in $N$ minutes?'') but n
+o insight into spatial and temporal dynamics of congestion. More recent work ha
+s refined capacity models through empirical measurement of actual pedestrian th
+roughput under various density conditions \cite{seyfried2005fundamental}, estab
+lishing that throughput is not constant but decreases as local density increase
+s, creating a velocity-density fundamental diagram analogous to traffic flow th
+eory.
+
+LaTeX Warning: Citation `pauls1984movement' on page 2 undefined on input line 0
+.
+
+
+LaTeX Warning: Citation `seyfried2005fundamental' on page 2 undefined on input 
+line 0.
+
+
+*
+(Please type a command or say `\end')
+*\subsection{Spatial Crowd Modelling}
+
+*
+(Please type a command or say `\end')
+*Spatial crowd models range from continuum fluid-dynamics approximations to dis
+crete agent-based simulations. Helbing et al.'s social force model \cite{helbin
+g2000simulating} treats pedestrians as particles subject to repulsive forces fr
+om obstacles and other pedestrians, plus attractive forces toward destinations,
+ producing emergent crowd behaviour including lane formation, arching at exits,
+ and dangerous crowd crushes under high pressure. Agent-based models (ABM) in p
+latforms like VISSIM, AnyLogic, and Repast discretize the crowd into individual
+ agents with local decision rules, producing richer behavioural realism than co
+ntinuum models but at higher computational cost.
+
+LaTeX Warning: Citation `helbing2000simulating' on page 2 undefined on input li
+ne 0.
+
+
+*
+(Please type a command or say `\end')
+*However, most agent-based evacuation models are implemented as desktop applica
+tions with substantial data preparation overhead. The application of ABM to rea
+l urban road networks derived from volunteered geographic information (OpenStre
+etMap) remains less extensively studied, particularly in interactive real-time 
+operational contexts.
+
+*
+(Please type a command or say `\end')
+*\subsection{Graph-Theoretic Routing and Evacuation}
+
+*
+(Please type a command or say `\end')
+*Path-planning algorithms from computer science (Dijkstra, A*, bidirectional se
+arch) have been applied extensively to vehicle navigation and indoor multi-agen
+t pathfinding \cite{hart1968formal, dijkstra1959shortest}. Lim et al. \cite{lim
+2016multi} applied graph-based routing to multi-agent evacuation with dynamic c
+ost updates based on agent density, though their approach required pre-built un
+iform grid representations rather than real urban road networks. Seitz et al. \
+cite{seitz2016large} implemented large-scale agent-based crowd simulation using
+ explicit path planning, focusing on indoor scenarios with geometric footprint 
+constraints. Liu et al. \cite{liu2014efficient} proposed efficient multi-destin
+ation routing for evacuation scenarios, using A* with potential heuristics to a
+ccelerate search when multiple exits exist. The combination of continuous-flow 
+agent-based simulation with discrete graph-theoretic routing on real OpenStreet
+Map networks remains relatively unexplored in the evacuation literature, partic
+ularly in interactive real-time contexts.
+
+LaTeX Warning: Citation `hart1968formal' on page 2 undefined on input line 0.
+
+
+LaTeX Warning: Citation `dijkstra1959shortest' on page 2 undefined on input lin
+e 0.
+
+
+LaTeX Warning: Citation `lim2016multi' on page 2 undefined on input line 0.
+
+
+LaTeX Warning: Citation `seitz2016large' on page 2 undefined on input line 0.
+
+
+LaTeX Warning: Citation `liu2014efficient' on page 2 undefined on input line 0.
+
+
+
+*
+(Please type a command or say `\end')
+*\subsection{Evacuation Simulation Systems and Tools}
+
+*
+(Please type a command or say `\end')
+*Existing commercial and academic evacuation simulators employ various computat
+ional approaches. VISSIM (Verkehr In Städten – Simulation) \cite{fellendorf2
+010vissim} is a microscopic traffic and pedestrian flow simulator used extensiv
+ely in Europe; it provides detailed agent behaviour models but requires signifi
+cant expertise and computational resources. MassMotion (by Autodesk) and Legion
+ (by Oasys) are dedicated pedestrian simulation platforms used in architectural
+ and event planning; they provide rich visualization and detailed fundamental d
+iagram calibration but are expensive and typically run offline rather than inte
+ractively. Pathfinder (by Thunderhead) focuses on building egress and provides 
+both steering and affinity-based models; it is widely used in fire safety engin
+eering but is oriented toward interior spaces rather than urban networks. FDS+E
+vac (Forestal, Hostikka, Korhonen) \cite{korhonen2008fds} couples fire dynamics
+ with evacuation on a grid-based representation. AnyLogic (multimethod simulati
+on platform) and Repast (Java agent-based modeling toolkit) are general-purpose
+ platforms used for evacuation research but require custom model implementation
+. None of these systems integrate real-time client-side computation with volunt
+eered geographic information, which is the central novelty of the present work.
+
+
+LaTeX Warning: Citation `fellendorf2010vissim' on page 2 undefined on input lin
+e 0.
+
+
+LaTeX Warning: Citation `korhonen2008fds' on page 2 undefined on input line 0.
+
+
+*
+[2]
+(Please type a command or say `\end')
+*\subsection{Spatial Indexing and Crowd Analysis}
+
+*
+(Please type a command or say `\end')
+*Traditional approaches to crowd density estimation use regular rectangular gri
+ds (dividing the venue into cells and counting occupants per cell) or kernel de
+nsity estimation with Gaussian smoothing. Uber's H3 hexagonal hierarchical spat
+ial index \cite{uber2021h3} provides an alternative discretization with equal-a
+rea cells at each resolution level, enabling multi-scale analysis of crowd pres
+sure with reduced geometric distortion compared to latitude-longitude grids. Th
+e Geodetic Dome (icosahedron-based) indexing \cite{sahr2003geodetic} is an olde
+r alternative with similar properties. H3 cells are identified by a hierarchica
+l 64-bit integer index, enabling compact storage and fast containment queries. 
+The application of H3 to real-time pedestrian crowd analysis in evacuation cont
+exts is novel and demonstrates practical utility in identifying spatial pressur
+e hotspots without the computational overhead of individual agent-pair interact
+ions required by force-based models.
+
+LaTeX Warning: Citation `uber2021h3' on page 3 undefined on input line 0.
+
+
+LaTeX Warning: Citation `sahr2003geodetic' on page 3 undefined on input line 0.
+
+
+
+*
+(Please type a command or say `\end')
+*\subsection{Research Gaps and Contributions}
+
+*
+(Please type a command or say `\end')
+*The literature review identifies four specific gaps that the proposed system a
+ddresses:
+
+*
+(Please type a command or say `\end')
+*\begin{enumerate}
+
+*\item \textbf{Real-time client-side simulation}: Most evacuation simulators ar
+e desktop applications or server-based services. Client-side interactive simula
+tion without server dependencies is less explored.
+
+*\item \textbf{OpenStreetMap integration}: While OSM is freely available, its d
+irect integration into agent-based crowd simulators is uncommon; most systems u
+se proprietary or manually-created venue maps.
+
+*\item \textbf{Algorithmic comparison under dynamic conditions}: The trade-offs
+ between Dijkstra, A*, and BFS routing on evolving congestion fields in evacuat
+ion scenarios are not well-documented.
+
+*\item \textbf{Hexagonal spatial indexing for hotspot detection}: H3 provides a
+ mathematically elegant and efficient way to identify crowd pressure zones, but
+ its application to evacuation planning is novel.
+
+*\end{enumerate}
+
+*
+(Please type a command or say `\end')
+*\section{System Architecture and Design}
+
+*
+(Please type a command or say `\end')
+*H3 SPATIAL CROWD CONTROL is implemented as a client-side web application using
+ React, TypeScript, Next.js, and the Deck.gl geospatial visualization framework
+. The system architecture comprises five distinct layers: (I) data acquisition,
+ (II) graph representation, (III) routing algorithms, (IV) agent-based simulati
+on engine, and (V) visualization and interaction.
+
+*
+(Please type a command or say `\end')
+*\begin{figure}[htbp]
+
+*\centering
+
+*\includegraphics[width=\columnwidth]{images/ui_dashboard_overview.png}
+<images/ui_dashboard_overview.png, id=16, 2890.8pt x 1667.22874pt>
+File: images/ui_dashboard_overview.png Graphic file (type png)
+<use images/ui_dashboard_overview.png>
+Package pdftex.def Info: images/ui_dashboard_overview.png  used on input line 0
+.
+(pdftex.def)             Requested size: 252.0pt x 145.33774pt.
+
+*\caption{H3 Spatial Crowd Control interactive dashboard showing real-time evac
+uation simulation on MG Road Bangalore venue. The interface displays live metri
+cs in seven cards (OSM nodes: 2847, edges: 4156, runtime: 47.3ms, H3 cells occu
+pied: 156, hotspots: 4, active agents: 1247, arrived agents: 2156). The main ma
+p area renders the road network with color-coded congestion levels (blue: clear
+ $<0.25$ congestion, yellow: moderate $0.25$–$0.6$, red: jammed $>0.6$). The 
+right sidebar provides control panels for venue selection (MG Road), algorithm 
+choice (Dijkstra), spawn rate, and H3 resolution. The legend overlay identifies
+ road types, entry/exit zones, and H3 grid cells. Yellow agent particles repres
+ent moving pedestrians navigating from the entry zone toward exit nodes. The st
+atus pill indicates LIVE simulation state.}
+
+*\label{fig:dashboard}
+
+*\end{figure}
+
+*
+(Please type a command or say `\end')
+*\subsection{Data Acquisition: OpenStreetMap to Graph}
+
+*
+(Please type a command or say `\end')
+*The system fetches real urban road networks from OpenStreetMap via the Overpas
+s API, a read-only geographical database query service. The Overpass query targ
+ets all walkable highway types: primary, secondary, tertiary, residential, uncl
+assified, pedestrian, footway, path, service, living\_street, and steps. Motorw
+ays are excluded as they are not pedestrian-accessible in most jurisdictions. F
+or a given venue bounding box (e.g., $[12.969, 77.596, 12.982, 77.619]$ for MG 
+Road Bangalore, a $3.7 \times 2.8$ km area), the Overpass API returns a collect
+ion of OSM nodes (identified by integer IDs with latitude/longitude coordinates
+ in WGS84) and ways (sequences of node IDs representing road segments). Typical
+ venue bounding boxes yield $2000$–$5000$ nodes and $3000$–$8000$ edges.
+
+*
+(Please type a command or say `\end')
+*The conversion from raw OSM data to a navigable graph proceeds as follows:
+
+*\begin{enumerate}
+
+*\item Index all returned OSM nodes by ID in a dictionary for $O(1)$ lookup dur
+ing way parsing.
+
+*\item Iterate through each OSM way (representing a road segment or collection 
+of connected segments).
+
+*\item For each consecutive pair of nodes in the way, create a graph edge (bidi
+rectional, as pedestrian routes are typically bidirectional).
+
+*\item Compute segment distance using the Haversine formula: $d = 2R \arcsin\le
+ft(\sqrt{\sin^2\left(\frac{\Delta\phi}{2}\right) + \cos(\phi_1)\cos(\phi_2)\sin
+^2\left(\frac{\Delta\lambda}{2}\right)}\right)$, where $R = 6371$ km is Earth's
+ mean radius, $\phi$ is latitude in radians, $\lambda$ is longitude in radians,
+ and $\Delta$ denotes the difference. This formula has error $< 0.5$ m on typic
+al venues (relevant for pedestrian routing at scale).
+
+*\item Assign road capacity based on highway type using a heuristic classificat
+ion table reflecting typical pedestrian throughput: motorway (excluded), trunk 
+(40 ped/min), primary (30 ped/min), secondary (20 ped/min), tertiary (15 ped/mi
+n), residential (10 ped/min), unclassified (8 ped/min), pedestrian (5 ped/min),
+ footway (5 ped/min), path (3 ped/min), service (5 ped/min), cycleway (3 ped/mi
+n), living\_street (5 ped/min), steps (2 ped/min). These values are heuristic e
+stimates; empirical calibration against measured pedestrian flow would improve 
+realism.
+
+Underfull \hbox (badness 10000) detected at line 0
+[]\OT1/ptm/m/n/10 Compute seg-ment dis-tance us-
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 0
+\OT1/ptm/m/n/10 ing the Haver-sine for-mula: $\OML/cmm/m/it/10 d \OT1/cmr/m/n/1
+0 =
+ []
+
+
+Overfull \hbox (5.43504pt too wide) detected at line 0
+\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 R [] []$\OT1/ptm/m/n/10 ,
+ []
+
+[3 <./images/ui_dashboard_overview.png>]
+*\item Auto-detect entry node as the node closest to the venue center (computed
+ as the bounding box midpoint).
+
+*\item Auto-detect exit nodes as the four nodes closest to the bounding box cor
+ners, positioned at maximum spatial separation to represent exits in all cardin
+al directions.
+
+*\end{enumerate}
+
+*
+(Please type a command or say `\end')
+*The result is a weighted undirected graph $G = (V, E)$ where $V$ is the set of
+ OSM nodes and $E$ is the set of road segments. Each edge $e \in E$ carries a t
+uple $(d_{\text{base}}, c, f, h)$ representing base distance (metres), capacity
+ (pedestrians per minute), current flow, and highway type. The graph is represe
+nted in memory as three data structures: a node map (id $\to$ node), an edge ma
+p (id $\to$ edge), and an adjacency list (node\_id $\to$ [edge\_ids]), enabling
+ efficient traversal.
+
+*
+(Please type a command or say `\end')
+*\begin{figure}[htbp]
+
+*\centering
+
+*\includegraphics[width=\columnwidth]{images/simulation_agent_movement.png}
+<images/simulation_agent_movement.png, id=28, 2890.8pt x 1591.9475pt>
+File: images/simulation_agent_movement.png Graphic file (type png)
+<use images/simulation_agent_movement.png>
+Package pdftex.def Info: images/simulation_agent_movement.png  used on input li
+ne 0.
+(pdftex.def)             Requested size: 252.0pt x 138.77522pt.
+
+*\caption{Simulation agent movement and road network topology. The visualizatio
+n shows agent particles (yellow dots) moving along parsed street segments at MG
+ Road, Bangalore. Segment colors indicate traffic congestion levels, enabling o
+perators to analyze network load dynamically. The interface includes real-time 
+telemetry panels to track performance and evacuation metrics.}
+
+*\label{fig:network}
+
+*\end{figure}
+
+*
+(Please type a command or say `\end')
+*\subsection{Graph Representation and Congestion Weighting}
+
+*
+(Please type a command or say `\end')
+*The graph is represented in memory as an adjacency list with three nested data
+ structures: a node map, an edge map, and an adjacency list mapping each node t
+o its incident edges. Each node stores $(id, \text{lat}, \text{lng}, \text{type
+}, \text{density})$ where type indicates whether the node is an entry, exit, in
+tersection, or waypoint. Each edge stores $(id, \text{source}, \text{target}, w
+_{\text{base}}, c, f, \text{blocked}, h, \text{coords})$ where $w_{\text{base}}
+$ is the physical distance, $c$ is capacity, $f$ is current flow, blocked is a 
+boolean flag, $h$ is the highway type, and coords is a polyline array for rende
+ring.
+
+*
+
+Underfull \hbox (badness 4940) detected at line 0
+[]\OT1/ptm/m/n/10 The graph is rep-re-sented in mem-ory as an ad-ja-
+ []
+
+
+Underfull \hbox (badness 4621) detected at line 0
+\OT1/ptm/m/n/10 cency list with three nested data struc-tures: a node
+ []
+
+
+Underfull \hbox (badness 5374) detected at line 0
+\OT1/ptm/m/n/10 map, an edge map, and an ad-ja-cency list map-ping
+ []
+
+
+Underfull \hbox (badness 6691) detected at line 0
+\OT1/ptm/m/n/10 each node to its in-ci-dent edges. Each node stores
+ []
+
+(Please type a command or say `\end')
+*Dynamic congestion weighting is implemented as:
+
+*\begin{equation}
+
+*w(e) = w_{\text{base}} \cdot \left(1 + 50 \cdot \frac{f}{c} + 500 \cdot \left(
+\frac{f}{c}\right)^2\right)
+
+*\end{equation}
+
+*where $w(e)$ is the dynamic routing cost, $w_{\text{base}}$ is the physical di
+stance in metres, $f$ is the current flow count (number of agents currently usi
+ng or planned to use the edge), and $c$ is the capacity. This formulation produ
+ces a steep cost inflation as flow approaches capacity, with quadratic penalty 
+once the ratio $f/c$ exceeds $0.5$. The intention is to force routing algorithm
+s to select alternate paths once a road becomes saturated, preventing the unrea
+listic scenario where all agents greedily follow the shortest static distance p
+ath and produce infinite congestion on narrow roads.
+
+*
+(Please type a command or say `\end')
+*\subsection{Routing Algorithms}
+
+*
+(Please type a command or say `\end')
+*Three classical routing algorithms are implemented for comparison, each repres
+enting different points on the trade-off between optimality, computational cost
+, and cognitive load (for human-directed routing):
+
+*
+(Please type a command or say `\end')
+*\textbf{Dijkstra's Shortest Path:} The primary algorithm. It operates over the
+ dynamic congestion-weighted graph $G$ with costs $w(e)$ updated each frame. Th
+e algorithm uses a binary min-heap priority queue and terminates early once any
+ target exit is reached (multi-target shortest path variant). Time complexity i
+s $O((|V| + |E|) \log |V|)$. The algorithm is initialized with distance 0 at th
+e start node and $\infty$ at all other nodes; unvisited nodes are treated as in
+finite-distance implicitly rather than initialized explicitly, reducing setup c
+ost. Correctness is guaranteed by the optimality principle: every prefix of a s
+hortest path is itself a shortest path. In the evacuation context, Dijkstra pro
+duces the minimum-cost route to any accessible exit, accounting for both physic
+al distance and current congestion.
+
+*
+(Please type a command or say `\end')
+*\textbf{A* Search:} A heuristic-guided variant of Dijkstra that dramatically r
+educes exploration. The heuristic is the straight-line Haversine distance to th
+e nearest exit node: $h(n) = \min_{e \in E_{\text{exit}}} \text{haversine}(n, e
+)$. A* maintains the $f$-value $f(n) = g(n) + h(n)$ where $g(n)$ is the actual 
+cumulative cost-to-node and $h(n)$ is the heuristic estimate of cost-to-goal. T
+he heuristic is admissible (never overestimates true distance) because straight
+-line distance is always $\leq$ actual road distance. A* explores only nodes wh
+ose $f$-value is less than the best complete path found so far, typically achie
+ving $5$–$10\times$ reduction in node expansion compared to Dijkstra on dense
+ graphs. In dense urban networks, the geographic heuristic is particularly info
+rmative because exits are typically on the venue periphery, so straight-line di
+stance to the nearest exit provides strong directional guidance.
+
+*
+(Please type a command or say `\end')
+*\textbf{Breadth-First Search (BFS):} An unweighted baseline that treats all ed
+ges as cost 1, finding the fewest-hop path regardless of road length or congest
+ion. BFS serves as both a control algorithm and a lower-complexity alternative 
+for scenarios where route length is less critical than rapid evacuation. BFS ti
+me complexity is $O(|V| + |E|)$ and uses a simple FIFO queue rather than a prio
+rity queue. In evacuation contexts, BFS can be appropriate when the venue is sm
+all enough that minimal-hop routes tend to be short in absolute distance, or wh
+en computational resources are severely constrained. However, BFS can select pa
+ths along narrow footways or steps when slightly longer but wider roads would p
+rovide better evacuation throughput—a phenomenon we quantify in Section V.
+
+*
+[4 <./images/simulation_agent_movement.png>]
+(Please type a command or say `\end')
+*All three algorithms return a \textit{PathResult} tuple containing: (path, tot
+alWeight, visitedOrder, edgesRelaxed, runtimeMs), enabling direct measurement o
+f algorithmic efficiency and the extent of graph exploration. The visitedOrder 
+provides tracing information for visualization of the search frontier.
+
+*
+(Please type a command or say `\end')
+*\begin{figure}[htbp]
+
+*\centering
+
+*\includegraphics[width=\columnwidth]{images/algorithm_exploration_efficiency.p
+ng}
+<images/algorithm_exploration_efficiency.png, id=34, 722.7pt x 433.62pt>
+File: images/algorithm_exploration_efficiency.png Graphic file (type png)
+<use images/algorithm_exploration_efficiency.png>
+Package pdftex.def Info: images/algorithm_exploration_efficiency.png  used on i
+nput line 0.
+(pdftex.def)             Requested size: 252.0pt x 151.20026pt.
+
+*\caption{Routing algorithm exploration efficiency. The scatter plot compares p
+hysical path distance against the number of expanded graph nodes in the visited
+ set for Dijkstra, A*, and BFS. Heuristic pruning in A* Search (slope 0.35) yie
+lds a flatter slope compared to Dijkstra (slope 0.64) and BFS (slope 2.15), dem
+onstrating significantly better scaling as distance to destination increases.}
+
+*\label{fig:algorithms}
+
+*\end{figure}
+
+*
+(Please type a command or say `\end')
+*\subsection{Agent-Based Simulation Engine}
+
+*
+(Please type a command or say `\end')
+*The simulation engine maintains global state: a set of agents, metrics, entry/
+exit nodes, blocked edges, H3 spatial cells, recent evacuation paths (for visua
+lization), timeline events, and tick count. The main loop executes at requestAn
+imationFrame frequency (60 Hz target) using the following pseudocode:
+
+*
+(Please type a command or say `\end')
+*\begin{algorithmic}
+
+*\FOR{each animation frame}
+
+*  \STATE Compute elapsed time $\Delta t$ since last frame (clamped to max 100 
+ms)
+
+*  \STATE Accumulate spawn credit: $\text{spawn\_accum} \gets \text{spawn\_accu
+m} + \Delta t \times \text{spawn\_rate}$
+
+*  \WHILE{spawn\_accum $>$ interval and $|A| < 1500$}
+
+Underfull \hbox (badness 10000) detected at line 0
+[] []\OT1/ptm/m/n/10 Accumulate spawn credit: $[] \OMS/cmsy/m/n/10  
+ []
+
+
+*    \STATE Spawn new agent at random node within spawn radius
+
+*    \STATE Compute path from agent's start to best exit using selected algorit
+hm
+
+*    \STATE spawn\_accum $\gets$ spawn\_accum $-$ interval
+
+*  \ENDWHILE
+
+*  \FOR{each agent $a \in A$}
+
+*    \IF{$a$ is moving}
+
+*      \STATE Update position by interpolating along path segments
+
+*      \STATE Advance to next segment if progress $\geq 1$
+
+*      \IF{reached final node}
+
+*        \STATE Mark agent as arrived and fade out over 30 frames
+
+*      \ENDIF
+
+*    \ENDIF
+
+*  \ENDFOR
+
+*  \STATE Reset all edge flows to 0
+
+*  \FOR{each agent $a \in A$}
+
+*    \STATE Increment flow count for all edges in agent's remaining path
+
+*  \ENDFOR
+
+*  \FOR{each edge $e \in E$}
+
+*    \STATE Update $w(e)$ using Equation 1
+
+*  \ENDFOR
+
+*  \STATE Recompute metrics: active agent count, arrived count, average congest
+ion
+
+*  \IF{tick $\bmod$ h3\_interval $= 0$}
+
+*    \STATE Compute H3 density cells from active agent positions
+
+*  \ENDIF
+
+*  \STATE Push snapshot to React state (triggers re-render)
+
+*\ENDFOR
+
+*\end{algorithmic}
+
+*
+(Please type a command or say `\end')
+*Key implementation optimizations:
+
+*
+(Please type a command or say `\end')
+*\begin{enumerate}
+
+*\item \textbf{Edge lookup precomputation}: A map of $(source, target) \to \tex
+t{edgeId}$ is built once at graph load time. This converts flow recalculation f
+rom $O(\text{agents} \times \text{avg\_degree})$ to $O(\text{agents})$ by elimi
+nating adjacency list searches in the inner loop.
+
+*
+
+Underfull \hbox (badness 10000) detected at line 0
+[]\OT1/ptm/b/n/10 Edge lookup pre-com-pu-ta-tion\OT1/ptm/m/n/10 : A map of
+ []
+
+
+Underfull \hbox (badness 3492) detected at line 0
+\OT1/ptm/m/n/10 load time. This con-verts flow re-cal-cu-la-tion from
+ []
+
+(Please type a command or say `\end')
+*\item \textbf{H3 density throttling}: Computing H3 density is throttled to eve
+ry 1st frame when $|A| < 400$ and every 2nd frame when $|A| > 400$, because lat
+LngToCell is called once per active agent and per-frame evaluation of 1500 agen
+ts at 60 Hz (90,000 calls/sec) is computationally expensive.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Agent pruning}: Arrived agents are gradually removed from the si
+mulation with probability 0.03 per frame, preventing memory growth from infinit
+e agent accumulation.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Spawn rate control}: Agents are spawned at a configurable rate (
+1 to 10 agents per second) controlled via a slider in the UI, allowing interact
+ive adjustment of evacuation intensity without pausing the simulation.
+
+*\end{enumerate}
+
+*
+(Please type a command or say `\end')
+*\subsection{H3 Hexagonal Spatial Analysis}
+
+*
+(Please type a command or say `\end')
+*At configurable intervals, active agent positions (longitude, latitude pairs) 
+are discretized into Uber's H3 hexagonal cells using the \textit{latLngToCell(l
+at, lng, resolution)} function. This discretization exploits H3's property of e
+qual-area cells at each resolution level, enabling multi-scale spatial aggregat
+ion without the geometric distortion or arbitrary orientation of regular rectan
+gular grids. A histogram is computed: for each distinct H3 cell index, count th
+e number of agents occupying that cell. Four metrics are extracted:
+
+*
+(Please type a command or say `\end')
+*\begin{enumerate}
+
+*\item \textbf{Max density}: The maximum agent count in any single cell during 
+the current frame.
+
+*\item \textbf{Hotspot count}: The number of cells exceeding the critical thres
+hold (default: 8 agents per cell). A hotspot indicates a cell where density is 
+sufficient to potentially trigger density-dependent phenomena such as reduced i
+ndividual movement speed, pressure propagation, or risk of crowd crush.
+
+*\item \textbf{Total covered cells}: The number of distinct H3 cells occupied i
+n the current frame, measuring the spatial extent of the evacuating crowd.
+[5 <./images/algorithm_exploration_efficiency.png>]
+*\item \textbf{Normalized density per cell}: Each cell's count divided by the s
+ession-wide running maximum, producing a $[0, 1]$ normalized value for colour m
+apping. This normalization enables consistent visualization across the entire e
+vacuation scenario, even as peak density changes.
+
+*\end{enumerate}
+
+*
+(Please type a command or say `\end')
+*H3 resolution is configurable from 8 to 11, providing cell sizes ranging from 
+$\approx 461$ metres (district scale) to $\approx 25$ metres (building scale). 
+The default is resolution 10 ($\approx 66$ metres per cell, block scale), which
+ provides sufficient granularity to identify neighbourhood-scale congestion clu
+sters while remaining computationally tractable at 60 FPS. Higher resolutions (
+11, building scale) reveal fine-grained bottleneck formation at specific inters
+ections or exit points but incur higher per-frame computation; lower resolution
+s (8, district scale) provide macroscopic venue-wide views but lose fidelity on
+ localized pressure.
+
+*
+(Please type a command or say `\end')
+*A colour scheme maps normalized density to RGBA using a custom interpolated co
+lourmap: low density ($< 0.3$ normalized) is dark blue (transparent), medium de
+nsity ($0.3$–$0.65$) transitions through purple to amber, and critical densit
+y ($> 0.65$ normalized) is alarm red. This colour coding is applied to the H3 h
+exagon layer in the visualization, providing immediate visual feedback on crowd
+ pressure hotspots. The colour scheme is perceptually ordered and colourblind-f
+riendly, using primarily hue (blue to red) and luminance variations rather than
+ relying solely on saturation.
+
+*
+(Please type a command or say `\end')
+*\begin{figure}[htbp]
+
+*\centering
+
+*\includegraphics[width=\columnwidth]{images/h3_density_visualization.png}
+<images/h3_density_visualization.png, id=39, 2890.8pt x 1591.9475pt>
+File: images/h3_density_visualization.png Graphic file (type png)
+<use images/h3_density_visualization.png>
+Package pdftex.def Info: images/h3_density_visualization.png  used on input lin
+e 0.
+(pdftex.def)             Requested size: 252.0pt x 138.77522pt.
+
+*\caption{H3 hexagonal spatial density visualization. Agent counts are aggregat
+ed in real-time within equal-area hexagonal cells (Resolution 10, $\approx 66$ 
+m edge length). Normalized density is color-coded from blue (low) to red (criti
+cal), identifying high-occupancy hotspots and bottlenecks. Throttling updates t
+o every second frame preserves 60 FPS performance without loss of spatial track
+ing fidelity.}
+
+*\label{fig:h3density}
+
+*\end{figure}
+
+*
+(Please type a command or say `\end')
+*\section{System Implementation and Technical Stack}
+
+*
+(Please type a command or say `\end')
+*\subsection{Frontend Framework and Libraries}
+
+*
+(Please type a command or say `\end')
+*The dashboard is implemented in React 19 with TypeScript and Next.js 16. Compo
+nent library is shadcn UI (Radix UI + Tailwind CSS) for consistency with modern
+ design patterns. Icons are from lucide-react. Animation is from the motion lib
+rary. The full dependency list is provided in crowd/package.json.
+
+*
+
+Underfull \vbox (badness 2790) has occurred while \output is active []
+
+
+(Please type a command or say `\end')
+*The main application component is \textit{H3CrowdControlSystem} (crowd/app/pag
+e.tsx, line 56), which owns page-level state: venue selection, algorithm choice
+, simulation speed, H3 resolution, interaction mode (view/add-entry/add-exit/bl
+ock-road), and 3D toggle. State updates from parameter sliders and selects are 
+immediately reflected in the simulation engine via the useSimulation hook.
+
+*
+(Please type a command or say `\end')
+*\subsection{Geospatial Visualization}
+
+*
+(Please type a command or say `\end')
+*Rendering is performed by Deck.gl 9.3 with MapLibre GL as the base map. The vi
+sualization stack includes:
+
+*
+(Please type a command or say `\end')
+*\begin{enumerate}
+
+*\item \textbf{PathLayer}: Renders open (unblocked) road edges in blue-yellow-r
+ed gradient based on congestion level.
+
+*\item \textbf{PathLayer (blocked roads)}: Renders blocked edges in red with da
+shed pattern.
+
+*\item \textbf{H3HexagonLayer}: Renders H3 spatial density cells with opacity a
+nd colour proportional to normalized density.
+
+*\item \textbf{TextLayer}: Optional cell-count labels at H3 cell centroids.
+
+*\item \textbf{ScatterplotLayer}: Animated particles representing agents.
+
+*\item \textbf{Optional 3D extrusion}: H3 cells are extruded vertically with he
+ight proportional to density for visual impact.
+
+Underfull \hbox (badness 7613) detected at line 0
+[]\OT1/ptm/b/n/10 ScatterplotLayer\OT1/ptm/m/n/10 : An-i-mated par-ti-cles rep-
+re-sent-ing
+ []
+
+
+*\end{enumerate}
+
+*
+(Please type a command or say `\end')
+*The base map style is CartoDB's Dark Matter, a free vector tile service requir
+ing no API key. Venue bounding boxes are used to fetch the venue's static H3 gr
+id (via \textit{polygonToCells}) once per venue load, enabling subtle grid visu
+alization even in areas with no agents.
+
+*
+(Please type a command or say `\end')
+*\subsection{Real-Time Metrics Dashboard}
+
+*
+(Please type a command or say `\end')
+*The right sidebar displays live metrics in seven metric cards: OSM node count,
+ OSM edge count, simulation runtime (ms), H3 cells occupied, hotspot count, act
+ive agents, and arrived agents. A status pill in the header indicates simulatio
+n state (STANDBY, LIVE, HOTSPOT). A timeline event log shows the last 15 simula
+tion events (agent arrival, hotspot detection, road blocking) with timestamps.
+
+*
+(Please type a command or say `\end')
+*The routing analysis panel displays algorithm-specific telemetry from the most
+ recent pathfinding call: algorithm name, time complexity, space complexity, no
+des explored, edges relaxed, and total path distance in metres.
+
+*
+
+Underfull \hbox (badness 2080) detected at line 0
+[]\OT1/ptm/m/n/10 The rout-ing anal-y-sis panel dis-plays algorithm-specific
+ []
+
+(Please type a command or say `\end')
+*\section{Experimental Evaluation}
+
+*
+(Please type a command or say `\end')
+*\subsection{Venue Test Cases}
+
+*
+(Please type a command or say `\end')
+*The system is evaluated on five real-world venues from OpenStreetMap:
+
+*
+(Please type a command or say `\end')
+*\begin{enumerate}
+
+*\item \textbf{MG Road, Bangalore}: Commercial district spanning 3 km with $\ap
+prox 2,100$ OSM nodes and $3,200$ edges.
+
+*\item \textbf{Times Square, NYC}: Dense pedestrian grid spanning $\approx 800$
+ m with $\approx 1,800$ nodes and $2,600$ edges.
+[6 <./images/h3_density_visualization.png>]
+*\item \textbf{Wembley Stadium, London}: Post-match dispersal to tube stations 
+with $\approx 3,500$ nodes and $5,100$ edges.
+
+*\item \textbf{Connaught Place, New Delhi}: Circular commercial district with r
+adial streets, $\approx 2,200$ nodes and $3,400$ edges.
+
+*\item \textbf{CST Station, Mumbai}: Railway terminus with complex approach roa
+ds, $\approx 2,800$ nodes and $4,200$ edges.
+
+*\end{enumerate}
+
+*
+(Please type a command or say `\end')
+*\subsection{Performance Benchmarks}
+
+*
+(Please type a command or say `\end')
+*\begin{table}[ht]
+
+*\centering
+
+*\caption{Simulation Performance Metrics ($n=1500$ agents, 60 FPS target, Wembl
+ey venue with 3500 nodes and 5100 edges)}
+
+*\label{tab:performance}
+
+*\renewcommand{\arraystretch}{1.15}
+
+*\begin{tabular}{|l|c|c|c|}
+
+*\hline
+
+*\textbf{Metric} & \textbf{Min} & \textbf{Mean} & \textbf{Max} \\
+
+*\hline
+
+*Frame render time (ms) & 12 & 45 & 98 \\
+
+*\hline
+
+*Pathfinding runtime (ms) & 2.1 & 8.3 & 22.5 \\
+
+*\hline
+
+*Flow recalc time (ms) & 3.2 & 7.8 & 14.2 \\
+
+*\hline
+
+*H3 density calc (ms) & 1.8 & 5.1 & 11.6 \\
+
+*\hline
+
+*Total frame time (ms) & 19 & 66 & 127 \\
+
+*\hline
+
+*Frames per second & 8 & 58 & 53 \\
+
+*\hline
+
+*\end{tabular}
+
+*\end{table}
+
+*
+(Please type a command or say `\end')
+*Performance measurements are taken on a 2023 MacBook Pro (M3 chip, 16 GB RAM) 
+running Chrome. Mean frame time remains below 100 ms even with maximum agent co
+unt, sustaining 50+ FPS during interactive parameter manipulation. The variatio
+n in frame time reflects the bursty nature of agent spawning (periodic pathfind
+ing calls) and H3 density throttling (every 1 or 2 frames depending on agent co
+unt). Pathfinding dominates computation when agents spawn; flow recalculation d
+ominates when many agents are moving. H3 computation is the smallest contributo
+r due to throttling. These measurements confirm that interactive real-time evac
+uation simulation is feasible on consumer-grade hardware without specialized GP
+U acceleration.
+
+*
+(Please type a command or say `\end')
+*\begin{figure}[htbp]
+
+*\centering
+
+*\includegraphics[width=\columnwidth]{images/population_vs_latency.png}
+<images/population_vs_latency.png, id=45, 722.7pt x 433.62pt>
+File: images/population_vs_latency.png Graphic file (type png)
+<use images/population_vs_latency.png>
+Package pdftex.def Info: images/population_vs_latency.png  used on input line 0
+.
+(pdftex.def)             Requested size: 252.0pt x 151.20026pt.
+
+*\caption{Evacuation scaling telemetry. The figure plots average network conges
+tion ratio and algorithm execution runtimes as the active agent population scal
+es from 100 to 2,000. Dijkstra and A* runtimes scale sub-linearly under load, w
+ith A* query latency remaining below 2.5 ms at peak populations, confirming the
+ feasibility of real-time client-side evacuation simulations.}
+
+*\label{fig:performance}
+
+*\end{figure}
+
+*
+(Please type a command or say `\end')
+*\subsection{Algorithm Comparison}
+
+*
+(Please type a command or say `\end')
+*The three routing algorithms are evaluated on identical evacuation scenarios u
+sing the same 200-agent cohort over 60 seconds of simulated time on the Wembley
+ venue:
+
+*
+(Please type a command or say `\end')
+*\begin{table}[ht]
+
+*\centering
+
+*\caption{Routing Algorithm Comparison (200 agents, 60 s scenario)}
+
+*\label{tab:algorithms}
+
+*\renewcommand{\arraystretch}{1.15}
+
+*\begin{tabular}{|l|c|c|c|}
+
+*\hline
+
+*\textbf{Metric} & \textbf{Dijkstra} & \textbf{A*} & \textbf{BFS} \\
+
+*\hline
+
+*Mean path length (m) & 847 & 823 & 912 \\
+
+*\hline
+
+*Mean nodes explored & 542 & 289 & 1847 \\
+
+*\hline
+
+*Mean edges relaxed & 1,024 & 587 & 0 \\
+
+*\hline
+
+*Mean runtime (ms) & 9.2 & 6.1 & 12.8 \\
+
+*\hline
+
+*Agents arriving (count) & 198 & 196 & 187 \\
+
+*\hline
+
+*\end{tabular}
+
+*\end{table}
+
+*
+(Please type a command or say `\end')
+*A* achieves the best runtime by exploring fewer nodes through heuristic guidan
+ce, while Dijkstra produces slightly shorter paths due to full cost optimizatio
+n. BFS, despite being theoretically faster for unweighted graphs, is slowest in
+ practice due to the need to explore more hops in dense road networks.
+
+*
+(Please type a command or say `\end')
+*\subsection{H3 Hotspot Detection}
+
+*
+(Please type a command or say `\end')
+*A density surge scenario is simulated by spawning 500 agents simultaneously at
+ a single entry node on MG Road Bangalore. The H3 density analysis correctly id
+entifies the expected hotspot at the entry location:
+
+*
+(Please type a command or say `\end')
+*\begin{table}[ht]
+
+*\centering
+
+*\caption{H3 Hotspot Detection (500 agent surge)}
+
+*\label{tab:hotspots}
+
+*\renewcommand{\arraystretch}{1.15}
+
+*\begin{tabular}{|l|c|c|c|}
+
+*\hline
+
+*\textbf{Metric} & \textbf{T=5s} & \textbf{T=15s} & \textbf{T=30s} \\
+
+*\hline
+
+*Max cell density & 127 agents & 84 agents & 23 agents \\
+
+*\hline
+
+*Hotspot cells ($\geq 8$ agents) & 6 & 4 & 0 \\
+
+*\hline
+
+*Occupied cells (total) & 89 & 156 & 203 \\
+
+*\hline
+
+*\end{tabular}
+
+*\end{table}
+
+*
+(Please type a command or say `\end')
+*As agents disperse and exit the venue, hotspot count decreases monotonically, 
+demonstrating that the H3 layer correctly tracks the spatial evolution of crowd
+ pressure.
+
+*
+(Please type a command or say `\end')
+*\subsection{Congestion-Aware Routing Validation}
+
+*
+(Please type a command or say `\end')
+*To validate that the congestion weighting (Equation 1) actually produces adapt
+ive routing behaviour rather than static shortest-path planning, a controlled e
+xperiment blocks a primary road (the theoretically shortest distance path to an
+ exit) and observes whether newly spawned agents select alternate routes. The b
+aseline scenario (road open) shows agents predominantly using the direct primar
+y road with average path length 285 m and standard deviation 15 m. After blocki
+ng the primary road, the system immediately recomputes paths for subsequently s
+pawned agents. Blocked edges are permanently filtered from the search graph, so
+ Dijkstra cannot select them regardless of weight. Newly spawned agents after b
+lockage average 434 m ($\bar{x} \pm \sigma = 434 \pm 42$ m, paired t-test: $t =
+ 21.3$, $p < 0.001$, $n = 150$ agents), representing a 52\% increase in path le
+ngth. This demonstrates that agents successfully compute new paths in response 
+to road-level constraints and do not attempt to traverse blocked edges. More im
+portantly, the fact that agents do not show a bimodal distribution (some findin
+g the old path, some finding alternates) confirms that the entire agent cohort 
+immediately adapts, indicating that blockage constraints are properly propagate
+d to all pathfinding calls.
+
+*
+[7 <./images/population_vs_latency.png>]
+(Please type a command or say `\end')
+*\begin{figure}[htbp]
+
+*\centering
+
+*\includegraphics[width=\columnwidth]{images/rerouting_analysis.png}
+<images/rerouting_analysis.png, id=51, 914.9382pt x 352.1958pt>
+File: images/rerouting_analysis.png Graphic file (type png)
+<use images/rerouting_analysis.png>
+Package pdftex.def Info: images/rerouting_analysis.png  used on input line 0.
+(pdftex.def)             Requested size: 252.0pt x 97.00192pt.
+
+*\caption{Congestion-aware routing and blockage handling validation. When key a
+rterial edges are blocked, the pathfinding solver dynamically recalculates rout
+e choices, redirecting the agent stream along alternate secondary pathways (inc
+reasing mean path length by 52\%). This confirms correct propagation of dynamic
+ topology constraints.}
+
+*\label{fig:rerouting}
+
+*\end{figure}
+
+*
+(Please type a command or say `\end')
+*\section{Discussion}
+
+*
+(Please type a command or say `\end')
+*\subsection{System Strengths}
+
+*
+(Please type a command or say `\end')
+*\begin{enumerate}
+
+*\item \textbf{Real-time interactivity}: The system achieves 50+ FPS with 1500 
+agents (Table \ref{tab:performance}), enabling emergency planners to manipulate
+ parameters and immediately observe crowd-flow consequences without batch simul
+ation overhead. This interactivity is essential for exploratory analysis—plan
+ners can iterate rapidly through scenarios rather than waiting minutes for each
+ simulation run.
+
+LaTeX Warning: Reference `tab:performance' on page 8 undefined on input line 0.
+
+
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Open data integration}: The use of OpenStreetMap and Overpass AP
+I removes proprietary data barriers, enabling the system to work for any venue 
+with OSM coverage (essentially worldwide urban areas as of 2026). The map data 
+is freely available under ODbL license, supporting deployment in resource-const
+rained municipalities that cannot afford licensed mapping systems.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Client-side computation}: All computation occurs in the browser;
+ no server infrastructure is required. This improves privacy (no agent trajecto
+ries uploaded), reduces latency (no network round-trips during simulation), and
+ eliminates deployment complexity (no server configuration, scaling, or mainten
+ance). The system operates identically whether accessed from a desktop, laptop,
+ or tablet.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Algorithmic flexibility}: The framework supports three routing a
+lgorithms (Dijkstra, A*, BFS) operating simultaneously on identical agent cohor
+ts, enabling comparative analysis (Table \ref{tab:algorithms}). Algorithm selec
+tion can be based on venue characteristics: A* for large networks where heurist
+ic guidance is informative, Dijkstra for networks where heuristic structure is 
+weak, BFS for minimal-complexity baseline comparisons.
+
+LaTeX Warning: Reference `tab:algorithms' on page 8 undefined on input line 0.
+
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Spatial granularity control}: H3 resolution is configurable from
+ resolution 8 (district scale, $\approx 461$ m/cell) to resolution 11 (building
+ scale, $\approx 25$ m/cell), allowing planners to focus on appropriate geograp
+hic scales for their venue. District-scale analysis identifies macroscopic flow
+ corridors; building-scale analysis reveals bottlenecks at specific intersectio
+ns.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Reproducibility and transparency}: All algorithms are determinis
+tic and open-source (available on GitHub); random variation is limited to agent
+ initial speed and spawn node selection within the entry radius. This contrasts
+ with closed-source simulators where computational details are proprietary.
+
+*\end{enumerate}
+
+*
+(Please type a command or say `\end')
+*\subsection{System Limitations and Calibration Requirements}
+
+*
+(Please type a command or say `\end')
+*\begin{enumerate}
+
+*\item \textbf{Simplified pedestrian dynamics}: The model does not include coll
+ision avoidance, lane discipline, bidirectional force interactions, or panic be
+haviour \cite{helbing2000simulating}. Agents move at constant randomized speeds
+ along stored paths without physical interactions. This is a significant simpli
+fication compared to social force models \cite{helbing2000simulating} or veloci
+ty obstacle approaches. As a result, the model cannot capture density-dependent
+ phenomena such as arching at exits, self-organization into lanes, or the crowd
+ crushes documented in real-world disasters. The model is most appropriate for 
+predicting macroscopic flow patterns and identifying bottlenecks, not for detai
+led dynamics at specific chokepoints.
+
+LaTeX Warning: Citation `helbing2000simulating' on page 8 undefined on input li
+ne 0.
+
+
+LaTeX Warning: Citation `helbing2000simulating' on page 8 undefined on input li
+ne 0.
+
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Heuristic capacity values}: Road capacities are inferred from OS
+M highway classes (Table in Section \ref{sec:osm}: motorway $\to$ 50 ped/min, p
+rimary $\to$ 30 ped/min, footway $\to$ 5 ped/min) without calibration to measur
+ed pedestrian throughput in the specific venues. The fundamental diagram of ped
+estrian motion (the relationship between density and flow) varies with pedestri
+an motivation, cultural norms, and physical environment \cite{seyfried2005funda
+mental}. Actual capacity depends on road width (not available in OSM), presence
+ of obstacles, and directional flow composition (unidirectional vs. bidirection
+al). Deployment in real emergency planning would require field measurement of f
+undamental diagrams in the target venue.
+
+LaTeX Warning: Reference `sec:osm' on page 8 undefined on input line 0.
+
+
+LaTeX Warning: Citation `seyfried2005fundamental' on page 8 undefined on input 
+line 0.
+
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Coarse temporal granularity}: The model operates at 60 Hz simula
+tion frequency, discretized into frames. This is adequate for macroscopic flow 
+visualization and exit capacity analysis but insufficient to resolve fine-grain
+ed pedestrian dynamics at the ~0.5 second timescale relevant for collision avoi
+dance or panic propagation. Temporal resolution finer than 100 ms would require
+ higher computational cost and would likely demand movement models with explici
+t force interactions.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Road blocking semantics}: When a road is blocked, agents already
+ assigned to that road continue following their stored path (they have committe
+d to that path choice). Only subsequently spawned agents recompute routes to av
+oid the blockage. This does not model real-time rerouting of agents already in 
+flight—a significant limitation if blockages occur mid-evacuation. A more sop
+histicated model would allow agents to abandon current paths and request update
+d routes if their planned path becomes inaccessible.
+
+*
+[8 <./images/rerouting_analysis.png>]
+(Please type a command or say `\end')
+*\item \textbf{No data fusion or real-time adaptation}: The system does not int
+egrate real-time crowd sensing data, real-world GPS traces, or actual incident 
+reports. It is a synthetic simulation tool for scenario exploration, not a live
+ operations system. Production deployment would require integration with sensor
+s (thermal imaging, WiFi probes, LiDAR) to bias the simulation initial conditio
+n toward observed state.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Missing environmental factors}: The model ignores weather (rain,
+ wind, visibility), visibility (darkness, smoke), psychological factors (panic,
+ groupthink), and accessibility (persons with mobility limitations, families wi
+th children). These factors are known to significantly affect evacuation dynami
+cs \cite{duives2015agent}.
+
+LaTeX Warning: Citation `duives2015agent' on page 9 undefined on input line 0.
+
+
+*\end{enumerate}
+
+*
+(Please type a command or say `\end')
+*\subsection{Validation and Calibration Roadmap}
+
+*
+(Please type a command or say `\end')
+*A critical next step for deployment in actual emergency planning would be vali
+dation against empirical pedestrian flow data. The following validation protoco
+l is proposed:
+
+*
+(Please type a command or say `\end')
+*\begin{enumerate}
+
+*\item \textbf{Fundamental diagram calibration}: Conduct controlled evacuation 
+drills in target venues, measuring density and flow rate in real time via overh
+ead video or thermal imaging. Fit velocity-density relationships (the fundament
+al diagram) to observed data. Integrate calibrated relationships into Equation 
+1 to replace heuristic capacity values.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Scenario replication}: Videotape one or more historical evacuati
+on events (e.g., stadium post-match dispersal, transit hub rush hour). Paramete
+rize the simulation to match the observed initial conditions (number of people,
+ entry/exit configuration, spawn distribution). Run the simulation and compare 
+predicted exit flow over time against measured exit counts. Quantify prediction
+ error via root-mean-square-error (RMSE) of per-minute exit counts.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Comparative model validation}: Run identical scenarios in multip
+le validated simulators (e.g., VISSIM, Legion, FDS+Evac) and compare predicted 
+flow patterns and evacuation times. Differences reveal model-specific assumptio
+ns and sensitivity to parameters. Agreement suggests that the simplified model 
+captures essential physics; disagreement motivates investigation of missing mec
+hanisms.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Expert elicitation and sensitivity analysis}: Consult emergency 
+management professionals to identify high-priority scenario variations (e.g., v
+arying entry configuration, varying agent dispatch rates, varying panic spreadi
+ng). Conduct sensitivity analyses to measure the effect of each parameter varia
+tion on evacuation time and peak congestion. Use tornado diagrams to rank param
+eters by impact magnitude.
+
+*\end{enumerate}
+
+*
+(Please type a command or say `\end')
+*Without such validation, the system should be treated as a decision-support ex
+ploration tool for interactive "what-if" analysis rather than a predictive fore
+casting system to be deployed without human judgment. The current implementatio
+n is most appropriate for comparative analysis (e.g., "How does Algorithm A com
+pare to Algorithm B on this venue?") rather than absolute prediction (e.g., "Ex
+actly how long will evacuation take?").
+
+*
+(Please type a command or say `\end')
+*\section{Conclusion}
+
+*
+(Please type a command or say `\end')
+*H3 SPATIAL CROWD CONTROL demonstrates that interactive, real-time evacuation s
+imulation is achievable using entirely client-side computation on contemporary 
+consumer hardware, by integrating freely available geographic data from OpenStr
+eetMap, classical graph-theoretic routing algorithms, agent-based microscopic s
+imulation, and hierarchical hexagonal spatial indexing for macroscopic crowd pr
+essure analysis.
+
+*
+(Please type a command or say `\end')
+*The system is evaluated on five real-world urban venues, sustains simulation o
+f 1500 concurrent pedestrian agents at 50+ FPS, implements three routing algori
+thms for comparative analysis, and provides an interactive dashboard enabling i
+mmediate visual feedback on crowd flow patterns and density hotspots. The archi
+tecture is modular—each layer (data acquisition, graph representation, routin
+g, simulation, visualization) is independently replaceable—enabling future ex
+tension with richer pedestrian dynamics models, real-time sensor data fusion, o
+r optimization of evacuation plans.
+
+*
+(Please type a command or say `\end')
+*The central contribution is operational: a demonstration that evacuation flow 
+visualization is accessible to emergency planners and venue operators without s
+pecialized simulation expertise or server infrastructure. By removing technical
+ and economic barriers to evacuation scenario exploration, the system has the p
+otential to improve public safety outcomes through wider adoption of simulation
+-informed emergency planning.
+
+*
+(Please type a command or say `\end')
+*\section*{Future Work}
+
+*
+(Please type a command or say `\end')
+*Immediate priorities for system enhancement, ordered by research impact and te
+chnical feasibility, include:
+
+*
+(Please type a command or say `\end')
+*\begin{enumerate}
+
+*\item \textbf{Fundamental diagram calibration and validation (Priority 1)}: Co
+nduct empirical studies in real venues to measure the pedestrian velocity-densi
+ty relationship under various conditions (unidirectional flow, bidirectional fl
+ow, different infrastructure configurations). Integrate measured fundamental di
+agrams into the edge weighting model, replacing Equation 1 with empirically-fit
+ted relationships. This is the single most important step to move the system fr
+om exploration to predictive deployment.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Richer pedestrian behaviour models (Priority 2)}: Implement comp
+eting approaches to pedestrian dynamics—social force models \cite{helbing2000
+simulating}, velocity obstacle methods, or vision-based navigation \cite{murrau
+2015large}—as pluggable alternatives to the current simple constant-velocity 
+model. Enable algorithm switching at runtime to compare macroscopic flow predic
+tions across behavioral assumptions. This would directly support validation stu
+dies by allowing comparison against field data under multiple movement models.
+
+LaTeX Warning: Citation `helbing2000simulating' on page 9 undefined on input li
+ne 0.
+
+
+LaTeX Warning: Citation `murrau2015large' on page 9 undefined on input line 0.
+
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Real-time sensor fusion and data assimilation (Priority 2)}: Int
+egrate APIs from deployed crowd-sensing infrastructure (thermal imaging from su
+rveillance cameras, WiFi probe counts, mobile phone location data) to bias simu
+lation initial conditions toward observed state. Implement particle filtering o
+r ensemble Kalman filtering to recursively update agent positions and densities
+ as new sensor data arrives, enabling the system to function as a nowcast-to-fo
+recast tool during an actual incident.
+
+*
+[9]
+(Please type a command or say `\end')
+*\item \textbf{Multi-objective optimization for evacuation planning (Priority 3
+)}: Formulate evacuation plan design (exit placement, entry allocation, tempora
+ry barriers) as a multi-objective optimization problem where objectives include
+ minimizing evacuation time, maximizing fairness (equal opportunity to exit), a
+nd minimizing peak congestion. Apply evolutionary algorithms (NSGA-II) or gradi
+ent-based methods to identify Pareto-optimal plans. Provide visualization of th
+e trade-off frontier to emergency planners.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Longitudinal corridor analysis and pressure tracking (Priority 3
+)}: Enhance the H3 module to maintain time-series of cell density and compute `
+`pressure corridors''—sequences of cells that sustain high density for extend
+ed periods. Visualize corridors as animated flow paths overlaid on the map, ena
+bling planners to identify persistent bottlenecks requiring intervention.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Mobile and edge deployment (Priority 4)}: Port the system to mob
+ile platforms (React Native for iOS/Android, Progressive Web App variant) to en
+able emergency operators to access evacuation simulation on tablet devices in t
+he field. Implement edge computing deployment (running simulation on local netw
+ork hardware rather than cloud) to support operation in venues with poor connec
+tivity.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Benchmark dataset and open-source sharing (Priority 4)}: Release
+ a public dataset of evacuation scenarios (OSM extracts, agent trajectories, gr
+ound-truth exit flow measurements) to enable other researchers to benchmark eva
+cuation simulators. Contribute the implementation to open-source platforms (Any
+Logic, Repast, specialized pedestrian simulation frameworks) to integrate the H
+3-based spatial analysis into established simulation tools.
+
+*
+(Please type a command or say `\end')
+*\item \textbf{Uncertainty quantification and ensemble simulation (Priority 5)}
+: Implement ensemble simulation where multiple runs are executed with parameter
+ variations (capacity uncertainty, spawn rate uncertainty, behavioral stochasti
+city) to produce probabilistic predictions of evacuation time and peak congesti
+on rather than point estimates. Visualize ensemble results as confidence interv
+als and probability contours.
+
+*\end{enumerate}
+
+*
+(Please type a command or say `\end')
+*\section*{Acknowledgment}
+
+*
+(Please type a command or say `\end')
+*The authors would like to express their sincere gratitude to RV College of Eng
+ineering for providing the facilities, resources, and academic environment that
+ enabled the successful completion of this project. Special thanks to the OpenS
+treetMap and Uber H3 communities for freely available geographic data and spati
+al indexing libraries.
+
+*
+(Please type a command or say `\end')
+*\begin{thebibliography}{28}
+
+*
+(Please type a command or say `\end')
+*\bibitem{helbing2000simulating}
+
+*D.~Helbing, I.~Farkas, and T.~Vicsek, ``Simulating dynamical features of escap
+e panic,'' \emph{Nature}, vol.~407, no.~6803, pp.~487--490, 2000, doi: 10.1038/
+35035023.
+
+*
+(Please type a command or say `\end')
+*\bibitem{pauls1985movement}
+
+*J.~Pauls, ``Movement of people,'' in \emph{SFPE Handbook of Fire Protection En
+gineering}, Quincy, MA: National Fire Protection Association, 1988, pp.~2--63--
+2--76.
+
+*
+(Please type a command or say `\end')
+*\bibitem{seyfried2005fundamental}
+
+*A.~Seyfried, B.~Steffen, W.~Klingsch, and M.~Boltes, ``The fundamental diagram
+ of pedestrian motion revisited,'' \emph{Journal of Statistical Mechanics: Theo
+ry and Experiment}, vol.~2005, no.~10, p.~P10002, 2005, doi: 10.1088/1742-5468/
+2005/10/P10002.
+
+*
+(Please type a command or say `\end')
+*\bibitem{lim2016multi}
+
+*H.~Lim, S.~Lee, and M.~Kim, ``Multi-agent evacuation simulation using Bayesian
+ network,'' in \emph{Proc. IEEE Int. Conf. on Systems, Man, and Cybernetics}, B
+udapest, Hungary, 2016, pp.~4141--4146, doi: 10.1109/SMC.2016.7844881.
+
+*
+
+Underfull \hbox (badness 1436) detected at line 0
+\OT1/ptm/m/n/8 us-ing Bayesian net-work,'' in \OT1/ptm/m/it/8 Proc. IEEE Int. C
+onf. on Sys-tems,
+ []
+
+(Please type a command or say `\end')
+*\bibitem{seitz2016large}
+
+*M.~J.~Seitz, G.~K\"{o}ster, and A.~Pfaffinger, ``Large-scale evacuation simula
+tion using dynamic traffic assignment,'' in \emph{Traffic and Granular Flow '15
+}, Springer, 2016, pp.~281--288, doi: 10.1007/978-3-319-33482-0.
+
+*
+(Please type a command or say `\end')
+*\bibitem{liu2014efficient}
+
+*X.~Liu, Z.~Liu, D.~Liang, L.~Gu, and S.~Liu, ``Efficient multi-destination eva
+cuation routing using node expansion strategy,'' in \emph{Proc. IEEE Int. Conf.
+ on Systems, Man, and Cybernetics}, San Diego, CA, 2014, pp.~2389--2394, doi: 1
+0.1109/SMC.2014.6974268.
+
+*
+(Please type a command or say `\end')
+*\bibitem{fellendorf2010vissim}
+
+*M.~Fellendorf and P.~Vortisch, ``Microscopic traffic flow simulator VISSIM,'' 
+in \emph{Fundamentals of Traffic Simulation}, Springer, New York, NY, 2010, pp.
+~63--93, doi: 10.1007/978-1-4419-6142-6\_2.
+
+*
+(Please type a command or say `\end')
+*\bibitem{korhonen2008fds}
+
+*T.~Korhonen, S.~Hostikka, S.~Heliövaara, and H.~Ehtamo, ``FDS+Evac: Modelling
+ pedestrian evacuation using fire dynamics simulator,'' in \emph{Pedestrian and
+ Evacuation Dynamics 2008}, Berlin: Springer, 2010, pp.~567--577, doi: 10.1007/
+978-3-642-04504-2.
+
+*
+(Please type a command or say `\end')
+*\bibitem{sahr2003geodetic}
+
+*K.~Sahr, D.~White, and A.~J.~Kimerling, ``Geodetic discrete global grid system
+s,'' \emph{Cartography and Geographic Information Science}, vol.~30, no.~2, pp.
+~121--134, 2003, doi: 10.1559/152304003100011019.
+
+*
+(Please type a command or say `\end')
+*\bibitem{uber2021h3}
+
+*Uber Technologies, ``H3: Hexagonal Hierarchical Geospatial Indexing System,'' 
+[Online]. Available: https://h3geo.org. [Accessed: June 2026].
+
+*
+(Please type a command or say `\end')
+*\bibitem{dijkstra1959shortest}
+
+*E.~W.~Dijkstra, ``A note on two problems in connexion with graphs,'' \emph{Num
+erische Mathematik}, vol.~1, no.~1, pp.~269--271, 1959, doi: 10.1007/BF01386390
+.
+
+*
+(Please type a command or say `\end')
+*\bibitem{hart1968formal}
+
+*P.~E.~Hart, N.~J.~Nilsson, and B.~Raphael, ``A formal basis for the heuristic 
+determination of minimum cost paths,'' \emph{IEEE Transactions on Systems Scien
+ce and Cybernetics}, vol.~4, no.~2, pp.~100--107, 1968, doi: 10.1109/TSSC.1968.
+300136.
+
+*
+(Please type a command or say `\end')
+*\bibitem{west2001introduction}
+
+*D.~B.~West, \emph{Introduction to Graph Theory}, 2nd ed. Upper Saddle River, N
+J: Prentice Hall, 2001.
+
+*
+(Please type a command or say `\end')
+*\bibitem{openstreetmap2023}
+
+*OpenStreetMap Foundation, ``OpenStreetMap: The Free Wiki World Map,'' [Online]
+. Available: https://www.openstreetmap.org. [Accessed: June 2026].
+
+*
+(Please type a command or say `\end')
+*\bibitem{overpass2023}
+
+*Overpass API contributors, ``Overpass API: A Read-Only API That Serves Up Cust
+om Selected Parts of OpenStreetMap Data,'' [Online]. Available: https://overpas
+s-api.de. [Accessed: June 2026].
+
+*
+(Please type a command or say `\end')
+*\bibitem{deckgl2023}
+
+*Uber Technologies, ``Deck.gl: Large-Scale Web-based Visual Analytics Made Easy
+,'' [Online]. Available: https://deck.gl. [Accessed: June 2026].
+
+*
+(Please type a command or say `\end')
+*\bibitem{react2023}
+
+*Meta Platforms, ``React: A JavaScript Library for Building User Interfaces,'' 
+[Online]. Available: https://react.dev. [Accessed: June 2026].
+
+*
+(Please type a command or say `\end')
+*\bibitem{maplibre2023}
+
+*MapLibre contributors, ``MapLibre GL JS: Render Interactive Maps in the Web Br
+owser,'' [Online]. Available: https://maplibre.org. [Accessed: June 2026].
+
+*
+(Please type a command or say `\end')
+*\bibitem{typescript2023}
+
+*Microsoft, ``TypeScript: Typed JavaScript at Any Scale,'' [Online]. Available:
+ https://www.typescriptlang.org. [Accessed: June 2026].
+
+*
+(Please type a command or say `\end')
+*\bibitem{nextjs2023}
+
+*Vercel, ``Next.js: The React Framework for Production,'' [Online]. Available: 
+https://nextjs.org. [Accessed: June 2026].
+
+*
+(Please type a command or say `\end')
+*\bibitem{chawla2002smote}
+
+*N.~V.~Chawla, K.~W.~Bowyer, L.~O.~Hall, and W.~P.~Kegelmeyer, ``SMOTE: synthet
+ic minority over-sampling technique,'' \emph{Journal of Artificial Intelligence
+ Research}, vol.~16, pp.~321--357, 2002, doi: 10.1613/jair.953.
+
+*
+(Please type a command or say `\end')
+*\bibitem{chen2016xgboost}
+
+*T.~Chen and C.~Guestrin, ``XGBoost: a scalable tree boosting system,'' in \emp
+h{Proc. 22nd ACM SIGKDD Int. Conf. on Knowledge Discovery and Data Mining}, New
+ York, NY, USA: ACM, 2016, pp.~785--794, doi: 10.1145/2939672.2939785.
+
+*
+(Please type a command or say `\end')
+*\bibitem{duives2015agent}
+
+*D.~C.~Duives, W.~Daamen, and S.~P.~Hoogendoorn, ``State-of-the-art crowd motio
+n simulation models,'' \emph{Transportation Research Part C: Emerging Technolog
+ies}, vol.~37, pp.~193--209, 2013, doi: 10.1016/j.trc.2013.02.005.
+
+*
+
+Underfull \hbox (badness 2237) detected at line 0
+[]\OT1/ptm/m/n/8 D. C. Duives, W. Daa-men, and S. P. Hoogen-doorn, ``State-of-
+ []
+
+[10]
+(Please type a command or say `\end')
+*\bibitem{schadschneider2009evacuation}
+
+*A.~Schadschneider, A.~Chowdhury, K.~Nishinari, and K.~Klauck, ``Evacuation dyn
+amics: empirical results, modeling and applications,'' in \emph{Encyclopedia of
+ Complexity and Systems Science}, Springer, 2009, pp.~3142--3176, doi: 10.1007/
+978-0-387-30440-3.
+
+*
+(Please type a command or say `\end')
+*\bibitem{murrau2015large}
+
+*P.~Murrau and W.~Daamen, ``Empirical analysis of crowd dynamics and exit choic
+e in virtual reality,'' \emph{Transportation Research Procedia}, vol.~2, pp.~89
+--95, 2014, doi: 10.1016/j.trpro.2014.09.012.
+
+*
+(Please type a command or say `\end')
+*\bibitem{chen2020building}
+
+*J.~Chen, C.~Liao, H.~Yang, L.~Shao, Y.~Lu, and W.~Wang, ``Building layout and 
+evacuation efficiency: an empirical study in a large shopping mall,'' \emph{Fir
+e Safety Journal}, vol.~108, p.~102842, 2019, doi: 10.1016/j.firesaf.2019.10284
+2.
+
+*
+(Please type a command or say `\end')
+*\end{thebibliography}
+
+*
+(Please type a command or say `\end')
+*\end{document}
+
+** Conference Paper **
+Before submitting the final camera ready copy, remember to:
+
+ 1. Manually equalize the lengths of two columns on the last page
+ of your paper;
+
+ 2. Ensure that any PostScript and/or PDF output post-processing
+ uses only Type 1 fonts and that every step in the generation
+ process uses the appropriate paper size.
+
+[11
+
+] (/tmp/tmpzgkhwpuq/file.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ 
+Here is how much of TeX's memory you used:
+ 4562 strings out of 469514
+ 71600 string characters out of 5470073
+ 495933 words of memory out of 5000000
+ 33167 multiletter control sequences out of 15000+600000
+ 670662 words of font info for 121 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 56i,9n,65p,2524b,525s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/urw/times/utmri8a.pfb>
+Output written on /tmp/tmpzgkhwpuq/file.pdf (11 pages, 6270915 bytes).
+PDF statistics:
+ 129 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+

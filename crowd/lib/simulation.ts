@@ -12,7 +12,7 @@ import {
   type CrowdZone, type DirectionPreference,
 } from './zones';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+// Types
 
 export type AlgorithmType = 'dijkstra' | 'astar' | 'bfs';
 
@@ -32,7 +32,7 @@ export interface SimulationMetrics {
   activeAgents: number;
   arrivedAgents: number;
   totalAgents: number;
-  congestion: number;   // 0–1 average across road edges
+  congestion: number;   // average road congestion
   nodesExplored: number;
   edgesRelaxed: number;
   runtimeMs: number;
@@ -40,14 +40,14 @@ export interface SimulationMetrics {
   currentOperation: string;
   totalPathMetres: number;
   // H3 metrics
-  maxH3Density: number;   // peak agents in any single H3 cell
-  hotspotCount: number;   // cells ≥ CRITICAL_THRESHOLD
-  h3CoveredCells: number;  // distinct occupied H3 cells
+  maxH3Density: number;   // peak H3 density
+  hotspotCount: number;   // hotspot cell count
+  h3CoveredCells: number;  // occupied H3 cells
 }
 
 export interface TimelineEvent { time: string; event: string; }
 
-/** A recently computed evac path — kept for the glowing trail overlay */
+// Evacuation trails
 export interface TrackedPath {
   coords: [number, number][];
   age: number;
@@ -59,17 +59,17 @@ export interface SimulationSnapshot {
   metrics: SimulationMetrics;
   entryNodeIds: string[];
   exitNodeIds: string[];
-  spawnRadius: number;         // metres — zone radius around each entry node
-  recentPaths: TrackedPath[];  // last N computed paths
-  h3Cells: HexCell[];      // current hexagonal density grid
+  spawnRadius: number;         // spawn radius metres
+  recentPaths: TrackedPath[];  // recent paths history
+  h3Cells: HexCell[];      // hexagonal cells array
   h3Resolution: number;
-  zones: CrowdZone[];          // crowd dispersal zones
-  directionPreference: DirectionPreference;  // 8-direction routing preference
+  zones: CrowdZone[];          // crowd zones array
+  directionPreference: DirectionPreference;  // routing preferences config
   tick: number;
   timeline: TimelineEvent[];
 }
 
-// ─── Algorithm colour palettes ────────────────────────────────────────────────
+// Algo colors
 
 const ALGO_PALETTE: Record<AlgorithmType, [number, number, number][]> = {
   dijkstra: [[0, 210, 255], [0, 180, 240], [60, 220, 255], [100, 230, 255]],
@@ -77,7 +77,7 @@ const ALGO_PALETTE: Record<AlgorithmType, [number, number, number][]> = {
   bfs: [[60, 255, 130], [40, 235, 110], [90, 255, 150], [50, 210, 100]],
 };
 
-// ─── Engine ───────────────────────────────────────────────────────────────────
+// Engine
 
 export class SimulationEngine {
   private snap: SimulationSnapshot;
@@ -91,13 +91,10 @@ export class SimulationEngine {
   private timeScale = 1;
   private spawnRadius = 200;
   private spawnPool: string[] = [];
-  private sessionPeak = 1;   // running peak H3 density (for normalisation)
-  private spawningEnabled = true; // whether to auto-spawn during tick
+  private sessionPeak = 1;   // Peak density
+  private spawningEnabled = true; // Spawning enabled
 
-  /**
-   * O(1) edge lookup: `${sourceId}→${targetId}` → edgeId
-   * Built once per graph load; avoids inner loop in #recalcFlows.
-   */
+  // Endpoint lookup map
   private edgeByEndpoints = new Map<string, string>();
 
   constructor(graph: Graph, algorithm: AlgorithmType = 'dijkstra') {
@@ -126,7 +123,7 @@ export class SimulationEngine {
     this.#buildEdgeLookup();
   }
 
-  // ── Configuration ─────────────────────────────────────────────────────────
+  // Configuration
 
   setAlgorithm(alg: AlgorithmType) {
     this.algorithm = alg;
@@ -158,7 +155,7 @@ export class SimulationEngine {
 
   setH3Resolution(res: number) {
     this.snap.h3Resolution = res;
-    this.sessionPeak = 1;  // reset normalisation on resolution change
+    this.sessionPeak = 1;  // Reset peak
   }
 
   setSpawnRate(r: number) { this.spawnRate = r; }
@@ -201,7 +198,7 @@ export class SimulationEngine {
     if (e) e.blocked = false;
   }
 
-  /** Spawn a batch of agents immediately without starting the simulation loop */
+  // Spawn batch
   spawnBatch(count: number) {
     if (this.snap.entryNodeIds.length === 0 || this.snap.exitNodeIds.length === 0) return;
     for (let i = 0; i < count; i++) {
@@ -215,7 +212,7 @@ export class SimulationEngine {
   setOnUpdate(cb: (s: SimulationSnapshot) => void) { this.onUpdate = cb; }
   getSnapshot(): SimulationSnapshot { return this.snap; }
 
-  // ── Lifecycle ──────────────────────────────────────────────────────────────
+  // Lifecycle
 
   start() {
     if (typeof window === 'undefined') return;
@@ -246,18 +243,14 @@ export class SimulationEngine {
     this.onUpdate?.(this.snap);
   }
 
-  // ── Internal ──────────────────────────────────────────────────────────────
+  // Internal helpers
 
-  /**
-   * Pre-build a lookup table: `${sourceId}→${targetId}` → edgeId.
-   * Called once at construction. Reduces #recalcFlows from O(degree) per
-   * agent to O(1) per agent.
-   */
+  // Build lookup table
   #buildEdgeLookup() {
     this.edgeByEndpoints.clear();
     for (const [id, e] of this.snap.graph.edges) {
       this.edgeByEndpoints.set(`${e.source}→${e.target}`, id);
-      this.edgeByEndpoints.set(`${e.target}→${e.source}`, id); // bidirectional
+      this.edgeByEndpoints.set(`${e.target}→${e.source}`, id); // Bidirectional
     }
   }
 
@@ -281,7 +274,7 @@ export class SimulationEngine {
     this.lastTs = ts;
     this.snap.tick++;
 
-    // Spawn agents (only when spawning is enabled)
+    // Spawn agents
     const interval = 1 / Math.max(0.1, this.spawnRate);
     this.spawnAccum += dt;
     while (
@@ -294,14 +287,13 @@ export class SimulationEngine {
       this.#spawnAgent();
       this.spawnAccum -= interval;
     }
-    if (!this.spawningEnabled) this.spawnAccum = 0; // drain accumulator
+    if (!this.spawningEnabled) this.spawnAccum = 0; // Drain accumulator
 
     this.#moveAgents(dt);
     this.#recalcFlows();
     this.#refreshMetrics();
 
-    // Throttle H3 density: every tick when sparse, every 2nd tick when crowded.
-    // latLngToCell is O(1) but large agent counts need throttling.
+    // Throttle density
     const h3Interval = this.snap.agents.length > 1000 ? 2 : 1;
     if (this.snap.tick % h3Interval === 0) {
       this.#computeH3Density();
@@ -323,7 +315,7 @@ export class SimulationEngine {
         : dijkstra;
 
     const t0 = performance.now();
-    // Allow the solver to automatically find the best exit out of ALL exits!
+    // Solver exits
     const result = solver(this.snap.graph, startId, exitIds, {
       directionPreference: this.snap.directionPreference,
     });
@@ -350,7 +342,7 @@ export class SimulationEngine {
       status: 'moving',
     });
 
-    // Save path for glowing trail
+    // Glowing trails
     this.snap.recentPaths = [
       { coords: pathCoords, age: 0 },
       ...this.snap.recentPaths.map(p => ({ ...p, age: p.age + 1 })),
@@ -390,23 +382,20 @@ export class SimulationEngine {
       a.position = lerpCoord(nf, nt, a.progress);
     }
 
-    // Gradually prune arrived agents
+    // Prune arrived
     this.snap.agents = this.snap.agents.filter(
       a => a.status === 'moving' || Math.random() > 0.03,
     );
   }
 
-  /**
-   * Recalculate per-edge flow counts using the O(1) endpoint lookup table.
-   * Previously O(agents × avg_degree); now O(agents).
-   */
+  // Recalculate flows
   #recalcFlows() {
     for (const e of this.snap.graph.edges.values()) e.flow = 0;
 
     for (const a of this.snap.agents) {
       if (a.status !== 'moving') continue;
 
-      // Calculate intended flow across the agent's remaining entire path
+      // Intended flows
       for (let i = Math.max(0, a.pathIndex - 1); i < a.path.length - 1; i++) {
         const cur = a.path[i];
         const next = a.path[i + 1];
@@ -423,10 +412,7 @@ export class SimulationEngine {
     for (const id of this.snap.graph.edges.keys()) updateEdgeWeight(this.snap.graph, id);
   }
 
-  /**
-   * Refresh live metrics in a single pass over the agents array.
-   * Previously two separate filter() calls; now O(N) with one loop.
-   */
+  // Refresh metrics
   #refreshMetrics() {
     let active = 0, arrived = 0;
     for (const a of this.snap.agents) {
@@ -452,7 +438,6 @@ export class SimulationEngine {
 
     const result = buildH3Density(positions, this.snap.h3Resolution, this.sessionPeak);
 
-    // Update running peak for stable normalisation
     if (result.maxCount > this.sessionPeak) this.sessionPeak = result.maxCount;
 
     this.snap.h3Cells = result.cells;
@@ -460,7 +445,7 @@ export class SimulationEngine {
     this.snap.metrics.hotspotCount = result.hotspots.length;
     this.snap.metrics.h3CoveredCells = result.totalCovered;
 
-    // Critical density alert (at most once every ~5 s at 60 fps)
+    // Density alert
     if (result.hotspots.length > 0 && this.snap.tick % 300 === 0) {
       this.#log(`⚠ H3 critical: ${result.hotspots.length} cell(s) above threshold (${CRITICAL_THRESHOLD} agents/cell)`);
     }

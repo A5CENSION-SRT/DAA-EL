@@ -2,9 +2,9 @@ export interface VenuePreset {
   id: string;
   name: string;
   description: string;
-  center: [number, number]; // [lng, lat]
+  center: [number, number]; // Coordinates
   zoom: number;
-  /** Overpass API bounding box [south, west, north, east] */
+  // Bounding box
   bbox: [number, number, number, number];
 }
 

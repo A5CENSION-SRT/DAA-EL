@@ -1,6 +1,6 @@
 import { haversine } from './haversine';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+// Types
 
 export type HighwayType =
   | 'motorway' | 'trunk' | 'primary' | 'secondary' | 'tertiary'
@@ -12,30 +12,30 @@ export interface GeoNode {
   lng: number;
   lat: number;
   type: 'entry' | 'exit' | 'intersection' | 'waypoint';
-  density: number; // 0–1
+  density: number; // Density level
 }
 
 export interface GeoEdge {
   id: string;
-  source: string; // GeoNode id
-  target: string; // GeoNode id
-  weight: number;       // dynamic weight (metres × congestion factor)
-  baseWeight: number;   // physical distance in metres
-  capacity: number;     // max pedestrians per minute on this road
-  flow: number;         // current pedestrians on this edge
+  source: string; // Source ID
+  target: string; // Target ID
+  weight: number;       // Dynamic weight
+  baseWeight: number;   // Base weight
+  capacity: number;     // Max capacity
+  flow: number;         // Current flow
   blocked: boolean;
   highway: HighwayType;
   name?: string;
-  coordinates: [number, number][]; // [lng, lat] polyline for rendering
+  coordinates: [number, number][]; // Coordinates
 }
 
 export interface Graph {
   nodes: Map<string, GeoNode>;
   edges: Map<string, GeoEdge>;
-  adjacency: Map<string, string[]>; // nodeId → edgeId[]
+  adjacency: Map<string, string[]>; // Adjacency map
 }
 
-// ─── Capacity by road type ────────────────────────────────────────────────────
+// Capacities
 
 export const HIGHWAY_CAPACITY: Partial<Record<HighwayType, number>> = {
   motorway: 50,
@@ -54,7 +54,7 @@ export const HIGHWAY_CAPACITY: Partial<Record<HighwayType, number>> = {
   steps: 2,
 };
 
-// ─── Graph helpers ────────────────────────────────────────────────────────────
+// Graph helpers
 
 export function createEmptyGraph(): Graph {
   return { nodes: new Map(), edges: new Map(), adjacency: new Map() };
@@ -97,7 +97,7 @@ export function updateEdgeWeight(graph: Graph, edgeId: string): void {
   const edge = graph.edges.get(edgeId);
   if (!edge) return;
   const ratio = edge.flow / Math.max(1, edge.capacity);
-  // Extremely heavy penalty to force agents to take ANY other road once this is getting full
+  // Congestion factor
   const congestionFactor = 1 + (ratio * 50) + Math.pow(ratio, 2) * 500;
   edge.weight = edge.baseWeight * Math.max(1, congestionFactor);
 }
@@ -106,13 +106,13 @@ export function getCongestionLevel(edge: GeoEdge): number {
   return Math.min(1, edge.flow / Math.max(1, edge.capacity));
 }
 
-/** Returns the [lng, lat] midpoint of an edge. */
+// Midpoint
 export function edgeMidpoint(edge: GeoEdge): [number, number] {
   const mid = Math.floor(edge.coordinates.length / 2);
   return edge.coordinates[mid] ?? edge.coordinates[0];
 }
 
-/** Find the graph node closest to the given [lng, lat]. */
+// Nearest node
 export function findNearestNode(
   graph: Graph,
   lng: number,

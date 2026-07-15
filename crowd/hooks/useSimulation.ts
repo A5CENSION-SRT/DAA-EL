@@ -9,9 +9,9 @@ export function useSimulation(graph: Graph | null, algorithm: AlgorithmType) {
   const engineRef = useRef<SimulationEngine | null>(null);
   const [snapshot, setSnapshot] = useState<SimulationSnapshot | null>(null);
   const [running, setRunning] = useState(false);
-  const [spawning, setSpawning] = useState(true); // whether auto-spawn is on
+  const [spawning, setSpawning] = useState(true); // Auto-spawning flag
 
-  // Rebuild engine when graph changes
+  // Rebuild engine
   useEffect(() => {
     if (!graph) return;
     engineRef.current?.stop();
@@ -47,18 +47,13 @@ export function useSimulation(graph: Graph | null, algorithm: AlgorithmType) {
     setSpawning(true);
   }, []);
 
-  /** Toggle whether new agents are auto-spawned during the simulation loop */
+  // Spawning status
   const setSpawningEnabled = useCallback((enabled: boolean) => {
     engineRef.current?.setSpawningEnabled(enabled);
     setSpawning(enabled);
   }, []);
 
-  /**
-   * Speed slider maps 1–20:
-   *   1  → 0.5 agents/s, 0.5× time
-   *   10 → 20  agents/s, 5×  time
-   *   20 → 60  agents/s, 15× time
-   */
+  // Speed mapping
   const setSpeed = useCallback((s: number) => {
     const t = (s - 1) / 19;
     engineRef.current?.setSpawnRate(0.5 + t * 59.5);

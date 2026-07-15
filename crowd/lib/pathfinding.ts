@@ -2,11 +2,11 @@ import { type Graph, getNeighbors, updateEdgeWeight } from './graph';
 import { haversine } from './haversine';
 import { type DirectionPreference, getBearing, directionMatches } from './zones';
 
-// ─── Result type ──────────────────────────────────────────────────────────────
+// Results
 
 export interface PathResult {
   path: string[];          // ordered node IDs
-  totalWeight: number;     // metres (accounting for congestion)
+  totalWeight: number;     // dynamic weight (metres × congestion factor)
   visitedOrder: string[];  // nodes touched during search (visualisation)
   edgesRelaxed: number;
   runtimeMs: number;
@@ -18,7 +18,7 @@ export interface PathfindingOptions {
   attractZoneIds?: string[]; // Zone IDs to move toward
 }
 
-// ─── Direction Cost Helper ────────────────────────────────────────────────────
+// Cost helper
 
 function getDirectionalCostModifier(
   options: PathfindingOptions | undefined,
@@ -38,7 +38,7 @@ function getDirectionalCostModifier(
   return dirMatch ? 1.0 - weight : 1.0 + weight;
 }
 
-// ─── Min-heap (priority queue) ────────────────────────────────────────────────
+// Min heap
 
 class MinHeap<T> {
   private heap: { key: number; value: T }[] = [];
@@ -81,7 +81,7 @@ class MinHeap<T> {
   }
 }
 
-// ─── Shared path reconstruction ───────────────────────────────────────────────
+// Reconstruct path
 
 function reconstructPath(
   prev: Map<string, string | null>,
@@ -98,12 +98,7 @@ function reconstructPath(
   return path[0] === startId ? path : [];
 }
 
-// ─── Dijkstra ─────────────────────────────────────────────────────────────────
-//
-// Efficiency notes:
-//  • Lazy initialisation — no O(V) init loop; Maps start empty and
-//    unvisited nodes are treated as Infinity via `?? Infinity`.
-//  • Early exit when target is popped from the heap.
+// Dijkstra
 
 export function dijkstra(
   graph: Graph,
@@ -171,11 +166,7 @@ export function dijkstra(
   };
 }
 
-// ─── A* ───────────────────────────────────────────────────────────────────────
-//
-// Efficiency notes:
-//  • Same lazy-init approach as Dijkstra.
-//  • Heuristic: straight-line haversine distance to goal (admissible).
+// A*
 
 export function aStar(
   graph: Graph,
@@ -191,7 +182,7 @@ export function aStar(
   const h = (id: string) => {
     const n = graph.nodes.get(id);
     if (!n) return 0;
-    // For multiple targets, A* heuristic should be the minimum distance to *any* of the goals
+    // Multi goal heuristic
     let minDist = Infinity;
     for (const en of endNodes) {
       const d = haversine(n.lat, n.lng, en.lat, en.lng);
@@ -258,11 +249,7 @@ export function aStar(
   };
 }
 
-// ─── BFS (unweighted) ─────────────────────────────────────────────────────────
-//
-// Efficiency notes:
-//  • Uses a head-pointer dequeue pattern — O(1) per dequeue vs O(n) array.shift().
-//  • Lazy-init: no O(V) prev initialisation loop.
+// BFS
 
 export function bfs(
   graph: Graph,
@@ -278,7 +265,7 @@ export function bfs(
   const visitedOrder: string[] = [];
   let edgesRelaxed = 0;
 
-  // O(1)-dequeue queue via head pointer
+  // Fast queue
   const queue: string[] = [startId];
   let head = 0;
   visited.add(startId);
@@ -286,7 +273,7 @@ export function bfs(
   let reachedEndId: string | null = null;
 
   while (head < queue.length) {
-    const u = queue[head++];           // O(1) — no array shift
+    const u = queue[head++];           // Dequeue
     visitedOrder.push(u);
     if (endIds.has(u)) {
       reachedEndId = u;
@@ -319,7 +306,7 @@ function emptyResult(t0: number): PathResult {
   return { path: [], totalWeight: Infinity, visitedOrder: [], edgesRelaxed: 0, runtimeMs: performance.now() - t0 };
 }
 
-// ─── Algorithm complexity strings ─────────────────────────────────────────────
+// Complexity metadata
 
 export const ALGORITHM_META: Record<string, { label: string; complexity: string; space: string }> = {
   dijkstra: { label: "Dijkstra's Algorithm", complexity: 'O((V + E) log V)', space: 'O(V)' },

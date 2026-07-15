@@ -37,7 +37,7 @@ function DirectionCompass({
 
     return (
         <div className="grid grid-cols-3 gap-1">
-            {/* N */}
+            // North
             <div className="col-start-2">
                 <button
                     onClick={() => toggleDirection('N')}
@@ -50,7 +50,7 @@ function DirectionCompass({
                 </button>
             </div>
 
-            {/* NW NE */}
+            // NW, NE
             <button
                 onClick={() => toggleDirection('NW')}
                 className={`h-8 rounded-sm border text-xs font-bold transition-colors ${selected.includes('NW')
@@ -71,7 +71,7 @@ function DirectionCompass({
                 ↗
             </button>
 
-            {/* W E */}
+            // W, E
             <button
                 onClick={() => toggleDirection('W')}
                 className={`h-8 rounded-sm border text-xs font-bold transition-colors ${selected.includes('W')
@@ -92,7 +92,7 @@ function DirectionCompass({
                 →
             </button>
 
-            {/* SW SE */}
+            // SW, SE
             <button
                 onClick={() => toggleDirection('SW')}
                 className={`h-8 rounded-sm border text-xs font-bold transition-colors ${selected.includes('SW')
@@ -113,7 +113,7 @@ function DirectionCompass({
                 ↘
             </button>
 
-            {/* S */}
+            // South
             <div className="col-start-2">
                 <button
                     onClick={() => toggleDirection('S')}
@@ -243,7 +243,7 @@ export function ZoneControls({
 
     return (
         <div className="rounded-sm border border-white/5 bg-[#090a0f] overflow-hidden shrink-0">
-            {/* Header */}
+            // Header
             <div className="border-b border-white/5 px-4 py-3">
                 <p className="text-[13px] font-bold text-slate-200">Crowd Zones</p>
                 <p className="text-[11px] text-[#556275] font-medium mt-0.5">
@@ -251,9 +251,9 @@ export function ZoneControls({
                 </p>
             </div>
 
-            {/* Content */}
+            // Content
             <div className="p-4 space-y-4 max-h-96 overflow-y-auto">
-                {/* Quick Add Buttons */}
+                // Quick add
                 <div className="space-y-2">
                     <p className="text-[10px] font-bold uppercase tracking-widest text-[#667285]">Quick Add</p>
                     <div className="grid grid-cols-2 gap-2">
@@ -274,7 +274,7 @@ export function ZoneControls({
                     </div>
                 </div>
 
-                {/* Zone Settings */}
+                // Settings
                 <div className="space-y-2">
                     <p className="text-[10px] font-bold uppercase tracking-widest text-[#667285]">
                         New Zone Settings
@@ -307,7 +307,7 @@ export function ZoneControls({
                     </div>
                 </div>
 
-                {/* Random Zones */}
+                // Random zones
                 <div className="space-y-2 rounded-lg border border-slate-700/40 bg-slate-800/20 p-2.5">
                     <p className="text-[10px] font-bold uppercase tracking-widest text-[#667285]">
                         Random Zones
@@ -326,7 +326,7 @@ export function ZoneControls({
                     </div>
                 </div>
 
-                {/* Direction Preference */}
+                // Direction preferences
                 <div className="space-y-2 border-t border-white/5 pt-3">
                     <div className="flex items-center justify-between gap-2">
                         <p className="text-[10px] font-bold uppercase tracking-widest text-[#667285]">
@@ -384,7 +384,7 @@ export function ZoneControls({
                     )}
                 </div>
 
-                {/* Zone List */}
+                // Zone list
                 {zones.length > 0 && (
                     <div className="space-y-2 border-t border-white/5 pt-3">
                         <p className="text-[10px] font-bold uppercase tracking-widest text-[#667285]">

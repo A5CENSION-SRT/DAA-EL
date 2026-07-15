@@ -1,56 +1,33 @@
-/**
- * H3 Spatial Crowd Analysis
- * ─────────────────────────
- * Uber's H3 hexagonal hierarchical spatial index is used here to:
- *   1. Discretise agent positions into equal-area hexagonal cells
- *   2. Compute crowd density (agents / cell) in real-time
- *   3. Flag hotspot cells that exceed a safe-density threshold
- *   4. Track pressure corridors — cells that appear repeatedly in evac paths
- *   5. Render the full H3 grid overlay on the map (ghost cells)
- *
- * Resolution guide (avg edge length):
- *   Res 8  ≈ 461 m  → city-district scale
- *   Res 9  ≈ 174 m  → neighbourhood scale
- *   Res 10 ≈  66 m  → block scale          ← default
- *   Res 11 ≈  25 m  → building scale
- */
+// H3 spatial analysis
 
 import { latLngToCell, polygonToCells } from 'h3-js';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+// H3 types
 
 export interface HexCell {
-  hex:        string;  // H3 cell index
-  count:      number;  // agents currently in this cell
-  normalized: number;  // 0–1 relative to session peak (for colour mapping)
+  hex:        string;  // Cell index
+  count:      number;  // Agent count
+  normalized: number;  // Normalized value
 }
 
 export interface H3DensityResult {
   cells:        HexCell[];
-  maxCount:     number;  // peak density in any single cell this tick
-  hotspots:     HexCell[]; // cells above the critical threshold
-  totalCovered: number;  // number of distinct cells occupied
+  maxCount:     number;  // Peak density
+  hotspots:     HexCell[]; // Hotspot cells
+  totalCovered: number;  // Covered count
 }
 
 export const DEFAULT_RESOLUTION  = 10;
-export const CRITICAL_THRESHOLD  = 8;   // agents / cell before alert
+export const CRITICAL_THRESHOLD  = 8;   // Alert threshold
 export const WARNING_THRESHOLD   = 4;
 
-// ─── Core density function ────────────────────────────────────────────────────
+// Density calculation
 
-/**
- * Map an array of agent [lng, lat] positions to H3 hexagonal density cells.
- * Returns normalised cells ready for deck.gl's H3HexagonLayer.
- *
- * Efficiency notes:
- *  - Avoids Math.max(...spread) which blows the call stack at scale; uses a
- *    running-max loop instead.
- *  - Returns early if no agents are present.
- */
+// Build density metrics
 export function buildH3Density(
-  positions:  [number, number][], // agent [lng, lat] positions
+  positions:  [number, number][], // Agent coordinates
   resolution: number = DEFAULT_RESOLUTION,
-  sessionPeak = 1,                 // running max across ticks (passed from engine)
+  sessionPeak = 1,                 // Peak count
 ): H3DensityResult {
   if (!positions.length) {
     return { cells: [], maxCount: 0, hotspots: [], totalCovered: 0 };
@@ -80,33 +57,27 @@ export function buildH3Density(
   return { cells, maxCount, hotspots, totalCovered: density.size };
 }
 
-// ─── Venue grid cells ──────────────────────────────────────────────────────────
+// Grid overlay
 
-/**
- * Return ALL H3 cells that cover a venue bounding box at the given resolution.
- * Used to draw the static hexagonal grid overlay on the map.
- *
- * @param bbox  [south, west, north, east] in decimal degrees
- * @param resolution  H3 resolution (8–11)
- */
+// Bounding box cells
 export function getVenueGridCells(
   bbox:       [number, number, number, number],
   resolution: number,
 ): string[] {
   const [south, west, north, east] = bbox;
   try {
-    // h3-js v4: polygonToCells(coordinates: [lat,lng][], res, isGeoJson?)
-    // Pass [lat, lng] pairs (h3-js native ordering) with isGeoJson = false
+    // Polygon to cells
+    // Ordering: lat, lng
     const cells = polygonToCells(
       [
         [south, west],
         [south, east],
         [north, east],
         [north, west],
-        [south, west], // close the ring
+        [south, west], // Close ring
       ],
       resolution,
-      false, // [lat, lng] ordering (not GeoJSON)
+      false, // Native order
     );
     return cells ?? [];
   } catch {
@@ -114,9 +85,9 @@ export function getVenueGridCells(
   }
 }
 
-// ─── Utilities ────────────────────────────────────────────────────────────────
+// Helpers
 
-/** Approximate cell edge-length in metres for display purposes */
+// Resolution label
 export function h3ResolutionLabel(res: number): string {
   const lengths: Record<number, string> = {
     8: '~461 m / cell',
@@ -127,20 +98,20 @@ export function h3ResolutionLabel(res: number): string {
   return lengths[res] ?? `res ${res}`;
 }
 
-/** Hex-cell density → RGBA colour (cool blue → warm yellow → alarm red) */
+// Color mapping
 export function densityColor(normalized: number): [number, number, number, number] {
   const c = Math.min(1, Math.max(0, normalized));
   if (c < 0.3) {
     const t = c / 0.3;
-    // transparent dark-blue → electric purple
+    // Blue to purple
     return [Math.round(60 + 120 * t), Math.round(0 + 20 * t), Math.round(180 + 60 * t), Math.round(100 + 80 * t)];
   }
   if (c < 0.65) {
     const t = (c - 0.3) / 0.35;
-    // purple → amber
+    // Purple to amber
     return [Math.round(180 + 75 * t), Math.round(20 + 160 * t), Math.round(240 - 220 * t), Math.round(180 + 30 * t)];
   }
-  // amber → alarm red
+  // Amber to red
   const t = (c - 0.65) / 0.35;
   return [255, Math.round(180 - 170 * t), Math.round(20 - 15 * t), 230];
 }

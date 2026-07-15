@@ -15,7 +15,7 @@ import { getCongestionLevel } from '@/lib/graph';
 import { densityColor, getVenueGridCells, type HexCell } from '@/lib/h3-spatial';
 import type { CrowdZone } from '@/lib/zones';
 
-// ─── Public types ─────────────────────────────────────────────────────────────
+// Types
 
 export type InteractionMode = 'view' | 'add-entry' | 'add-exit' | 'block-road' | 'pick-location';
 
@@ -24,8 +24,7 @@ interface MapViewProps {
   center: [number, number];
   zoom: number;
   venueKey: string;
-  /** Venue bounding box [south, west, north, east] — used to render the H3 grid */
-  bbox?: [number, number, number, number];
+  bbox?: [number, number, number, number]; // Bounding box
   mode: InteractionMode;
   is3D: boolean;
   showH3Layer: boolean;
@@ -36,10 +35,10 @@ interface MapViewProps {
   onViewChange?: (center: [number, number], zoom: number) => void;
 }
 
-// ─── Free dark map style (no API key) ─────────────────────────────────────────
+// Map style
 const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
 
-// ─── Road colour by congestion level ─────────────────────────────────────────
+// Congestion color
 
 function roadRGBA(level: number): [number, number, number, number] {
   const c = Math.min(1, Math.max(0, level));
@@ -62,7 +61,7 @@ function hwWidth(hw: string): number {
   return 2;
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// MapView component
 
 export function MapView({
   snapshot, center, zoom, venueKey, bbox, mode, is3D, showH3Layer, showH3Counts,
@@ -81,10 +80,7 @@ export function MapView({
     }));
   }, [center, zoom, is3D]);
 
-  // ── Static H3 grid — computed once per venue + resolution change ─────────
-  //
-  // Covers the full venue bbox so you can see the hexagonal tiling even where
-  // there are no agents. Very low opacity so it reads as a subtle grid mesh.
+  // Static grid
   const h3Resolution = snapshot?.h3Resolution ?? 10;
 
   const gridCells = useMemo<string[]>(() => {
@@ -92,7 +88,7 @@ export function MapView({
     return getVenueGridCells(bbox, h3Resolution);
   }, [showH3Layer, bbox, h3Resolution]);
 
-  // ── Layer stack ─────────────────────────────────────────────────────────
+  // Layer stack
   const layers = useMemo(() => {
     if (!snapshot) return [];
     const { graph, agents, recentPaths, entryNodeIds, exitNodeIds, spawnRadius, h3Cells } = snapshot;
@@ -107,8 +103,7 @@ export function MapView({
     const exitNodes = allNodes.filter(n => exitNodeIds.includes(n.id));
     const interNodes = allNodes.filter(n => n.type === 'intersection' || n.type === 'waypoint');
 
-    // ── 0. H3 Ghost Grid — static hexagonal mesh over the whole venue ─────
-    // Shows the H3 tiling physically on the map even when cells are empty.
+    // Ghost grid
     const h3GridLayer = showH3Layer && gridCells.length > 0 ? new H3HexagonLayer<string>({
       id: 'h3-grid',
       data: gridCells,
@@ -123,7 +118,7 @@ export function MapView({
       updateTriggers: {},
     }) : null;
 
-    // ── 1. Base road network ──────────────────────────────────────────────
+    // Road network
     const roadsLayer = new PathLayer<GeoEdge>({
       id: 'roads',
       data: openEdges,
@@ -141,7 +136,7 @@ export function MapView({
       updateTriggers: { getColor: [snapshot.tick] },
     });
 
-    // ── 2. Blocked roads (solid red) ──────────────────────────────────────
+    // Blocked roads
     const blockedLayer = new PathLayer<GeoEdge>({
       id: 'blocked',
       data: blkEdges,
@@ -151,9 +146,7 @@ export function MapView({
       widthMinPixels: 3,
     });
 
-    // ── 3. H3 Hexagonal Density Layer ─────────────────────────────────────
-    // Real-time density heatmap overlaid on the grid. Cells without agents
-    // fall through to the ghost grid underneath.
+    // Density layer
     const h3DensityLayer = showH3Layer && h3Cells.length > 0 ? new H3HexagonLayer<HexCell>({
       id: 'h3-density',
       data: h3Cells,
@@ -171,7 +164,7 @@ export function MapView({
       },
     }) : null;
 
-    // ── 3.5 H3 Agent Counts ───────────────────────────────────────────────
+    // H3 counts
     const h3CountsLayer = showH3Counts && h3Cells.length > 0 ? new TextLayer<HexCell>({
       id: 'h3-counts',
       data: h3Cells,
@@ -192,7 +185,7 @@ export function MapView({
       },
     }) : null;
 
-    // ── 4. Glowing evacuation path trails ─────────────────────────────────
+    // Evacuation trails
     const pathsLayer = new PathLayer<TrackedPath>({
       id: 'evac-paths',
       data: recentPaths,
@@ -207,7 +200,7 @@ export function MapView({
       updateTriggers: { getColor: [snapshot.tick] },
     });
 
-    // ── 5. Spawn zone circle (entry radius visualisation) ─────────────────
+    // Spawn zone
     const spawnZoneLayer = new ScatterplotLayer<GeoNode>({
       id: 'spawn-zone',
       data: entryNodes,
@@ -220,7 +213,7 @@ export function MapView({
       radiusUnits: 'meters',
     });
 
-    // ── 6. Exit zone rings ─────────────────────────────────────────────────
+    // Exit zone
     const exitZoneLayer = new ScatterplotLayer<GeoNode>({
       id: 'exit-zone',
       data: exitNodes,
@@ -233,7 +226,7 @@ export function MapView({
       radiusUnits: 'meters',
     });
 
-    // ── 7. Pickable intersection nodes (for add-entry / add-exit mode) ────
+    // Intersection nodes
     const interLayer = new ScatterplotLayer<GeoNode>({
       id: 'intersections',
       data: interNodes,
@@ -250,7 +243,7 @@ export function MapView({
       },
     });
 
-    // ── 8. Entry marker (green bullseye) ──────────────────────────────────
+    // Entry markers
     const entryMarkerLayer = new ScatterplotLayer<GeoNode>({
       id: 'entry-markers',
       data: entryNodes,
@@ -264,7 +257,7 @@ export function MapView({
       radiusMaxPixels: 20,
     });
 
-    // ── 9. Exit markers (amber bullseye) ──────────────────────────────────
+    // Exit markers
     const exitMarkerLayer = new ScatterplotLayer<GeoNode>({
       id: 'exit-markers',
       data: exitNodes,
@@ -278,7 +271,7 @@ export function MapView({
       radiusMaxPixels: 20,
     });
 
-    // ── 10. Crowd agents (algorithm-coloured particles) ───────────────────
+    // Agent particles
     type MA = typeof moving[0];
     const agentsLayer = new ScatterplotLayer<MA>({
       id: 'agents',
@@ -294,7 +287,7 @@ export function MapView({
       updateTriggers: { getPosition: [snapshot.tick] },
     });
 
-    // ── 11. Crowd Dispersal Zones ────────────────────────────────────────
+    // Dispersal zones
     const { zones } = snapshot;
     const attractZones = zones.filter(z => z.type === 'attract');
     const repelZones = zones.filter(z => z.type === 'repel');

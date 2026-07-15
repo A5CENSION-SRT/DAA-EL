@@ -91,7 +91,7 @@ H3 SPATIAL CROWD CONTROL is implemented as a client-side web application using R
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\columnwidth]{images/dashboard_screenshot.jpeg}
+\includegraphics[width=\columnwidth]{images/ui_dashboard_overview.png}
 \caption{H3 Spatial Crowd Control interactive dashboard showing real-time evacuation simulation on MG Road Bangalore venue. The interface displays live metrics in seven cards (OSM nodes: 2847, edges: 4156, runtime: 47.3ms, H3 cells occupied: 156, hotspots: 4, active agents: 1247, arrived agents: 2156). The main map area renders the road network with color-coded congestion levels (blue: clear $<0.25$ congestion, yellow: moderate $0.25$–$0.6$, red: jammed $>0.6$). The right sidebar provides control panels for venue selection (MG Road), algorithm choice (Dijkstra), spawn rate, and H3 resolution. The legend overlay identifies road types, entry/exit zones, and H3 grid cells. Yellow agent particles represent moving pedestrians navigating from the entry zone toward exit nodes. The status pill indicates LIVE simulation state.}
 \label{fig:dashboard}
 \end{figure}
@@ -108,15 +108,15 @@ The conversion from raw OSM data to a navigable graph proceeds as follows:
 \item Compute segment distance using the Haversine formula: $d = 2R \arcsin\left(\sqrt{\sin^2\left(\frac{\Delta\phi}{2}\right) + \cos(\phi_1)\cos(\phi_2)\sin^2\left(\frac{\Delta\lambda}{2}\right)}\right)$, where $R = 6371$ km is Earth's mean radius, $\phi$ is latitude in radians, $\lambda$ is longitude in radians, and $\Delta$ denotes the difference. This formula has error $< 0.5$ m on typical venues (relevant for pedestrian routing at scale).
 \item Assign road capacity based on highway type using a heuristic classification table reflecting typical pedestrian throughput: motorway (excluded), trunk (40 ped/min), primary (30 ped/min), secondary (20 ped/min), tertiary (15 ped/min), residential (10 ped/min), unclassified (8 ped/min), pedestrian (5 ped/min), footway (5 ped/min), path (3 ped/min), service (5 ped/min), cycleway (3 ped/min), living\_street (5 ped/min), steps (2 ped/min). These values are heuristic estimates; empirical calibration against measured pedestrian flow would improve realism.
 \item Auto-detect entry node as the node closest to the venue center (computed as the bounding box midpoint).
-\item Auto-detect exit nodes as the four nodes closest to the bounding box corners, positioned at maximum spatial separation to represent exits in all cardinal directions.
+\item Auto-detect exit nodes as the two nodes closest to opposite bounding box corners, positioned at maximum spatial separation to represent exits.
 \end{enumerate}
 
 The result is a weighted undirected graph $G = (V, E)$ where $V$ is the set of OSM nodes and $E$ is the set of road segments. Each edge $e \in E$ carries a tuple $(d_{\text{base}}, c, f, h)$ representing base distance (metres), capacity (pedestrians per minute), current flow, and highway type. The graph is represented in memory as three data structures: a node map (id $\to$ node), an edge map (id $\to$ edge), and an adjacency list (node\_id $\to$ [edge\_ids]), enabling efficient traversal.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\columnwidth]{images/road_network_topology.jpeg}
-\caption{OpenStreetMap road network topology for MG Road, Bangalore, extracted via Overpass API and converted to a navigable graph. The visualization shows 2847 nodes and 4156 edges. Edge colour indicates highway type: orange (primary/trunk, capacity 50 ped/min), yellow (secondary/tertiary, capacity 20 ped/min), and blue (residential/footway, capacity 5 ped/min). Node size indicates degree (number of incident edges): larger orange circles are major intersections (degree $> 4$), smaller yellow circles are regular intersections (degree 2–4), and tiny blue circles are waypoints (degree 1–2). The green circle marks the entry node (closest to venue center); yellow squares mark the four exit nodes at cardinal extremes. Network density is 0.32, indicating a moderately connected urban street grid. This topology is the foundation for all routing calculations; edges with higher capacity and lower distance are preferred by Dijkstra's algorithm when uncongested.}
+\includegraphics[width=\columnwidth]{images/simulation_agent_movement.png}
+\caption{Simulation agent movement and road network topology. The visualization shows agent particles (yellow dots) moving along parsed street segments at MG Road, Bangalore. Segment colors indicate traffic congestion levels, enabling operators to analyze network load dynamically. The interface includes real-time telemetry panels to track performance and evacuation metrics.}
 \label{fig:network}
 \end{figure}
 
@@ -144,8 +144,8 @@ All three algorithms return a \textit{PathResult} tuple containing: (path, total
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\columnwidth]{images/algorithm_comparison.jpeg}
-\caption{Routing algorithm comparison on the Wembley Stadium venue with 200 concurrent agents over 60 seconds of simulated evacuation. Left: Dijkstra shortest path explores 542 nodes, relaxes 1024 edges, requires 9.2 ms per pathfinding call, and produces paths averaging 847 m. Center: A* heuristic-guided search explores only 289 nodes (47\% reduction), relaxes 587 edges (43\% reduction), achieves 6.1 ms runtime (34\% faster), and finds paths averaging 823 m (3\% shorter, benefiting from more thorough exploration within its pruned frontier). Right: BFS fewest-hop baseline explores 1847 nodes (3.4× more than Dijkstra, due to unweighted search), requires 12.8 ms, and produces suboptimal paths averaging 912 m (8\% longer), selecting hops along narrow footways that Dijkstra avoids via congestion weighting. A* achieves the best balance of runtime and path quality for the evacuation setting. All three algorithms route 187–198 agents (94–99\%) successfully to exits, with A* achieving the highest arrival count despite faster runtime.}
+\includegraphics[width=\columnwidth]{images/algorithm_exploration_efficiency.png}
+\caption{Routing algorithm exploration efficiency. The scatter plot compares physical path distance against the number of expanded graph nodes in the visited set for Dijkstra, A*, and BFS. Heuristic pruning in A* Search (slope 0.35) yields a flatter slope compared to Dijkstra (slope 0.64) and BFS (slope 2.15), demonstrating significantly better scaling as distance to destination increases.}
 \label{fig:algorithms}
 \end{figure}
 
@@ -215,8 +215,8 @@ A colour scheme maps normalized density to RGBA using a custom interpolated colo
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\columnwidth]{images/h3_hotspot_heatmap.jpeg}
-\caption{H3 hexagonal density heatmap from a simulated 500-agent surge at MG Road Bangalore (single entry node, resolution 10). The visualization discretizes the 3 km$^2$ venue into H3 cells of approximately 66 m per cell. The surge generates a density peak at the entry location with 127 agents in a single cell at $t=5$ s, triggering hotspot alerts (4 cells above 8-agent threshold). Within-cell counts are annotated for high-density cells. The colour gradient (dark blue → purple → amber → red) encodes normalized density relative to session peak, enabling operators to visually identify where congestion is accumulating. By $t=30$ s, agents have dispersed to 203 distinct cells with no remaining hotspots, demonstrating successful evacuation away from the entry area. This visualization enables emergency planners to identify critical zones where physical interventions (additional signage, staffing, crowd barriers) might be deployed to accelerate flow.}
+\includegraphics[width=\columnwidth]{images/h3_density_visualization.png}
+\caption{H3 hexagonal spatial density visualization. Agent counts are aggregated in real-time within equal-area hexagonal cells (Resolution 10, $\approx 66$ m edge length). Normalized density is color-coded from blue (low) to red (critical), identifying high-occupancy hotspots and bottlenecks. Throttling updates to every second frame preserves 60 FPS performance without loss of spatial tracking fidelity.}
 \label{fig:h3density}
 \end{figure}
 
@@ -293,8 +293,8 @@ Performance measurements are taken on a 2023 MacBook Pro (M3 chip, 16 GB RAM) ru
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\columnwidth]{images/performance_metrics.jpeg}
-\caption{H3 Crowd Control system performance metrics across four dimensions. Top-left: Frame render time histogram showing 95\% of frames complete in $<$ 80 ms, enabling 50+ FPS sustained operation. The mean of 45 ms (16.7 ms below the 60 FPS refresh interval) provides headroom for browser overhead. Top-right: Agent population over 120 seconds, showing exponential approach to 1500 maximum with 25 agents spawning per second, and corresponding growth of arrived agents (cumulative). The staircase pattern in active agents reflects the pruning of arrived agents. Bottom-left: Pathfinding algorithm runtime comparison showing A* (6.1 ms) achieves 34\% speedup over Dijkstra (9.2 ms) through heuristic guidance, while BFS (12.8 ms) is surprisingly slow due to higher node exploration in dense graphs. Bottom-right: Network congestion evolution over 60 seconds, showing an initial rise as agents fill the network, a peak around $t=20$s as bottlenecks form, and decline as agents exit. The saturation threshold (50\% of capacity) is marked; operations exceeding this threshold see sharp cost inflation via Equation 1.}
+\includegraphics[width=\columnwidth]{images/population_vs_latency.png}
+\caption{Evacuation scaling telemetry. The figure plots average network congestion ratio and algorithm execution runtimes as the active agent population scales from 100 to 2,000. Dijkstra and A* runtimes scale sub-linearly under load, with A* query latency remaining below 2.5 ms at peak populations, confirming the feasibility of real-time client-side evacuation simulations.}
 \label{fig:performance}
 \end{figure}
 
@@ -356,8 +356,8 @@ To validate that the congestion weighting (Equation 1) actually produces adaptiv
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\columnwidth]{images/rerouting_validation.jpeg}
-\caption{Validation of congestion-aware rerouting in response to road blockage. Left panel (baseline): With all roads open, agents navigate from entry (green circle) to exit (yellow square) via the shortest distance path along a primary road (gold line), averaging 285 m. The shortest path is geometrically direct because the primary road offers low-cost access. Right panel (after blockage): When the primary road is blocked (red dashed line), the routing algorithm immediately recomputes paths for newly spawned agents, forcing them to route around the blockage via secondary roads (blue alternate path). The rerouted path averages 434 m, a statistically significant 52\% lengthening ($p < 0.001$). The alternate path is not pre-computed; each agent solves the routing problem anew, confirming that the blockage is recognized and respected during pathfinding. This validation demonstrates that the system correctly handles dynamic constraints and agents do not pathologically continue attempting to use blocked roads.}
+\includegraphics[width=\columnwidth]{images/rerouting_analysis.png}
+\caption{Congestion-aware routing and blockage handling validation. When key arterial edges are blocked, the pathfinding solver dynamically recalculates route choices, redirecting the agent stream along alternate secondary pathways (increasing mean path length by 52\%). This confirms correct propagation of dynamic topology constraints.}
 \label{fig:rerouting}
 \end{figure}
 

@@ -1,0 +1,94 @@
+\relax 
+\citation{helbing2000simulating}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\citation{pauls1984movement}
+\citation{seyfried2005fundamental}
+\citation{helbing2000simulating}
+\citation{hart1968formal,dijkstra1959shortest}
+\citation{lim2016multi}
+\citation{seitz2016large}
+\citation{liu2014efficient}
+\citation{fellendorf2010vissim}
+\citation{korhonen2008fds}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Literature Review}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Evacuation Capacity Models}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Spatial Crowd Modelling}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Graph-Theoretic Routing and Evacuation}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Evacuation Simulation Systems and Tools}{2}{}\protected@file@percent }
+\citation{uber2021h3}
+\citation{sahr2003geodetic}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-E}}Spatial Indexing and Crowd Analysis}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-F}}Research Gaps and Contributions}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {III}System Architecture and Design}{3}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces H3 Spatial Crowd Control interactive dashboard showing real-time evacuation simulation on MG Road Bangalore venue. The interface displays live metrics in seven cards (OSM nodes: 2847, edges: 4156, runtime: 47.3ms, H3 cells occupied: 156, hotspots: 4, active agents: 1247, arrived agents: 2156). The main map area renders the road network with color-coded congestion levels (blue: clear $<0.25$ congestion, yellow: moderate $0.25$–$0.6$, red: jammed $>0.6$). The right sidebar provides control panels for venue selection (MG Road), algorithm choice (Dijkstra), spawn rate, and H3 resolution. The legend overlay identifies road types, entry/exit zones, and H3 grid cells. Yellow agent particles represent moving pedestrians navigating from the entry zone toward exit nodes. The status pill indicates LIVE simulation state.}}{3}{}\protected@file@percent }
+\newlabel{fig:dashboard}{{1}{3}{}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Data Acquisition: OpenStreetMap to Graph}{3}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Simulation agent movement and road network topology. The visualization shows agent particles (yellow dots) moving along parsed street segments at MG Road, Bangalore. Segment colors indicate traffic congestion levels, enabling operators to analyze network load dynamically. The interface includes real-time telemetry panels to track performance and evacuation metrics.}}{4}{}\protected@file@percent }
+\newlabel{fig:network}{{2}{4}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Graph Representation and Congestion Weighting}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Routing Algorithms}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Routing algorithm exploration efficiency. The scatter plot compares physical path distance against the number of expanded graph nodes in the visited set for Dijkstra, A*, and BFS. Heuristic pruning in A* Search (slope 0.35) yields a flatter slope compared to Dijkstra (slope 0.64) and BFS (slope 2.15), demonstrating significantly better scaling as distance to destination increases.}}{5}{}\protected@file@percent }
+\newlabel{fig:algorithms}{{3}{5}{}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Agent-Based Simulation Engine}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}H3 Hexagonal Spatial Analysis}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces H3 hexagonal spatial density visualization. Agent counts are aggregated in real-time within equal-area hexagonal cells (Resolution 10, $\approx 66$ m edge length). Normalized density is color-coded from blue (low) to red (critical), identifying high-occupancy hotspots and bottlenecks. Throttling updates to every second frame preserves 60 FPS performance without loss of spatial tracking fidelity.}}{6}{}\protected@file@percent }
+\newlabel{fig:h3density}{{4}{6}{}{figure.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}System Implementation and Technical Stack}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Frontend Framework and Libraries}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Geospatial Visualization}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Real-Time Metrics Dashboard}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {V}Experimental Evaluation}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Venue Test Cases}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Performance Benchmarks}{7}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Simulation Performance Metrics ($n=1500$ agents, 60 FPS target, Wembley venue with 3500 nodes and 5100 edges)}}{7}{}\protected@file@percent }
+\newlabel{tab:performance}{{I}{7}{}{table.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Evacuation scaling telemetry. The figure plots average network congestion ratio and algorithm execution runtimes as the active agent population scales from 100 to 2,000. Dijkstra and A* runtimes scale sub-linearly under load, with A* query latency remaining below 2.5 ms at peak populations, confirming the feasibility of real-time client-side evacuation simulations.}}{7}{}\protected@file@percent }
+\newlabel{fig:performance}{{5}{7}{}{figure.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Algorithm Comparison}{7}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Routing Algorithm Comparison (200 agents, 60 s scenario)}}{7}{}\protected@file@percent }
+\newlabel{tab:algorithms}{{II}{7}{}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}H3 Hotspot Detection}{7}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces H3 Hotspot Detection (500 agent surge)}}{7}{}\protected@file@percent }
+\newlabel{tab:hotspots}{{III}{7}{}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-E}}Congestion-Aware Routing Validation}{7}{}\protected@file@percent }
+\citation{helbing2000simulating}
+\citation{helbing2000simulating}
+\citation{seyfried2005fundamental}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Congestion-aware routing and blockage handling validation. When key arterial edges are blocked, the pathfinding solver dynamically recalculates route choices, redirecting the agent stream along alternate secondary pathways (increasing mean path length by 52\%). This confirms correct propagation of dynamic topology constraints.}}{8}{}\protected@file@percent }
+\newlabel{fig:rerouting}{{6}{8}{}{figure.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Discussion}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}System Strengths}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}System Limitations and Calibration Requirements}{8}{}\protected@file@percent }
+\citation{duives2015agent}
+\citation{helbing2000simulating}
+\citation{murrau2015large}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Validation and Calibration Roadmap}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusion}{9}{}\protected@file@percent }
+\bibcite{helbing2000simulating}{1}
+\bibcite{pauls1985movement}{2}
+\bibcite{seyfried2005fundamental}{3}
+\bibcite{lim2016multi}{4}
+\bibcite{seitz2016large}{5}
+\bibcite{liu2014efficient}{6}
+\bibcite{fellendorf2010vissim}{7}
+\bibcite{korhonen2008fds}{8}
+\bibcite{sahr2003geodetic}{9}
+\bibcite{uber2021h3}{10}
+\bibcite{dijkstra1959shortest}{11}
+\bibcite{hart1968formal}{12}
+\bibcite{west2001introduction}{13}
+\bibcite{openstreetmap2023}{14}
+\bibcite{overpass2023}{15}
+\bibcite{deckgl2023}{16}
+\bibcite{react2023}{17}
+\bibcite{maplibre2023}{18}
+\bibcite{typescript2023}{19}
+\bibcite{nextjs2023}{20}
+\bibcite{chawla2002smote}{21}
+\bibcite{chen2016xgboost}{22}
+\bibcite{duives2015agent}{23}
+\@writefile{toc}{\contentsline {section}{References}{10}{}\protected@file@percent }
+\bibcite{schadschneider2009evacuation}{24}
+\bibcite{murrau2015large}{25}
+\bibcite{chen2020building}{26}
+\gdef \@abspage@last{11}

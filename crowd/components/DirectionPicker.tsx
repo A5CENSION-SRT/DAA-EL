@@ -54,7 +54,7 @@ export function DirectionPicker({ selected, onChange, enabled, onEnabledChange }
                         Select preferred evacuation directions
                     </p>
                     <div className="grid grid-cols-3 gap-1.5">
-                        {/* Row 1: NW, N, NE */}
+                        // Row 1
                         <button
                             onClick={() => toggleDirection('NW')}
                             className={`h-10 rounded-lg border text-sm font-bold transition-all ${selected.includes('NW')
@@ -83,7 +83,7 @@ export function DirectionPicker({ selected, onChange, enabled, onEnabledChange }
                             {DIRECTION_LABELS.NE.arrow}
                         </button>
 
-                        {/* Row 2: W, Center, E */}
+                        // Row 2
                         <button
                             onClick={() => toggleDirection('W')}
                             className={`h-10 rounded-lg border text-sm font-bold transition-all ${selected.includes('W')
@@ -106,7 +106,7 @@ export function DirectionPicker({ selected, onChange, enabled, onEnabledChange }
                             {DIRECTION_LABELS.E.arrow}
                         </button>
 
-                        {/* Row 3: SW, S, SE */}
+                        // Row 3
                         <button
                             onClick={() => toggleDirection('SW')}
                             className={`h-10 rounded-lg border text-sm font-bold transition-all ${selected.includes('SW')

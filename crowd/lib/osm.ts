@@ -6,7 +6,7 @@ import {
 import { haversine } from './haversine';
 import type { VenuePreset } from './venues';
 
-// ─── Overpass API ─────────────────────────────────────────────────────────────
+// Overpass API
 
 const OVERPASS_URL = 'https://overpass-api.de/api/interpreter';
 
@@ -56,29 +56,29 @@ out skel qt;`;
   return parseOsmToGraph(data.elements, venue);
 }
 
-// ─── Parsing ──────────────────────────────────────────────────────────────────
+// Parse OSM
 
 function parseOsmToGraph(elements: OsmElement[], venue: VenuePreset): Graph {
   const graph = createEmptyGraph();
 
-  // 1. Index raw OSM nodes
-  const osmNodes = new Map<number, [number, number]>(); // id → [lng, lat]
+  // Index OSM nodes
+  const osmNodes = new Map<number, [number, number]>(); // Map coordinates
   for (const el of elements) {
     if (el.type === 'node' && el.lat !== undefined && el.lon !== undefined) {
       osmNodes.set(el.id, [el.lon, el.lat]);
     }
   }
 
-  // 2. Process ways
+  // Process ways
   let edgeSeq = 0;
   for (const el of elements) {
     if (el.type !== 'way' || !el.nodes || el.nodes.length < 2) continue;
 
     const highway = (el.tags?.highway ?? 'residential') as HighwayType;
-    const name    = el.tags?.name;
-    const cap     = HIGHWAY_CAPACITY[highway] ?? 500;
+    const name = el.tags?.name;
+    const cap = HIGHWAY_CAPACITY[highway] ?? 500;
 
-    // Register nodes referenced by this way
+    // Register nodes
     for (const osmId of el.nodes) {
       const key = `n${osmId}`;
       if (!graph.nodes.has(key)) {
@@ -91,7 +91,7 @@ function parseOsmToGraph(elements: OsmElement[], venue: VenuePreset): Graph {
       }
     }
 
-    // Create edges between consecutive nodes in the way
+    // Create edges
     for (let i = 0; i < el.nodes.length - 1; i++) {
       const sk = `n${el.nodes[i]}`;
       const tk = `n${el.nodes[i + 1]}`;
@@ -100,7 +100,7 @@ function parseOsmToGraph(elements: OsmElement[], venue: VenuePreset): Graph {
       if (!src || !tgt) continue;
 
       const dist = haversine(src.lat, src.lng, tgt.lat, tgt.lng);
-      if (dist < 0.1) continue; // skip duplicate coordinates
+      if (dist < 0.1) continue; // Skip duplicates
 
       const edge: GeoEdge = {
         id: `e${el.id}_${edgeSeq++}`,
@@ -114,25 +114,25 @@ function parseOsmToGraph(elements: OsmElement[], venue: VenuePreset): Graph {
     }
   }
 
-  // 3. Auto-select entry & exit nodes
+  // Set defaults
   autoSelectEntryExits(graph, venue);
 
   return graph;
 }
 
-// ─── Auto-select entry & exit points ─────────────────────────────────────────
+// Auto select
 
 function autoSelectEntryExits(graph: Graph, venue: VenuePreset): void {
   const [clng, clat] = venue.center;
 
-  // Entry: single node closest to venue centre
+  // Center entry
   const entry = findNearestNode(graph, clng, clat);
   if (entry) entry.type = 'entry';
 
-  // Exits: nodes closest to each corner of the bbox
+  // Corner exits
   const [s, w, n, e] = venue.bbox;
   const corners: [number, number][] = [
-    [w, s], [e, s], [w, n], [e, n],
+    [w, s]4
   ];
   const usedIds = new Set<string>(entry ? [entry.id] : []);
   for (const [lng, lat] of corners) {
@@ -147,14 +147,14 @@ function autoSelectEntryExits(graph: Graph, venue: VenuePreset): void {
   }
 }
 
-// ─── Utilities ────────────────────────────────────────────────────────────────
+// Helpers
 
-/** Return all entry node IDs from a graph. */
+// Get entries
 export function getEntryNodes(graph: Graph): string[] {
   return [...graph.nodes.values()].filter(n => n.type === 'entry').map(n => n.id);
 }
 
-/** Return all exit node IDs from a graph. */
+// Get exits
 export function getExitNodes(graph: Graph): string[] {
   return [...graph.nodes.values()].filter(n => n.type === 'exit').map(n => n.id);
 }

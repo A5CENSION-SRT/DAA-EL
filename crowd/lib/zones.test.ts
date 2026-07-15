@@ -95,7 +95,7 @@ describe('Zone Direction Utilities', () => {
         });
 
         it('should handle wraparound at 2π', () => {
-            // 355° should match North (5° away)
+            // Match North
             const almostNorth = (2 * Math.PI) - (Math.PI / 36); // 355°
             expect(directionMatches('N', almostNorth, Math.PI / 6)).toBe(true);
         });
@@ -135,7 +135,7 @@ describe('Zone Geometric Utilities', () => {
         });
 
         it('should handle concave polygon', () => {
-            // L-shaped polygon
+            // L-shape
             const lShape: [number, number][] = [
                 [0, 0],
                 [2, 0],
@@ -160,10 +160,10 @@ describe('Zone Geometric Utilities', () => {
         });
 
         it('should calculate distance correctly for known coordinates', () => {
-            // Bangalore to a point ~1km away (approximately)
+            // Bangalore distance
             const dist = distance([77.6, 12.9], [77.61, 12.9]);
             expect(dist).toBeGreaterThan(500); // At least 500m
-            expect(dist).toBeLessThan(2000); // But less than 2km
+            expect(dist).toBeLessThan(2000); // Less than 2km
         });
 
         it('should be symmetric', () => {
@@ -211,7 +211,7 @@ describe('Zone Geometric Utilities', () => {
         });
 
         it('should calculate area of square (in approximate square metres)', () => {
-            // Small square near equator
+            // Small square
             const square: [number, number][] = [
                 [0, 0],
                 [0.01, 0],
@@ -219,8 +219,8 @@ describe('Zone Geometric Utilities', () => {
                 [0, 0.01],
             ];
             const area = polygonArea(square);
-            expect(area).toBeGreaterThan(1000); // Should be roughly 1km²
-            expect(area).toBeLessThan(20000); // But not huge
+            expect(area).toBeGreaterThan(1000); // Around 1km2
+            expect(area).toBeLessThan(20000); // Not huge
         });
     });
 });
